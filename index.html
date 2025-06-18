@@ -66,7 +66,8 @@
         }
 
         .search-section input[type="text"],
-        .search-section select {
+        .search-section select,
+        .search-section input[type="date"] { /* Removed time input style */
             padding: 12px; /* Adjusted padding for mobile */
             border: 1px solid #ced4da;
             border-radius: 7px;
@@ -75,14 +76,14 @@
             font-size: 1em; /* Adjusted font size for mobile */
             box-sizing: border-box;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            /* Removed background-image properties */
             cursor: pointer;
             height: auto;
             min-height: 38px; /* Adjusted min-height */
         }
 
         .search-section input[type="text"]:focus,
-        .search-section select:focus {
+        .search-section select:focus,
+        .search-section input[type="date"]:focus { /* Removed time input focus style */
             border-color: #007bff;
             box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
             outline: none;
@@ -250,23 +251,6 @@
             background-color: #f2f4f6;
         }
 
-        /* Map specific styles */
-        .map-container {
-            width: 100%;
-            height: 300px; /* Fixed height for the map, adjust as needed */
-            margin-top: 20px;
-            border-radius: 8px;
-            overflow: hidden; /* Ensures the iframe respects border-radius */
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            display: none; /* Hidden by default */
-        }
-
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
         /* Desktop and Tablet styles (min-width for progressive enhancement) */
         @media (min-width: 480px) { /* Adjust for larger phones / small tablets */
             body {
@@ -291,10 +275,10 @@
                 font-size: 1.1em;
             }
             .search-section input[type="text"],
-            .search-section select {
+            .search-section select,
+            .search-section input[type="date"] {
                 padding: 14px;
                 font-size: 1.05em;
-                /* Removed background-image properties */
                 min-height: 40px;
             }
             .button-group {
@@ -361,7 +345,8 @@
                 gap: 18px;
             }
             .search-section input[type="text"],
-            .search-section select {
+            .search-section select,
+            .search-section input[type="date"] {
                 max-width: 280px;
                 font-size: 1.1em;
             }
@@ -397,12 +382,16 @@
     <div class="container">
         <span class="app-title-logo-text">Roots & Wings</span>
         <h1>Find My Event</h1>
-        <p class="festival-date-text">· Festival Dates: Saturday, October 18 - Sunday, November 2, 2025 ·</p>
+        <p class="festival-date-text">Festival Dates: Saturday, October 18 - Sunday, November 2, 2025</p>
 
         <div class="search-section">
             <label for="zipCodeInput">Enter Zip Code:</label>
             <input type="text" id="zipCodeInput" placeholder="e.g., 78701" maxlength="5">
-            <label for="themeSelect">Or search by theme:</label>
+            
+            <label for="eventDateInput">Search by Date:</label>
+            <input type="date" id="eventDateInput" min="2025-10-18" max="2025-11-02">
+
+            <label for="themeSelect">Search by theme:</label>
             <select id="themeSelect">
                 <option value="">All Themes</option>
                 <!-- Options will be populated by JavaScript -->
@@ -414,13 +403,8 @@
             <p id="showAllEventsText" class="show-all-events">Or show me all events</p>
         </div>
 
-        <!-- Map Container -->
-        <div id="mapContainer" class="map-container">
-            <iframe id="googleMap" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-        </div>
-
         <div id="eventsDisplay" class="events-display">
-            <p class="initial-message">Enter a zip code or select a theme, then click "Search Events" to find local happenings.</p>
+            <p class="initial-message">Enter a zip code, select a date or theme, then click "Search Events" to find local happenings.</p>
         </div>
 
         <div id="noResultsMessage" class="no-results-message" style="display: none;">
@@ -429,8 +413,6 @@
     </div>
 
     <script>
-        /* --- script.js content starts here --- */
-
         // Function to convert theme names to camelCase for object keys
         const toCamelCase = (name) => {
             return name
@@ -441,93 +423,44 @@
                 .replace(/\s+/g, ''); // Remove spaces
         };
 
-        // Raw data string from the user's prompt
-        const rawEventData = `Event Title|Full DateTime|Event Location|Full Address|Food Equity|It's My Park Day|Bats|Birds|Fungi|Kids: Ages 0-5|Kids: Ages 5-12|Library|Sensory-Friendly|Teens: Ages 12-17|Cultural|Beautification|Indoors|Adults|All Ages|En Español|Pollinators|Soil Health/Plants|Trees|Museum|STEM|Event Link
-Blossoms & Bugs: Adelphi Acre Community Garden Festival!|10/19/2024|Adelphi Acre Community Garden|3701 Adelphi Ln, Austin, TX, 78759|1|0|0|0|0|0|0|0|1|0|0|0|0|0|1|1|1|1|1|0|0|https://rootsandwingsfest.com/schedule/blossoms-bugs-adelphi-acre-community-garden-festival
-Beautify the Austin Nature & Science Center: a Roots & Wings Festival and It's My Park Day Crossover Event!|11/2/2024|Austin Nature & Science Center|2389 Stratford Dr, Austin, TX, 78746|0|1|0|0|0|0|0|0|0|1|0|0|0|1|0|1|0|1|1|0|0|https://rootsandwingsfest.com/schedule/buzz-flutter-and-grow-with-the-austin-nature-science-center-6t243
-Buzz, Flutter, and Grow with the Austin Nature & Science Center!|11/2/2024|Austin Nature & Science Center|2389 Stratford Dr, Austin, TX, 78746|0|0|0|0|0|0|0|0|1|0|0|0|1|0|1|1|1|1|0|0|0|https://rootsandwingsfest.com/schedule/buzz-flutter-and-grow-with-the-austin-nature-science-center
-The Crafty Adult' presents Bird Seed Balls!|10/20/2024|Spicewood Springs Branch Library|8637 Spicewood Springs Rd, Austin, TX, 78750|0|0|0|1|0|0|0|1|0|0|0|0|1|1|0|0|0|1|0|0|0|https://rootsandwingsfest.com/schedule/the-crafty-adult-presents-bird-seed-balls
-Urban Forest Explorers: Nature Play at Un-BEE-Lievable Pollinators Festival!|10/26/2024|Windsor Park Branch Library|5833 Westminster Dr, Austin, TX, 78723|0|0|1|1|1|1|1|1|1|1|0|0|0|0|0|1|1|1|1|0|0|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-un-bee-lievable-pollinators-festival
-Garden Club Team Up Plant Show and Beekeeper/Honey Program!|11/2/2024|John Gillum Branch Library|2505 Steck Ave, Austin, TX, 78757|0|0|0|0|0|0|0|1|0|0|1|0|0|0|1|0|1|1|0|0|0|https://rootsandwingsfest.com/schedule/garden-club-team-up-plant-show-and-beekeeper/honey-program
-The Crafty Adult' presents Bird Seed Balls!|11/2/2024|John Gillum Branch Library|2505 Steck Ave, Austin, TX, 78757|0|0|0|1|0|0|0|1|0|0|0|0|1|1|0|0|0|1|0|0|0|https://rootsandwingsfest.com/schedule/the-crafty-adult-presents-bird-seed-balls2
-Over the Garden Wall!|10/26/2024|Carver Branch Library|1161 Angelina St, Austin, TX, 78702|0|0|1|1|1|0|0|1|1|0|0|0|0|0|1|0|0|1|0|0|0|https://rootsandwingsfest.com/schedule/over-the-garden-wall
-Central Gallery Presents: Artist Suzy González, "Plantcestors"|10/19/2024 9:00AM|Central Library|710 W Cesar Chavez St, Austin, TX, 78701|1|0|0|0|0|0|0|1|0|0|1|0|1|0|1|1|0|1|0|0|0|https://rootsandwingsfest.com/schedule/central-gallery-presents-artist-suzy-gonzlez-plantcestors
-Tracy Dockray: All About Butterflies!|10/31/2024|University Hills Branch Library|4721 Loyola Ln, Austin, TX, 78723|0|0|0|0|0|0|0|1|0|0|0|0|1|0|1|0|1|0|0|0|0|https://rootsandwingsfest.com/schedule/tracy-dockray-all-about-butterflies2
-ArtSmart: Dia de los Muertos-Butterflies and Skulls!|10/31/2024|University Hills Branch Library|4721 Loyola Ln, Austin, TX, 78723|0|0|0|0|0|0|1|1|1|0|1|0|1|0|0|1|1|0|0|0|0|https://rootsandwingsfest.com/schedule/artsmart-dia-de-los-muertos-butterflies-and-skulls2024
-Urban Forest Explorers: Nature Play at Dottie Jordan Park Roots and Wings Festival!|11/3/2024|Dottie Jordan Park |2803 Loyola Ln, Austin, TX, 78723|0|0|1|1|1|1|1|0|1|0|0|0|0|0|0|1|1|1|1|0|0|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-dottie-jordan-park-roots-and-wings-festival
-Dig It! Gardening in Texas - The Home Food Forest|10/29/2024|Howson Branch Library|2500 Exposition Blvd, Austin, TX, 78703|1|0|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|1|1|0|0|https://rootsandwingsfest.com/schedule/dig-it-gardening-in-texas-the-home-food-forest
-Teen Social Hour: Roots and Wings Edition!|10/24/2024|Carver Branch Library|1161 Angelina St, Austin, TX, 78702|0|0|0|0|0|0|0|1|1|1|0|0|0|0|0|0|0|1|0|0|1|https://rootsandwingsfest.com/schedule/teen-social-hour-roots-and-wings-edition2024
-The Poet Tree at Carver Library!|10/19/2024|Carver Branch Library|1161 Angelina St, Austin, TX, 78702|0|0|0|0|0|0|0|1|0|0|1|0|0|0|1|0|0|1|1|0|0|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl
-Urban Forest Explorers: Nature Play at APL!|10/19/2024|Little Walnut Creek|835 W Rundberg Ln, Austin, TX, 78758|0|0|1|1|1|1|1|0|1|0|0|0|0|0|0|1|1|1|1|0|0|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl
-Un-BEE-Lievable Pollinators Festival!|10/26/2024|Windsor Park Branch Library|5833 Westminster Dr, Austin, TX, 78723|0|0|0|0|0|0|0|1|1|0|0|0|0|0|1|1|1|1|1|0|0|https://rootsandwingsfest.com/schedule/un-bee-lievable-pollinators-festival
-Preschool Imagination Station: Roots & Wings!|10/24/2024|Hampton Branch at Oak Hill Library|5125 Convict Hill Rd, Austin, TX, 78749|0|0|1|0|1|1|0|1|0|0|0|0|1|0|0|1|1|1|1|0|0|https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings2
-Roots and Wings Festival at Oak Hill Library!|10/19/2024|Hampton Branch at Oak Hill Library|5125 Convict Hill Rd, Austin, TX, 78749|0|0|0|0|0|0|0|1|1|0|0|0|0|0|1|0|1|1|0|0|0|https://rootsandwingsfest.com/schedule/roots-and-wings-festival-at-oak-hill-library
-Butterfly Festival with Author Tracy Dockray!|10/24/2024|Southeast Branch Library|5803 Nuckols Crossing Rd, Austin, TX, 78744|0|0|0|0|0|0|0|1|1|0|0|0|1|0|1|0|1|0|0|0|0|https://rootsandwingsfest.com/schedule/butterfly-festival-with-author-tracy-dockray3
-Preschool Imagination Station: Roots & Wings!|10/28/2024|Yarborough Branch Library|2200 Hancock Dr, Austin, TX, 78756|0|0|1|0|1|1|0|1|1|0|0|0|1|0|0|0|1|1|1|0|0|https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings`;
+        // Raw data string for events (CSV format)
+        const rawEventData = `Event Title,Full DateTime,Event Location,Full Address,Food Equity,It's My Park Day,Bats,Birds,Fungi,Kids: Ages 0-5,Kids: Ages 5-12,Library,Sensory-Friendly,Teens: Ages 12-17,Cultural,Beautification,Indoors,Adults,All Ages,En Español,Pollinators,Soil Health/Plants,Trees,Museum,STEM,Event Link
+Blossoms & Bugs: Adelphi Acre Community Garden Festival!,10/19/2024,Adelphi Acre Community Garden,"3701 Adelphi Ln, Austin, TX, 78759",1,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/blossoms-bugs-adelphi-acre-community-garden-festival
+Beautify the Austin Nature & Science Center: a Roots & Wings Festival and It's My Park Day Crossover Event!,11/2/2024,Austin Nature & Science Center,"2389 Stratford Dr, Austin, TX, 78746",0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,1,1,0,0,https://rootsandwingsfest.com/schedule/buzz-flutter-and-grow-with-the-austin-nature-science-center-6t243
+"Buzz, Flutter, and Grow with the Austin Nature & Science Center!",11/2/2024,Austin Nature & Science Center,"2389 Stratford Dr, Austin, TX, 78746",0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,1,1,0,0,0,https://rootsandwingsfest.com/schedule/buzz-flutter-and-grow-with-the-austin-nature-science-center
+The Crafty Adult' presents Bird Seed Balls!,10/20/2024,Spicewood Springs Branch Library,"8637 Spicewood Springs Rd, Austin, TX, 78750",0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,1,0,0,0,https://rootsandwingsfest.com/schedule/the-crafty-adult-presents-bird-seed-balls
+Urban Forest Explorers: Nature Play at Un-BEE-Lievable Pollinators Festival!,10/26/2024,Windsor Park Branch Library,"5833 Westminster Dr, Austin, TX, 78723",0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-un-bee-lievable-pollinators-festival
+Garden Club Team Up Plant Show and Beekeeper/Honey Program!,11/2/2024,John Gillum Branch Library,"2505 Steck Ave, Austin, TX, 78757",0,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,1,0,0,0,https://rootsandwingsfest.com/schedule/garden-club-team-up-plant-show-and-beekeeper/honey-program
+The Crafty Adult' presents Bird Seed Balls!,11/2/2024,John Gillum Branch Library,"2505 Steck Ave, Austin, TX, 78757",0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,1,0,0,0,https://rootsandwingsfest.com/schedule/the-crafty-adult-presents-bird-seed-balls2
+Over the Garden Wall!,10/26/2024,Carver Branch Library,"1161 Angelina St, Austin, TX, 78702",0,0,1,1,1,0,0,1,1,0,0,0,0,0,1,0,0,1,0,0,0,https://rootsandwingsfest.com/schedule/over-the-garden-wall
+"Central Gallery Presents: Artist Suzy González, ""Plantcestors""",10/19/2024 9:00AM,Central Library,"710 W Cesar Chavez St, Austin, TX, 78701",1,0,0,0,0,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,0,https://rootsandwingsfest.com/schedule/central-gallery-presents-artist-suzy-gonzlez-plantcestors
+Tracy Dockray: All About Butterflies!,10/31/2024,University Hills Branch Library,"4721 Loyola Ln, Austin, TX, 78723",0,0,0,0,0,0,0,1,0,0,0,0,1,0,1,0,1,0,0,0,0,https://rootsandwingsfest.com/schedule/tracy-dockray-all-about-butterflies2
+ArtSmart: Dia de los Muertos-Butterflies and Skulls!,10/31/2024,University Hills Branch Library,"4721 Loyola Ln, Austin, TX, 78723",0,0,0,0,0,0,1,1,1,0,1,0,1,0,0,1,1,0,0,0,0,https://rootsandwingsfest.com/schedule/artsmart-dia-de-los-muertos-butterflies-and-skulls2024
+Urban Forest Explorers: Nature Play at Dottie Jordan Park Roots and Wings Festival!,11/3/2024,Dottie Jordan Park ,"2803 Loyola Ln, Austin, TX, 78723",0,0,1,1,1,1,1,0,1,0,0,0,0,0,0,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-dottie-jordan-park-roots-and-wings-festival
+Dig It! Gardening in Texas - The Home Food Forest,10/29/2024,Howson Branch Library,"2500 Exposition Blvd, Austin, TX, 78703",1,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,1,0,0,https://rootsandwingsfest.com/schedule/dig-it-gardening-in-texas-the-home-food-forest
+Teen Social Hour: Roots and Wings Edition!,10/24/2024,Carver Branch Library,"1161 Angelina St, Austin, TX, 78702",0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1,0,0,1,https://rootsandwingsfest.com/schedule/teen-social-hour-roots-and-wings-edition2024
+The Poet Tree at Carver Library!,10/19/2024,Carver Branch Library,"1161 Angelina St, Austin, TX, 78702",0,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,1,0,0,https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl
+Urban Forest Explorers: Nature Play at APL!,10/19/2024,Little Walnut Creek,"835 W Rundberg Ln, Austin, TX, 78758",0,0,1,1,1,1,1,0,1,0,0,0,0,0,0,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl
+Un-BEE-Lievable Pollinators Festival!,10/26/2024,Windsor Park Branch Library,"5833 Westminster Dr, Austin, TX, 78723",0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/un-bee-lievable-pollinators-festival
+Preschool Imagination Station: Roots & Wings!,10/24/2024,Hampton Branch at Oak Hill Library,"5125 Convict Hill Rd, Austin, TX, 78749",0,0,1,0,1,1,0,1,0,0,0,0,1,0,0,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings2
+Roots and Wings Festival at Oak Hill Library!,10/19/2024,Hampton Branch at Oak Hill Library,"5125 Convict Hill Rd, Austin, TX, 78749",0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,0,1,1,0,0,0,https://rootsandwingsfest.com/schedule/roots-and-wings-festival-at-oak-hill-library
+Butterfly Festival with Author Tracy Dockray!,10/24/2024,Southeast Branch Library,"5803 Nuckols Crossing Rd, Austin, TX, 78744",0,0,0,0,0,0,0,1,1,0,0,0,1,0,1,0,1,0,0,0,0,https://rootsandwingsfest.com/schedule/butterfly-festival-with-author-tracy-dockray3
+Preschool Imagination Station: Roots & Wings!,10/28/2024,Yarborough Branch Library,"2200 Hancock Dr, Austin, TX, 78756",0,0,1,0,1,1,0,1,1,0,0,0,1,0,0,0,1,1,1,0,0,https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings`;
 
-        // Data for updating event links from user's latest input
-        const eventLinkUpdates = `Event Title|Event Link
-Blossoms & Bugs: Adelphi Acre Community Garden Festival!|https://rootsandwingsfest.com/schedule/blossoms-bugs-adelphi-acre-community-garden-festival
-Beautify the Austin Nature & Science Center: a Roots & Wings Festival and It's My Park Day Crossover Event!|https://rootsandwingsfest.com/schedule/beautify-the-austin-nature-science-center-6t243
-Buzz, Flutter, and Grow with the Austin Nature & Science Center!|https://rootsandwingsfest.com/schedule/buzz-flutter-and-grow-with-the-austin-nature-science-center
-The Crafty Adult' presents Bird Seed Balls!|https://rootsandwingsfest.com/schedule/the-crafty-adult-presents-bird-seed-balls
-Urban Forest Explorers: Nature Play at Un-BEE-Lievable Pollinators Festival!|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-un-bee-lievable-pollinators-festival
-Garden Club Team Up Plant Show and Beekeeper/Honey Program!|https://rootsandwingsfest.com/schedule/garden-club-team-up-plant-show-and-beekeeper/honey-program
-The Crafty Adult' presents Bird Seed Balls!|https://rootsandwingsfest.com/schedule/the-crafty-adult-presents-bird-seed-balls2
-Over the Garden Wall!|https://rootsandwingsfest.com/schedule/over-the-garden-wall
-Central Gallery Presents: Artist Suzy González, "Plantcestors"|https://rootsandwingsfest.com/schedule/central-gallery-presents-artist-suzy-gonzlez-plantcestors
-Tracy Dockray: All About Butterflies!|https://rootsandwingsfest.com/schedule/tracy-dockray-all-about-butterflies2
-ArtSmart: Dia de los Muertos-Butterflies and Skulls!|https://rootsandwingsfest.com/schedule/artsmart-dia-de-los-muertos-butterflies-and-skulls2024
-Urban Forest Explorers: Nature Play at Dottie Jordan Park Roots and Wings Festival!|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-dottie-jordan-park-roots-and-wings-festival
-Dig It! Gardening in Texas - The Home Food Forest|https://rootsandwingsfest.com/schedule/dig-it-gardening-in-texas-the-home-food-forest
-Teen Social Hour: Roots and Wings Edition!|https://rootsandwingsfest.com/schedule/teen-social-hour-roots-and-wings-edition2024
-The Poet Tree at Carver Library!|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl
-Urban Forest Explorers: Nature Play at APL!|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl
-Un-BEE-Lievable Pollinators Festival!|https://rootsandwingsfest.com/schedule/un-bee-lievable-pollinators-festival
-Preschool Imagination Station: Roots & Wings!|https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings2
-Roots and Wings Festival at Oak Hill Library!|https://rootsandwingsfest.com/schedule/roots-and-wings-festival-at-oak-hill-library
-Butterfly Festival with Author Tracy Dockray!|https://rootsandwingsfest.com/schedule/butterfly-festival-with-author-tracy-dockray3
-Preschool Imagination Station: Roots & Wings!|https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings`;
-
-
-        // Function to parse the CSV-like data
-        const parseEventData = (dataString, linkUpdates) => {
+        const parseEventData = (dataString) => {
             const lines = dataString.trim().split('\n');
             if (lines.length === 0) return [];
 
-            const header = lines[0].split('|').map(h => h.trim()); // Changed delimiter to '|'
-            const themeStartIndex = header.indexOf("Food Equity"); // The first theme column
-
-            // Create a map for quick link lookup
-            const linkMap = new Map();
-            const updateLines = linkUpdates.trim().split('\n');
-            for (let i = 1; i < updateLines.length; i++) {
-                const parts = updateLines[i].split('|').map(p => p.trim()); // Changed delimiter to '|'
-                if (parts.length === 2) {
-                    linkMap.set(parts[0], parts[1]);
-                }
-            }
+            const headerLine = lines[0];
+            // Split header by comma, but intelligently handle quoted fields
+            const header = headerLine.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g).map(h => h.replace(/"/g, '').trim());
+            const themeStartIndex = header.indexOf("Food Equity");
 
             const parsedEvents = [];
 
             for (let i = 1; i < lines.length; i++) {
                 const line = lines[i];
-                // Split by '|' and handle quoted fields if any remain (though with '|' as delimiter, quotes might not be an issue)
-                const values = [];
-                let inQuote = false;
-                let currentVal = '';
-                for (let k = 0; k < line.length; k++) {
-                    const char = line[k];
-                    if (char === '"') {
-                        inQuote = !inQuote;
-                    } else if (char === '|' && !inQuote) {
-                        values.push(currentVal.trim());
-                        currentVal = '';
-                    } else {
-                        currentVal += char;
-                    }
-                }
-                values.push(currentVal.trim()); // Add the last value
+                const values = line.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g).map(v => v.replace(/"/g, '').trim());
 
                 if (values.length !== header.length) {
                     console.warn(`Skipping malformed row ${i + 1}: Expected ${header.length} columns, got ${values.length}. Line: ${line}`);
@@ -542,38 +475,33 @@ Preschool Imagination Station: Roots & Wings!|https://rootsandwingsfest.com/sche
                     const value = values[j];
 
                     if (j >= themeStartIndex && themeStartIndex !== -1) {
-                        // This is a theme column
                         const themeCamelCase = toCamelCase(key);
                         themes[themeCamelCase] = value === '1';
                     } else {
-                        // Regular event property
                         if (key === "Event Title") {
                             event.name = value;
                         } else if (key === "Full DateTime") {
                             const dateObj = new Date(value);
-                            if (isNaN(dateObj.getTime())) { // Check if date is invalid
-                                event.date = ''; // Omit date info if invalid
+                            if (isNaN(dateObj.getTime())) {
+                                event.displayDate = '';
+                                event.timestamp = null;
                             } else {
                                 const options = { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
-                                event.date = dateObj.toLocaleString('en-US', options);
+                                event.displayDate = dateObj.toLocaleString('en-US', options);
+                                event.timestamp = dateObj;
                             }
                         } else if (key === "Event Location") {
                             event.location = value;
                         } else if (key === "Full Address") {
                             event.address = value;
                         } else if (key === "Event Link") {
-                            // Use the URL from the linkUpdates map if available, otherwise use original
-                            event.url = linkMap.has(event.name) ? linkMap.get(event.name) : value;
-                        } else { // Handle other non-theme fields
+                            event.url = value;
+                        } else {
                             event[toCamelCase(key)] = value;
                         }
                     }
                 }
                 event.themes = themes;
-                // Apply the correct URL from the linkUpdates for the event name
-                if (linkMap.has(event.name)) {
-                    event.url = linkMap.get(event.name);
-                }
                 parsedEvents.push(event);
             }
             return parsedEvents;
@@ -582,14 +510,13 @@ Preschool Imagination Station: Roots & Wings!|https://rootsandwingsfest.com/sche
 
         document.addEventListener('DOMContentLoaded', () => {
             const zipCodeInput = document.getElementById('zipCodeInput');
+            const eventDateInput = document.getElementById('eventDateInput');
             const themeSelect = document.getElementById('themeSelect');
             const searchButton = document.getElementById('searchButton');
-            const resetButton = document.getElementById('resetButton'); // Get reference to the new button
+            const resetButton = document.getElementById('resetButton');
             const eventsDisplay = document.getElementById('eventsDisplay');
             const noResultsMessage = document.getElementById('noResultsMessage');
-            const showAllEventsText = document.getElementById('showAllEventsText'); // New element
-            const mapContainer = document.getElementById('mapContainer'); // Reference to the map container
-            const googleMap = document.getElementById('googleMap'); // Reference to the iframe
+            const showAllEventsText = document.getElementById('showAllEventsText');
 
             // Define the theme names as they appear in the CSV header and for display
             const themeNames = [
@@ -608,39 +535,18 @@ Preschool Imagination Station: Roots & Wings!|https://rootsandwingsfest.com/sche
                 themeSelect.appendChild(option);
             });
 
-            const allEvents = parseEventData(rawEventData, eventLinkUpdates);
+            const allEvents = parseEventData(rawEventData); // Pass only rawEventData
 
             // Function to display events (re-usable for search and show all)
             const displayEvents = (eventsToDisplay) => {
                 eventsDisplay.innerHTML = ''; // Clear previous results
                 noResultsMessage.style.display = 'none'; // Hide no results message
-                mapContainer.style.display = 'none'; // Hide map by default initially
 
                 if (eventsToDisplay.length > 0) {
                     const eventsCountElement = document.createElement('p');
                     eventsCountElement.classList.add('events-found-count');
                     eventsCountElement.textContent = `${eventsToDisplay.length} event${eventsToDisplay.length === 1 ? '' : 's'} found:`;
                     eventsDisplay.appendChild(eventsCountElement);
-
-                    // Collect all addresses and event names for the map
-                    const mapLocations = eventsToDisplay.map(event => {
-                        if (event.location && event.address && event.name) {
-                            const fullAddress = `${event.location}, ${event.address}`;
-                            let titleForMap = event.name;
-                            if (titleForMap.length > 24) {
-                                titleForMap = titleForMap.substring(0, 24) + '...';
-                            }
-                            return `${encodeURIComponent(titleForMap)},${encodeURIComponent(fullAddress)}`;
-                        }
-                        return null;
-                    }).filter(Boolean);
-
-                    if (mapLocations.length > 0) {
-                        // The 'q' parameter can take pipe-separated "label,address" pairs for multiple markers
-                        const mapQuery = mapLocations.join('|');
-                        googleMap.src = `https://maps.google.com/maps?q=${mapQuery}&output=embed`;
-                        mapContainer.style.display = 'block'; // Show map if there are addresses
-                    }
 
                     eventsToDisplay.forEach(event => {
                         const eventCard = document.createElement('div');
@@ -651,7 +557,7 @@ Preschool Imagination Station: Roots & Wings!|https://rootsandwingsfest.com/sche
 
                         const activeThemes = themeNames.filter(themeName => {
                             const themeKey = toCamelCase(themeName);
-                            return event.themes[themeKey];
+                            return event.themes && event.themes[themeKey] === true;
                         });
                         const themesListHtml = activeThemes.length > 0
                             ? `<p class="themes-list">${activeThemes.join(', ')}</p>`
@@ -659,7 +565,7 @@ Preschool Imagination Station: Roots & Wings!|https://rootsandwingsfest.com/sche
 
                         eventCard.innerHTML = `
                             <h3><a href="${event.url}" target="_blank">${event.name}</a></h3>
-                            ${event.date ? `<p><strong>Date:</strong> ${event.date}</p>` : ''}
+                            ${event.displayDate ? `<p><strong>Date:</strong> ${event.displayDate}</p>` : ''}
                             <p><strong>Location:</strong> <a href="${googleMapsUrl}" target="_blank">${fullLocationAddress}</a></p>
                             ${themesListHtml}
                         `;
@@ -674,11 +580,11 @@ Preschool Imagination Station: Roots & Wings!|https://rootsandwingsfest.com/sche
             searchButton.addEventListener('click', () => {
                 const inputZip = zipCodeInput.value.trim();
                 const selectedTheme = themeSelect.value;
+                const inputDate = eventDateInput.value; //YYYY-MM-DD
 
                 // Clear previous messages before showing new ones
                 eventsDisplay.innerHTML = '';
                 noResultsMessage.style.display = 'none';
-                mapContainer.style.display = 'none'; // Hide map on new search
 
                 let filteredEvents = allEvents;
                 let hasCriteria = false;
@@ -696,6 +602,27 @@ Preschool Imagination Station: Roots & Wings!|https://rootsandwingsfest.com/sche
                     hasCriteria = true;
                 }
 
+                // Apply Date filter if provided
+                let userDate = null;
+                if (inputDate) {
+                    userDate = new Date(inputDate);
+                    // Set time to midnight UTC to ensure comparison is purely date-based
+                    userDate.setUTCHours(0, 0, 0, 0); 
+                }
+
+                if (userDate && !isNaN(userDate.getTime())) {
+                    filteredEvents = filteredEvents.filter(event => {
+                        if (!event.timestamp) return false; // Event has no valid date
+
+                        const eventDateTime = new Date(event.timestamp);
+                        // Set event time to midnight UTC for date-only comparison
+                        eventDateTime.setUTCHours(0, 0, 0, 0);
+
+                        return eventDateTime.getTime() === userDate.getTime();
+                    });
+                    hasCriteria = true;
+                }
+
                 // Apply Theme filter if provided
                 if (selectedTheme) {
                     filteredEvents = filteredEvents.filter(event => {
@@ -705,7 +632,7 @@ Preschool Imagination Station: Roots & Wings!|https://rootsandwingsfest.com/sche
                 }
 
                 if (!hasCriteria) {
-                    eventsDisplay.innerHTML = '<p class="initial-message">Enter a zip code or select a theme, then click "Search Events" to find local happenings.</p>';
+                    eventsDisplay.innerHTML = '<p class="initial-message">Enter a zip code, select a date or theme, then click "Search Events" to find local happenings.</p>';
                     return;
                 }
 
@@ -715,6 +642,7 @@ Preschool Imagination Station: Roots & Wings!|https://rootsandwingsfest.com/sche
             // Event listener for "Or show me all events"
             showAllEventsText.addEventListener('click', () => {
                 zipCodeInput.value = ''; // Clear zip code input
+                eventDateInput.value = ''; // Clear date input
                 themeSelect.value = ''; // Reset theme dropdown
 
                 // Sort all events alphabetically by name
