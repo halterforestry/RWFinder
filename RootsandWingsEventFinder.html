@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find My Event</title>
+    <style>
+        /* --- style.css content starts here --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 10px; /* Reduced margin for mobile */
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px; /* Reduced padding for mobile */
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            width: 100%; /* Take full width on small screens */
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+
+        .app-title-logo-text {
+            color: #ef8c2a;
+            font-size: 2em; /* Adjusted font size for mobile */
+            font-weight: 700;
+            margin-bottom: 8px; /* Adjusted margin */
+            display: block;
+        }
+
+        h1 {
+            color: #212529;
+            margin-bottom: 8px; /* Adjusted margin */
+            font-size: 1.8em; /* Adjusted font size for mobile */
+            font-weight: 600;
+        }
+
+        .festival-date-text {
+            margin-top: 0;
+            margin-bottom: 20px; /* Adjusted margin */
+            text-align: center;
+            color: #495057;
+            font-size: 0.95em; /* Adjusted font size for mobile */
+        }
+
+        .search-section {
+            margin-bottom: 25px; /* Adjusted margin */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px; /* Reduced gap for mobile */
+        }
+
+        .search-section label {
+            font-size: 1em; /* Adjusted font size for mobile */
+            color: #495057;
+            margin-bottom: 3px; /* Adjusted margin */
+            font-weight: 500;
+        }
+
+        .search-section input[type="text"],
+        .search-section select {
+            padding: 12px; /* Adjusted padding for mobile */
+            border: 1px solid #ced4da;
+            border-radius: 7px;
+            width: 95%; /* More width for mobile */
+            max-width: 300px; /* Max-width here, will be overridden for larger screens */
+            font-size: 1em; /* Adjusted font size for mobile */
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            /* Removed background-image properties */
+            cursor: pointer;
+            height: auto;
+            min-height: 38px; /* Adjusted min-height */
+        }
+
+        .search-section input[type="text"]:focus,
+        .search-section select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            outline: none;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column; /* Stack buttons vertically by default */
+            gap: 10px; /* Reduced gap for mobile */
+            justify-content: center;
+            width: 100%;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .search-section button {
+            padding: 12px 25px; /* Adjusted padding for mobile */
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 1.05em; /* Adjusted font size for mobile */
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-sizing: border-box;
+            width: 95%; /* Full width for buttons on mobile */
+            max-width: 280px; /* Max-width for buttons, will be overridden */
+            margin: 0 auto; /* Center buttons */
+        }
+
+        .search-button {
+            background-color: #ef8c2a;
+            color: white;
+        }
+
+        .search-button:hover {
+            background-color: #d17a25;
+            transform: translateY(-2px);
+        }
+
+        .search-button:active {
+            background-color: #b36920;
+            transform: translateY(0);
+        }
+
+        .reset-button {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .reset-button:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .reset-button:active {
+            background-color: #545b62;
+            transform: translateY(0);
+        }
+
+        .show-all-events {
+            font-size: 1em; /* Adjusted font size for mobile */
+            color: #007bff;
+            cursor: pointer;
+            text-decoration: underline;
+            margin-top: 5px; /* Adjusted margin */
+            margin-bottom: 15px; /* Adjusted margin */
+        }
+
+        .show-all-events:hover {
+            color: #0056b3;
+        }
+
+        .events-display {
+            text-align: left;
+            border-top: 1px solid #e9ecef;
+            padding-top: 20px; /* Adjusted padding */
+            margin-top: 20px; /* Adjusted margin */
+        }
+
+        .events-found-count {
+            font-size: 1em; /* Adjusted font size for mobile */
+            font-weight: bold;
+            color: #212529;
+            margin-bottom: 10px; /* Adjusted margin */
+        }
+
+        .event-card {
+            background-color: #f8f9fa;
+            border: 1px solid #e2e6ea;
+            border-radius: 8px;
+            padding: 15px; /* Adjusted padding for mobile */
+            margin-bottom: 15px; /* Adjusted margin */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .event-card h3 {
+            color: #007bff;
+            margin-top: 0;
+            margin-bottom: 10px; /* Adjusted margin */
+            font-size: 1.4em; /* Adjusted font size for mobile */
+        }
+
+        .event-card h3 a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .event-card h3 a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .event-card p {
+            margin: 5px 0; /* Adjusted margin */
+            color: #555;
+            line-height: 1.5; /* Adjusted line height */
+            font-size: 0.95em; /* Adjusted font size for mobile */
+        }
+
+        .event-card p strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .event-card p a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .event-card p a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .event-card .themes-list {
+            font-size: 0.85em; /* Adjusted font size for mobile */
+            color: #adb5bd;
+            margin-top: 8px; /* Adjusted margin */
+            line-height: 1.4; /* Adjusted line height */
+            word-wrap: break-word;
+        }
+
+        .no-results-message {
+            color: #ef8c2a;
+            font-weight: bold;
+            margin-top: 20px; /* Adjusted margin */
+            font-size: 1em; /* Adjusted font size for mobile */
+        }
+
+        .initial-message {
+            color: #868e96;
+            font-style: italic;
+            text-align: center;
+            font-size: 1em; /* Adjusted font size for mobile */
+            padding: 10px; /* Adjusted padding */
+            border: 1px dashed #ced4da;
+            border-radius: 5px;
+            background-color: #f2f4f6;
+        }
+
+        /* Desktop and Tablet styles (min-width for progressive enhancement) */
+        @media (min-width: 480px) { /* Adjust for larger phones / small tablets */
+            body {
+                margin: 20px;
+            }
+            .container {
+                padding: 30px;
+            }
+            .app-title-logo-text {
+                font-size: 2.2em;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .festival-date-text {
+                font-size: 1em;
+            }
+            .search-section {
+                gap: 15px;
+            }
+            .search-section label {
+                font-size: 1.1em;
+            }
+            .search-section input[type="text"],
+            .search-section select {
+                padding: 14px;
+                font-size: 1.05em;
+                /* Removed background-image properties */
+                min-height: 40px;
+            }
+            .button-group {
+                flex-direction: row; /* Buttons side-by-side on larger screens */
+                gap: 15px;
+            }
+            .search-section button {
+                width: auto; /* Revert width */
+                max-width: none; /* Remove max-width */
+                padding: 14px 30px;
+                font-size: 1.1em;
+            }
+            .show-all-events {
+                font-size: 1.05em;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+            .events-display {
+                padding-top: 25px;
+                margin-top: 25px;
+            }
+            .events-found-count {
+                font-size: 1.05em;
+                margin-bottom: 15px;
+            }
+            .event-card {
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            .event-card h3 {
+                font-size: 1.5em;
+            }
+            .event-card p {
+                font-size: 1em;
+            }
+            .event-card .themes-list {
+                font-size: 0.9em;
+            }
+            .no-results-message {
+                margin-top: 25px;
+                font-size: 1.05em;
+            }
+            .initial-message {
+                font-size: 1.05em;
+                padding: 15px;
+            }
+        }
+
+        @media (min-width: 768px) { /* Adjust for larger tablets / desktops */
+            .container {
+                padding: 35px;
+                max-width: 650px; /* Apply max-width for desktop */
+            }
+            .app-title-logo-text {
+                font-size: 2.5em;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            .festival-date-text {
+                font-size: 1.1em;
+            }
+            .search-section {
+                gap: 18px;
+            }
+            .search-section input[type="text"],
+            .search-section select {
+                max-width: 280px;
+                font-size: 1.1em;
+            }
+            .search-section button {
+                font-size: 1.15em;
+            }
+            .show-all-events {
+                font-size: 1.1em;
+            }
+            .events-found-count {
+                font-size: 1.1em;
+            }
+            .event-card h3 {
+                font-size: 1.6em;
+            }
+            .event-card p {
+                font-size: 1.05em;
+            }
+            .event-card .themes-list {
+                font-size: 0.95em;
+            }
+            .no-results-message {
+                font-size: 1.1em;
+            }
+            .initial-message {
+                font-size: 1.1em;
+            }
+        }
+        /* --- style.css content ends here --- */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="app-title-logo-text">Roots & Wings</span>
+        <h1>Find My Event</h1>
+        <p class="festival-date-text">· Festival Dates: Saturday, October 18 - Sunday, November 2, 2025 ·</p>
+
+        <div class="search-section">
+            <label for="zipCodeInput">Enter Zip Code:</label>
+            <input type="text" id="zipCodeInput" placeholder="e.g., 78701" maxlength="5">
+            <label for="themeSelect">Or search by theme:</label>
+            <select id="themeSelect">
+                <option value="">All Themes</option>
+                <!-- Options will be populated by JavaScript -->
+            </select>
+            <div class="button-group">
+                <button id="searchButton" class="search-button">Search Events</button>
+                <button id="resetButton" class="reset-button">Reset</button>
+            </div>
+            <p id="showAllEventsText" class="show-all-events">Or show me all events</p>
+        </div>
+
+        <div id="eventsDisplay" class="events-display">
+            <p class="initial-message">Enter a zip code or select a theme, then click "Search Events" to find local happenings.</p>
+        </div>
+
+        <div id="noResultsMessage" class="no-results-message" style="display: none;">
+            <p>No events found matching your criteria. Please try another search!</p>
+        </div>
+    </div>
+
+    <script>
+        /* --- script.js content starts here --- */
+
+        // Function to convert theme names to camelCase for object keys
+        const toCamelCase = (name) => {
+            return name
+                .replace(/[^a-zA-Z0-9 ]/g, '') // Remove special characters
+                .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => {
+                    return index === 0 ? word.toLowerCase() : word.toUpperCase();
+                })
+                .replace(/\s+/g, ''); // Remove spaces
+        };
+
+        // Raw data string from the user's prompt
+        const rawEventData = `Event Title|Full DateTime|Event Location|Full Address|Food Equity|It's My Park Day|Bats|Birds|Fungi|Kids: Ages 0-5|Kids: Ages 5-12|Library|Sensory-Friendly|Teens: Ages 12-17|Cultural|Beautification|Indoors|Adults|All Ages|En Español|Pollinators|Soil Health/Plants|Trees|Museum|STEM|Event Link
+Blossoms & Bugs: Adelphi Acre Community Garden Festival!|10/19/2024|Adelphi Acre Community Garden|3701 Adelphi Ln, Austin, TX, 78759|1|0|0|0|0|0|0|0|1|0|0|0|0|0|1|1|1|1|1|0|0|https://rootsandwingsfest.com/schedule/blossoms-bugs-adelphi-acre-community-garden-festival
+Beautify the Austin Nature & Science Center: a Roots & Wings Festival and It's My Park Day Crossover Event!|11/2/2024|Austin Nature & Science Center|2389 Stratford Dr, Austin, TX, 78746|0|1|0|0|0|0|0|0|0|1|0|0|0|1|0|1|0|1|1|0|0|https://rootsandwingsfest.com/schedule/buzz-flutter-and-grow-with-the-austin-nature-science-center-6t243
+Buzz, Flutter, and Grow with the Austin Nature & Science Center!|11/2/2024|Austin Nature & Science Center|2389 Stratford Dr, Austin, TX, 78746|0|0|0|0|0|0|0|0|1|0|0|0|1|0|1|1|1|1|0|0|0|https://rootsandwingsfest.com/schedule/buzz-flutter-and-grow-with-the-austin-nature-science-center
+The Crafty Adult' presents Bird Seed Balls!|10/20/2024|Spicewood Springs Branch Library|8637 Spicewood Springs Rd, Austin, TX, 78750|0|0|0|1|0|0|0|1|0|0|0|0|1|1|0|0|0|1|0|0|0|https://rootsandwingsfest.com/schedule/the-crafty-adult-presents-bird-seed-balls
+Urban Forest Explorers: Nature Play at Un-BEE-Lievable Pollinators Festival!|10/26/2024|Windsor Park Branch Library|5833 Westminster Dr, Austin, TX, 78723|0|0|1|1|1|1|1|1|1|1|0|0|0|0|0|1|1|1|1|0|0|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-un-bee-lievable-pollinators-festival
+Garden Club Team Up Plant Show and Beekeeper/Honey Program!|11/2/2024|John Gillum Branch Library|2505 Steck Ave, Austin, TX, 78757|0|0|0|0|0|0|0|1|0|0|1|0|0|0|1|0|1|1|0|0|0|https://rootsandwingsfest.com/schedule/garden-club-team-up-plant-show-and-beekeeper/honey-program
+The Crafty Adult' presents Bird Seed Balls!|11/2/2024|John Gillum Branch Library|2505 Steck Ave, Austin, TX, 78757|0|0|0|1|0|0|0|1|0|0|0|0|1|1|0|0|0|1|0|0|0|https://rootsandwingsfest.com/schedule/the-crafty-adult-presents-bird-seed-balls2
+Over the Garden Wall!|10/26/2024|Carver Branch Library|1161 Angelina St, Austin, TX, 78702|0|0|1|1|1|0|0|1|1|0|0|0|0|0|1|0|0|1|0|0|0|https://rootsandwingsfest.com/schedule/over-the-garden-wall
+Central Gallery Presents: Artist Suzy González, "Plantcestors"|10/19/2024 9:00AM|Central Library|710 W Cesar Chavez St, Austin, TX, 78701|1|0|0|0|0|0|0|1|0|0|1|0|1|0|1|1|0|1|0|0|0|https://rootsandwingsfest.com/schedule/central-gallery-presents-artist-suzy-gonzlez-plantcestors
+Tracy Dockray: All About Butterflies!|10/31/2024|University Hills Branch Library|4721 Loyola Ln, Austin, TX, 78723|0|0|0|0|0|0|0|1|0|0|0|0|1|0|1|0|1|0|0|0|0|https://rootsandwingsfest.com/schedule/tracy-dockray-all-about-butterflies2
+ArtSmart: Dia de los Muertos-Butterflies and Skulls!|10/31/2024|University Hills Branch Library|4721 Loyola Ln, Austin, TX, 78723|0|0|0|0|0|0|1|1|1|0|1|0|1|0|0|1|1|0|0|0|0|https://rootsandwingsfest.com/schedule/artsmart-dia-de-los-muertos-butterflies-and-skulls2024
+Urban Forest Explorers: Nature Play at Dottie Jordan Park Roots and Wings Festival!|11/3/2024|Dottie Jordan Park |2803 Loyola Ln, Austin, TX, 78723|0|0|1|1|1|1|1|0|1|0|0|0|0|0|0|1|1|1|1|0|0|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-dottie-jordan-park-roots-and-wings-festival
+Dig It! Gardening in Texas - The Home Food Forest|10/29/2024|Howson Branch Library|2500 Exposition Blvd, Austin, TX, 78703|1|0|0|0|0|0|0|1|0|0|0|0|0|1|0|0|0|1|1|0|0|https://rootsandwingsfest.com/schedule/dig-it-gardening-in-texas-the-home-food-forest
+Teen Social Hour: Roots and Wings Edition!|10/24/2024|Carver Branch Library|1161 Angelina St, Austin, TX, 78702|0|0|0|0|0|0|0|1|1|1|0|0|0|0|0|0|0|1|0|0|1|https://rootsandwingsfest.com/schedule/teen-social-hour-roots-and-wings-edition2024
+The Poet Tree at Carver Library!|10/19/2024|Carver Branch Library|1161 Angelina St, Austin, TX, 78702|0|0|0|0|0|0|0|1|0|0|1|0|0|0|1|0|0|1|1|0|0|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl
+Urban Forest Explorers: Nature Play at APL!|10/19/2024|Little Walnut Creek|835 W Rundberg Ln, Austin, TX, 78758|0|0|1|1|1|1|1|0|1|0|0|0|0|0|0|1|1|1|1|0|0|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl
+Un-BEE-Lievable Pollinators Festival!|10/26/2024|Windsor Park Branch Library|5833 Westminster Dr, Austin, TX, 78723|0|0|0|0|0|0|0|1|1|0|0|0|0|0|1|1|1|1|1|0|0|https://rootsandwingsfest.com/schedule/un-bee-lievable-pollinators-festival
+Preschool Imagination Station: Roots & Wings!|10/24/2024|Hampton Branch at Oak Hill Library|5125 Convict Hill Rd, Austin, TX, 78749|0|0|1|0|1|1|0|1|0|0|0|0|1|0|0|1|1|1|1|0|0|https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings2
+Roots and Wings Festival at Oak Hill Library!|10/19/2024|Hampton Branch at Oak Hill Library|5125 Convict Hill Rd, Austin, TX, 78749|0|0|0|0|0|0|0|1|1|0|0|0|0|0|1|0|1|1|0|0|0|https://rootsandwingsfest.com/schedule/roots-and-wings-festival-at-oak-hill-library
+Butterfly Festival with Author Tracy Dockray!|10/24/2024|Southeast Branch Library|5803 Nuckols Crossing Rd, Austin, TX, 78744|0|0|0|0|0|0|0|1|1|0|0|0|1|0|1|0|1|0|0|0|0|https://rootsandwingsfest.com/schedule/butterfly-festival-with-author-tracy-dockray3
+Preschool Imagination Station: Roots & Wings!|10/28/2024|Yarborough Branch Library|2200 Hancock Dr, Austin, TX, 78756|0|0|1|0|1|1|0|1|1|0|0|0|1|0|0|0|1|1|1|0|0|https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings`;
+
+        // Data for updating event links from user's latest input
+        const eventLinkUpdates = `Event Title|Event Link
+Blossoms & Bugs: Adelphi Acre Community Garden Festival!|https://rootsandwingsfest.com/schedule/blossoms-bugs-adelphi-acre-community-garden-festival
+Beautify the Austin Nature & Science Center: a Roots & Wings Festival and It's My Park Day Crossover Event!|https://rootsandwingsfest.com/schedule/beautify-the-austin-nature-science-center-6t243
+Buzz, Flutter, and Grow with the Austin Nature & Science Center!|https://rootsandwingsfest.com/schedule/buzz-flutter-and-grow-with-the-austin-nature-science-center
+The Crafty Adult' presents Bird Seed Balls!|https://rootsandwingsfest.com/schedule/the-crafty-adult-presents-bird-seed-balls
+Urban Forest Explorers: Nature Play at Un-BEE-Lievable Pollinators Festival!|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-un-bee-lievable-pollinators-festival
+Garden Club Team Up Plant Show and Beekeeper/Honey Program!|https://rootsandwingsfest.com/schedule/garden-club-team-up-plant-show-and-beekeeper/honey-program
+The Crafty Adult' presents Bird Seed Balls!|https://rootsandwingsfest.com/schedule/the-crafty-adult-presents-bird-seed-balls2
+Over the Garden Wall!|https://rootsandwingsfest.com/schedule/over-the-garden-wall
+Central Gallery Presents: Artist Suzy González, "Plantcestors"|https://rootsandwingsfest.com/schedule/central-gallery-presents-artist-suzy-gonzlez-plantcestors
+Tracy Dockray: All About Butterflies!|https://rootsandwingsfest.com/schedule/tracy-dockray-all-about-butterflies2
+ArtSmart: Dia de los Muertos-Butterflies and Skulls!|https://rootsandwingsfest.com/schedule/artsmart-dia-de-los-muertos-butterflies-and-skulls2024
+Urban Forest Explorers: Nature Play at Dottie Jordan Park Roots and Wings Festival!|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-dottie-jordan-park-roots-and-wings-festival
+Dig It! Gardening in Texas - The Home Food Forest|https://rootsandwingsfest.com/schedule/dig-it-gardening-in-texas-the-home-food-forest
+Teen Social Hour: Roots and Wings Edition!|https://rootsandwingsfest.com/schedule/teen-social-hour-roots-and-wings-edition2024
+The Poet Tree at Carver Library!|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl
+Urban Forest Explorers: Nature Play at APL!|https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl
+Un-BEE-Lievable Pollinators Festival!|https://rootsandwingsfest.com/schedule/un-bee-lievable-pollinators-festival
+Preschool Imagination Station: Roots & Wings!|https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings2
+Roots and Wings Festival at Oak Hill Library!|https://rootsandwingsfest.com/schedule/roots-and-wings-festival-at-oak-hill-library
+Butterfly Festival with Author Tracy Dockray!|https://rootsandwingsfest.com/schedule/butterfly-festival-with-author-tracy-dockray3
+Preschool Imagination Station: Roots & Wings!|https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings`;
+
+
+        // Function to parse the CSV-like data
+        const parseEventData = (dataString, linkUpdates) => {
+            const lines = dataString.trim().split('\n');
+            if (lines.length === 0) return [];
+
+            const header = lines[0].split('|').map(h => h.trim()); // Changed delimiter to '|'
+            const themeStartIndex = header.indexOf("Food Equity"); // The first theme column
+
+            // Create a map for quick link lookup
+            const linkMap = new Map();
+            const updateLines = linkUpdates.trim().split('\n');
+            for (let i = 1; i < updateLines.length; i++) {
+                const parts = updateLines[i].split('|').map(p => p.trim()); // Changed delimiter to '|'
+                if (parts.length === 2) {
+                    linkMap.set(parts[0], parts[1]);
+                }
+            }
+
+            const parsedEvents = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i];
+                // Split by '|' and handle quoted fields if any remain (though with '|' as delimiter, quotes might not be an issue)
+                const values = [];
+                let inQuote = false;
+                let currentVal = '';
+                for (let k = 0; k < line.length; k++) {
+                    const char = line[k];
+                    if (char === '"') {
+                        inQuote = !inQuote;
+                    } else if (char === '|' && !inQuote) {
+                        values.push(currentVal.trim());
+                        currentVal = '';
+                    } else {
+                        currentVal += char;
+                    }
+                }
+                values.push(currentVal.trim()); // Add the last value
+
+                if (values.length !== header.length) {
+                    console.warn(`Skipping malformed row ${i + 1}: Expected ${header.length} columns, got ${values.length}. Line: ${line}`);
+                    continue;
+                }
+
+                const event = {};
+                const themes = {};
+
+                for (let j = 0; j < header.length; j++) {
+                    const key = header[j];
+                    const value = values[j];
+
+                    if (j >= themeStartIndex && themeStartIndex !== -1) {
+                        // This is a theme column
+                        const themeCamelCase = toCamelCase(key);
+                        themes[themeCamelCase] = value === '1';
+                    } else {
+                        // Regular event property
+                        if (key === "Event Title") {
+                            event.name = value;
+                        } else if (key === "Full DateTime") {
+                            const dateObj = new Date(value);
+                            if (isNaN(dateObj.getTime())) { // Check if date is invalid
+                                event.date = ''; // Omit date info if invalid
+                            } else {
+                                const options = { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
+                                event.date = dateObj.toLocaleString('en-US', options);
+                            }
+                        } else if (key === "Event Location") {
+                            event.location = value;
+                        } else if (key === "Full Address") {
+                            event.address = value;
+                        } else if (key === "Event Link") {
+                            // Use the URL from the linkUpdates map if available, otherwise use original
+                            event.url = linkMap.has(event.name) ? linkMap.get(event.name) : value;
+                        } else { // Handle other non-theme fields
+                            event[toCamelCase(key)] = value;
+                        }
+                    }
+                }
+                event.themes = themes;
+                // Apply the correct URL from the linkUpdates for the event name
+                if (linkMap.has(event.name)) {
+                    event.url = linkMap.get(event.name);
+                }
+                parsedEvents.push(event);
+            }
+            return parsedEvents;
+        };
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const zipCodeInput = document.getElementById('zipCodeInput');
+            const themeSelect = document.getElementById('themeSelect');
+            const searchButton = document.getElementById('searchButton');
+            const resetButton = document.getElementById('resetButton'); // Get reference to the new button
+            const eventsDisplay = document.getElementById('eventsDisplay');
+            const noResultsMessage = document.getElementById('noResultsMessage');
+            const showAllEventsText = document.getElementById('showAllEventsText'); // New element
+
+            // Define the theme names as they appear in the CSV header and for display
+            const themeNames = [
+                "Food Equity", "It's My Park Day", "Bats", "Birds", "Fungi",
+                "Kids: Ages 0-5", "Kids: Ages 5-12", "Library", "Sensory-Friendly",
+                "Teens: Ages 12-17", "Cultural", "Beautification", "Indoors",
+                "Adults", "All Ages", "En Español", "Pollinators",
+                "Soil Health/Plants", "Trees", "Museum", "STEM"
+            ];
+
+            // Populate the theme dropdown
+            themeNames.forEach(theme => {
+                const option = document.createElement('option');
+                option.value = toCamelCase(theme); // Use camelCase for internal value
+                option.textContent = theme;
+                themeSelect.appendChild(option);
+            });
+
+            const allEvents = parseEventData(rawEventData, eventLinkUpdates);
+
+            // Function to display events (re-usable for search and show all)
+            const displayEvents = (eventsToDisplay) => {
+                eventsDisplay.innerHTML = ''; // Clear previous results
+                noResultsMessage.style.display = 'none'; // Hide no results message
+
+                if (eventsToDisplay.length > 0) {
+                    const eventsCountElement = document.createElement('p');
+                    eventsCountElement.classList.add('events-found-count');
+                    eventsCountElement.textContent = `${eventsToDisplay.length} event${eventsToDisplay.length === 1 ? '' : 's'} found:`;
+                    eventsDisplay.appendChild(eventsCountElement);
+
+                    eventsToDisplay.forEach(event => {
+                        const eventCard = document.createElement('div');
+                        eventCard.classList.add('event-card');
+
+                        const fullLocationAddress = `${event.location}, ${event.address}`;
+                        const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullLocationAddress)}`;
+
+                        const activeThemes = themeNames.filter(themeName => {
+                            const themeKey = toCamelCase(themeName);
+                            return event.themes[themeKey];
+                        });
+                        const themesListHtml = activeThemes.length > 0
+                            ? `<p class="themes-list">${activeThemes.join(', ')}</p>`
+                            : '';
+
+                        eventCard.innerHTML = `
+                            <h3><a href="${event.url}" target="_blank">${event.name}</a></h3>
+                            ${event.date ? `<p><strong>Date:</strong> ${event.date}</p>` : ''}
+                            <p><strong>Location:</strong> <a href="${googleMapsUrl}" target="_blank">${fullLocationAddress}</a></p>
+                            ${themesListHtml}
+                        `;
+                        eventsDisplay.appendChild(eventCard);
+                    });
+                } else {
+                    noResultsMessage.style.display = 'block';
+                }
+            };
+
+
+            searchButton.addEventListener('click', () => {
+                const inputZip = zipCodeInput.value.trim();
+                const selectedTheme = themeSelect.value;
+
+                // Clear previous messages before showing new ones
+                eventsDisplay.innerHTML = '';
+                noResultsMessage.style.display = 'none';
+
+                let filteredEvents = allEvents;
+                let hasCriteria = false;
+
+                // Apply Zip Code filter if provided
+                if (inputZip) {
+                    if (inputZip.length !== 5 || !/^\d{5}$/.test(inputZip)) {
+                        eventsDisplay.innerHTML = '<p class="no-results-message">Please enter a valid 5-digit zip code.</p>';
+                        return;
+                    }
+                    filteredEvents = filteredEvents.filter(event => {
+                        const zipMatch = event.address ? event.address.match(/\b(\d{5})\b/) : null;
+                        return zipMatch && zipMatch[1] === inputZip;
+                    });
+                    hasCriteria = true;
+                }
+
+                // Apply Theme filter if provided
+                if (selectedTheme) {
+                    filteredEvents = filteredEvents.filter(event => {
+                        return event.themes && event.themes[selectedTheme] === true;
+                    });
+                    hasCriteria = true; // Set hasCriteria if a theme is selected
+                }
+
+                if (!hasCriteria) {
+                    eventsDisplay.innerHTML = '<p class="initial-message">Enter a zip code or select a theme, then click "Search Events" to find local happenings.</p>';
+                    return;
+                }
+
+                displayEvents(filteredEvents);
+            });
+
+            // Event listener for "Or show me all events"
+            showAllEventsText.addEventListener('click', () => {
+                zipCodeInput.value = ''; // Clear zip code input
+                themeSelect.value = ''; // Reset theme dropdown
+
+                // Sort all events alphabetically by name
+                const sortedEvents = [...allEvents].sort((a, b) => {
+                    const nameA = a.name.toUpperCase(); // Ignore case
+                    const nameB = b.name.toUpperCase(); // Ignore case
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameA > nameB) {
+                        return 1;
+                    }
+                    return 0;
+                });
+                displayEvents(sortedEvents);
+            });
+
+            resetButton.addEventListener('click', () => {
+                location.reload();
+            });
+
+            zipCodeInput.addEventListener('keypress', (event) => {
+                if (event.key === 'Enter') {
+                    searchButton.click();
+                }
+            });
+        });
+        /* --- script.js content ends here --- */
+    </script>
+</body>
+</html>
