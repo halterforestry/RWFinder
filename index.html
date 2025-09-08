@@ -3,87 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find My Event</title>
+    <title>2024 Roots & Wings Festival</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* --- style.css content starts here --- */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto Slab', serif;
             background-color: #e9ecef;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
-            margin: 10px; /* Reduced margin for mobile */
+            margin: 10px;
             box-sizing: border-box;
         }
 
         .container {
             background-color: #ffffff;
-            padding: 20px; /* Reduced padding for mobile */
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-            width: 100%; /* Take full width on small screens */
+            width: 100%;
             text-align: center;
             border: 1px solid #dee2e6;
         }
 
+        .logo {
+            display: block;
+            margin: 0 auto 20px auto;
+            max-width: 250px;
+            width: 100%;
+            height: auto;
+        }
+
         .app-title-logo-text {
             color: #ef8c2a;
-            font-size: 2em; /* Adjusted font size for mobile */
+            font-size: 2em;
             font-weight: 700;
-            margin-bottom: 8px; /* Adjusted margin */
+            margin-bottom: 8px;
             display: block;
         }
 
-        h1 {
-            color: #212529;
-            margin-bottom: 8px; /* Adjusted margin */
-            font-size: 1.8em; /* Adjusted font size for mobile */
+        .section-header {
+            color: #33232b;
+            font-size: 1.8em;
             font-weight: 600;
         }
 
         .festival-date-text {
             margin-top: 0;
-            margin-bottom: 20px; /* Adjusted margin */
+            margin-bottom: 20px;
             text-align: center;
-            color: #495057;
-            font-size: 0.95em; /* Adjusted font size for mobile */
+            color: #33232b;
+            font-size: 0.95em;
         }
 
         .search-section {
-            margin-bottom: 25px; /* Adjusted margin */
+            margin-bottom: 25px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px; /* Reduced gap for mobile */
+            gap: 12px;
         }
 
         .search-section label {
-            font-size: 1em; /* Adjusted font size for mobile */
+            font-size: 1em;
             color: #495057;
-            margin-bottom: 3px; /* Adjusted margin */
+            margin-bottom: 3px;
             font-weight: 500;
         }
 
         .search-section input[type="text"],
         .search-section select,
-        .search-section input[type="date"] { /* Removed time input style */
-            padding: 12px; /* Adjusted padding for mobile */
+        .search-section input[type="date"] {
+            font-family: 'Roboto Slab', serif;
+            padding: 12px;
             border: 1px solid #ced4da;
             border-radius: 7px;
-            width: 95%; /* More width for mobile */
-            max-width: 300px; /* Max-width here, will be overridden for larger screens */
-            font-size: 1em; /* Adjusted font size for mobile */
+            width: 95%;
+            max-width: 300px;
+            font-size: 1em;
             box-sizing: border-box;
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
             height: auto;
-            min-height: 38px; /* Adjusted min-height */
+            min-height: 38px;
         }
 
         .search-section input[type="text"]:focus,
         .search-section select:focus,
-        .search-section input[type="date"]:focus { /* Removed time input focus style */
+        .search-section input[type="date"]:focus {
             border-color: #007bff;
             box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
             outline: none;
@@ -91,8 +100,8 @@
 
         .button-group {
             display: flex;
-            flex-direction: column; /* Stack buttons vertically by default */
-            gap: 10px; /* Reduced gap for mobile */
+            flex-direction: column;
+            gap: 10px;
             justify-content: center;
             width: 100%;
             flex-wrap: wrap;
@@ -100,17 +109,18 @@
         }
 
         .search-section button {
-            padding: 12px 25px; /* Adjusted padding for mobile */
+            font-family: 'Roboto Slab', serif;
+            padding: 12px 25px;
             border: none;
             border-radius: 7px;
             cursor: pointer;
-            font-size: 1.05em; /* Adjusted font size for mobile */
+            font-size: 1.05em;
             font-weight: 600;
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-sizing: border-box;
-            width: 95%; /* Full width for buttons on mobile */
-            max-width: 280px; /* Max-width for buttons, will be overridden */
-            margin: 0 auto; /* Center buttons */
+            width: 95%;
+            max-width: 280px;
+            margin: 0 auto;
         }
 
         .search-button {
@@ -129,53 +139,54 @@
         }
 
         .reset-button {
-            background-color: #6c757d;
+            background-color: #33232b;
             color: white;
         }
 
         .reset-button:hover {
-            background-color: #5a6268;
+            background-color: #2b1e24;
             transform: translateY(-2px);
         }
 
         .reset-button:active {
-            background-color: #545b62;
+            background-color: #24181f;
             transform: translateY(0);
         }
 
         .show-all-events {
-            font-size: 1em; /* Adjusted font size for mobile */
-            color: #007bff;
+            font-size: 1em;
+            color: #ef8c2a;
             cursor: pointer;
             text-decoration: underline;
-            margin-top: 5px; /* Adjusted margin */
-            margin-bottom: 15px; /* Adjusted margin */
+            margin-top: 5px;
+            margin-bottom: 15px;
         }
 
         .show-all-events:hover {
-            color: #0056b3;
+            color: #d17a25;
         }
 
         .events-display {
             text-align: left;
             border-top: 1px solid #e9ecef;
-            padding-top: 20px; /* Adjusted padding */
-            margin-top: 20px; /* Adjusted margin */
+            padding-top: 20px;
+            margin-top: 20px;
+            position: relative;
         }
 
         .events-found-count {
-            font-size: 1em; /* Adjusted font size for mobile */
+            font-size: 1em;
             font-weight: bold;
             color: #212529;
-            margin-bottom: 10px; /* Adjusted margin */
+            margin-bottom: 10px;
         }
 
         .event-card {
             background-color: #f8f9fa;
             border: 1px solid #e2e6ea;
             border-radius: 8px;
-            padding: 15px; /* Adjusted padding for mobile */
-            margin-bottom: 15px; /* Adjusted margin */
+            padding: 15px;
+            margin-bottom: 15px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
             transition: transform 0.2s ease;
         }
@@ -185,74 +196,108 @@
         }
 
         .event-card h3 {
-            color: #007bff;
+            color: #ef8c2a;
             margin-top: 0;
-            margin-bottom: 10px; /* Adjusted margin */
-            font-size: 1.4em; /* Adjusted font size for mobile */
+            margin-bottom: 10px;
+            font-size: 1.4em;
         }
 
         .event-card h3 a {
-            color: #007bff;
+            color: #ef8c2a;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .event-card h3 a:hover {
-            color: #0056b3;
+            color: #d17a25;
             text-decoration: underline;
         }
 
         .event-card p {
-            margin: 5px 0; /* Adjusted margin */
+            margin: 5px 0;
             color: #555;
-            line-height: 1.5; /* Adjusted line height */
-            font-size: 0.95em; /* Adjusted font size for mobile */
+            line-height: 1.5;
+            font-size: 0.95em;
         }
 
+        /* Styling for the date and location text */
         .event-card p strong {
-            color: #333;
+            color: #33232b;
             font-weight: 600;
         }
 
         .event-card p a {
-            color: #007bff;
+            color: #ef8c2a;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .event-card p a:hover {
-            color: #0056b3;
+            color: #d17a25;
             text-decoration: underline;
+        }
+        
+        /* Styling for the new description field */
+        .event-description {
+            color: #BFBFBF; /* Updated to a grayer color */
+            font-style: normal; /* No longer italic */
+            line-height: 1.4;
+            margin-top: 10px;
+            /* Truncation styles */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .event-description.expanded {
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
         }
 
         .event-card .themes-list {
-            font-size: 0.85em; /* Adjusted font size for mobile */
+            font-size: 0.85em;
             color: #adb5bd;
-            margin-top: 8px; /* Adjusted margin */
-            line-height: 1.4; /* Adjusted line height */
+            margin-top: 8px;
+            line-height: 1.4;
             word-wrap: break-word;
         }
 
         .no-results-message {
             color: #ef8c2a;
             font-weight: bold;
-            margin-top: 20px; /* Adjusted margin */
-            font-size: 1em; /* Adjusted font size for mobile */
+            margin-top: 20px;
+            font-size: 1em;
         }
 
         .initial-message {
             color: #868e96;
             font-style: italic;
             text-align: center;
-            font-size: 1em; /* Adjusted font size for mobile */
-            padding: 10px; /* Adjusted padding */
+            font-size: 1em;
+            padding: 10px;
             border: 1px dashed #ced4da;
             border-radius: 5px;
             background-color: #f2f4f6;
         }
 
+        .back-to-top-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1em;
+            color: #ef8c2a;
+            cursor: pointer;
+            text-decoration: underline;
+            display: none; /* Hidden by default */
+        }
+
+        .back-to-top-link:hover {
+            color: #d17a25;
+        }
+
         /* Desktop and Tablet styles (min-width for progressive enhancement) */
-        @media (min-width: 480px) { /* Adjust for larger phones / small tablets */
+        @media (min-width: 480px) {
             body {
                 margin: 20px;
             }
@@ -262,7 +307,7 @@
             .app-title-logo-text {
                 font-size: 2.2em;
             }
-            h1 {
+            .section-header {
                 font-size: 2em;
             }
             .festival-date-text {
@@ -282,12 +327,12 @@
                 min-height: 40px;
             }
             .button-group {
-                flex-direction: row; /* Buttons side-by-side on larger screens */
+                flex-direction: row;
                 gap: 15px;
             }
             .search-section button {
-                width: auto; /* Revert width */
-                max-width: none; /* Remove max-width */
+                width: auto;
+                max-width: none;
                 padding: 14px 30px;
                 font-size: 1.1em;
             }
@@ -327,15 +372,15 @@
             }
         }
 
-        @media (min-width: 768px) { /* Adjust for larger tablets / desktops */
+        @media (min-width: 768px) {
             .container {
                 padding: 35px;
-                max-width: 650px; /* Apply max-width for desktop */
+                max-width: 650px;
             }
             .app-title-logo-text {
                 font-size: 2.5em;
             }
-            h1 {
+            .section-header {
                 font-size: 2.2em;
             }
             .festival-date-text {
@@ -380,19 +425,19 @@
 </head>
 <body>
     <div class="container">
-        <span class="app-title-logo-text">Roots & Wings</span>
-        <h1>Find My Event</h1>
-        <p class="festival-date-text">Festival Dates: Saturday, October 18 - Sunday, November 2, 2025</p>
+        <span class="app-title-logo-text">2025 Roots & Wings Festival</span>
+        <h1 class="section-header">Find Events</h1>
+        <p class="festival-date-text">Saturday, October 18th - Sunday, November 2, 2025</p>
 
         <div class="search-section">
-            <label for="zipCodeInput">Enter Zip Code:</label>
-            <input type="text" id="zipCodeInput" placeholder="e.g., 78701" maxlength="5">
-            
+            <label for="keywordOrZipInput">Search by Keyword or Zip Code:</label>
+            <input type="text" id="keywordOrZipInput" placeholder="e.g., Garden or 78701">
+
             <label for="eventDateInput">Search by Date:</label>
-            <input type="date" id="eventDateInput" min="2025-10-18" max="2025-11-02">
+            <input type="date" id="eventDateInput" min="2024-10-01" max="2024-11-30">
 
             <label for="themeSelect">Search by theme:</label>
-            <select id="themeSelect">
+            <select id="themeSelect" multiple>
                 <option value="">All Themes</option>
                 <!-- Options will be populated by JavaScript -->
             </select>
@@ -402,57 +447,50 @@
             </div>
             <p id="showAllEventsText" class="show-all-events">Or show me all events</p>
         </div>
-
+        
         <div id="eventsDisplay" class="events-display">
-            <p class="initial-message">Enter a zip code, select a date or theme, then click "Search Events" to find local happenings.</p>
+            <p class="initial-message">Enter a date, zip code, or keyword, or select a theme, then click "Search Events" to find local happenings.</p>
         </div>
 
         <div id="noResultsMessage" class="no-results-message" style="display: none;">
             <p>No events found matching your criteria. Please try another search!</p>
         </div>
+        
+        <p id="backToTopLink" class="back-to-top-link">Back to top</p>
     </div>
 
     <script>
+        // --- script.js content starts here ---
         // Function to convert theme names to camelCase for object keys
         const toCamelCase = (name) => {
             return name
-                .replace(/[^a-zA-Z0-9 ]/g, '') // Remove special characters
+                .replace(/[^a-zA-Z0-9 ]/g, '')
                 .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => {
                     return index === 0 ? word.toLowerCase() : word.toUpperCase();
                 })
-                .replace(/\s+/g, ''); // Remove spaces
+                .replace(/\s+/g, '');
         };
 
-        // Raw data string for events (CSV format)
-        const rawEventData = `Event Title,Full DateTime,Event Location,Full Address,Food Equity,It's My Park Day,Bats,Birds,Fungi,Kids: Ages 0-5,Kids: Ages 5-12,Library,Sensory-Friendly,Teens: Ages 12-17,Cultural,Beautification,Indoors,Adults,All Ages,En Español,Pollinators,Soil Health/Plants,Trees,Museum,STEM,Event Link
-Blossoms & Bugs: Adelphi Acre Community Garden Festival!,10/19/2024,Adelphi Acre Community Garden,"3701 Adelphi Ln, Austin, TX, 78759",1,0,0,0,0,0,0,0,1,0,0,0,0,0,1,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/blossoms-bugs-adelphi-acre-community-garden-festival
-Beautify the Austin Nature & Science Center: a Roots & Wings Festival and It's My Park Day Crossover Event!,11/2/2024,Austin Nature & Science Center,"2389 Stratford Dr, Austin, TX, 78746",0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,1,1,0,0,https://rootsandwingsfest.com/schedule/buzz-flutter-and-grow-with-the-austin-nature-science-center-6t243
-"Buzz, Flutter, and Grow with the Austin Nature & Science Center!",11/2/2024,Austin Nature & Science Center,"2389 Stratford Dr, Austin, TX, 78746",0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,1,1,0,0,0,https://rootsandwingsfest.com/schedule/buzz-flutter-and-grow-with-the-austin-nature-science-center
-The Crafty Adult' presents Bird Seed Balls!,10/20/2024,Spicewood Springs Branch Library,"8637 Spicewood Springs Rd, Austin, TX, 78750",0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,1,0,0,0,https://rootsandwingsfest.com/schedule/the-crafty-adult-presents-bird-seed-balls
-Urban Forest Explorers: Nature Play at Un-BEE-Lievable Pollinators Festival!,10/26/2024,Windsor Park Branch Library,"5833 Westminster Dr, Austin, TX, 78723",0,0,1,1,1,1,1,1,1,1,0,0,0,0,0,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-un-bee-lievable-pollinators-festival
-Garden Club Team Up Plant Show and Beekeeper/Honey Program!,11/2/2024,John Gillum Branch Library,"2505 Steck Ave, Austin, TX, 78757",0,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,1,1,0,0,0,https://rootsandwingsfest.com/schedule/garden-club-team-up-plant-show-and-beekeeper/honey-program
-The Crafty Adult' presents Bird Seed Balls!,11/2/2024,John Gillum Branch Library,"2505 Steck Ave, Austin, TX, 78757",0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,1,0,0,0,https://rootsandwingsfest.com/schedule/the-crafty-adult-presents-bird-seed-balls2
-Over the Garden Wall!,10/26/2024,Carver Branch Library,"1161 Angelina St, Austin, TX, 78702",0,0,1,1,1,0,0,1,1,0,0,0,0,0,1,0,0,1,0,0,0,https://rootsandwingsfest.com/schedule/over-the-garden-wall
-"Central Gallery Presents: Artist Suzy González, ""Plantcestors""",10/19/2024 9:00AM,Central Library,"710 W Cesar Chavez St, Austin, TX, 78701",1,0,0,0,0,0,0,1,0,0,1,0,1,0,1,1,0,1,0,0,0,https://rootsandwingsfest.com/schedule/central-gallery-presents-artist-suzy-gonzlez-plantcestors
-Tracy Dockray: All About Butterflies!,10/31/2024,University Hills Branch Library,"4721 Loyola Ln, Austin, TX, 78723",0,0,0,0,0,0,0,1,0,0,0,0,1,0,1,0,1,0,0,0,0,https://rootsandwingsfest.com/schedule/tracy-dockray-all-about-butterflies2
-ArtSmart: Dia de los Muertos-Butterflies and Skulls!,10/31/2024,University Hills Branch Library,"4721 Loyola Ln, Austin, TX, 78723",0,0,0,0,0,0,1,1,1,0,1,0,1,0,0,1,1,0,0,0,0,https://rootsandwingsfest.com/schedule/artsmart-dia-de-los-muertos-butterflies-and-skulls2024
-Urban Forest Explorers: Nature Play at Dottie Jordan Park Roots and Wings Festival!,11/3/2024,Dottie Jordan Park ,"2803 Loyola Ln, Austin, TX, 78723",0,0,1,1,1,1,1,0,1,0,0,0,0,0,0,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-dottie-jordan-park-roots-and-wings-festival
-Dig It! Gardening in Texas - The Home Food Forest,10/29/2024,Howson Branch Library,"2500 Exposition Blvd, Austin, TX, 78703",1,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,1,0,0,https://rootsandwingsfest.com/schedule/dig-it-gardening-in-texas-the-home-food-forest
-Teen Social Hour: Roots and Wings Edition!,10/24/2024,Carver Branch Library,"1161 Angelina St, Austin, TX, 78702",0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1,0,0,1,https://rootsandwingsfest.com/schedule/teen-social-hour-roots-and-wings-edition2024
-The Poet Tree at Carver Library!,10/19/2024,Carver Branch Library,"1161 Angelina St, Austin, TX, 78702",0,0,0,0,0,0,0,1,0,0,1,0,0,0,1,0,0,1,1,0,0,https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl
-Urban Forest Explorers: Nature Play at APL!,10/19/2024,Little Walnut Creek,"835 W Rundberg Ln, Austin, TX, 78758",0,0,1,1,1,1,1,0,1,0,0,0,0,0,0,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl
-Un-BEE-Lievable Pollinators Festival!,10/26/2024,Windsor Park Branch Library,"5833 Westminster Dr, Austin, TX, 78723",0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/un-bee-lievable-pollinators-festival
-Preschool Imagination Station: Roots & Wings!,10/24/2024,Hampton Branch at Oak Hill Library,"5125 Convict Hill Rd, Austin, TX, 78749",0,0,1,0,1,1,0,1,0,0,0,0,1,0,0,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings2
-Roots and Wings Festival at Oak Hill Library!,10/19/2024,Hampton Branch at Oak Hill Library,"5125 Convict Hill Rd, Austin, TX, 78749",0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,0,1,1,0,0,0,https://rootsandwingsfest.com/schedule/roots-and-wings-festival-at-oak-hill-library
-Butterfly Festival with Author Tracy Dockray!,10/24/2024,Southeast Branch Library,"5803 Nuckols Crossing Rd, Austin, TX, 78744",0,0,0,0,0,0,0,1,1,0,0,0,1,0,1,0,1,0,0,0,0,https://rootsandwingsfest.com/schedule/butterfly-festival-with-author-tracy-dockray3
-Preschool Imagination Station: Roots & Wings!,10/28/2024,Yarborough Branch Library,"2200 Hancock Dr, Austin, TX, 78756",0,0,1,0,1,1,0,1,1,0,0,0,1,0,0,0,1,1,1,0,0,https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings`;
+        // Raw data from Roots_and_Wings_Sample_Data.csv
+        const rawEventData = `Event Title,Full DateTime,Event Location,Full Address,Food Equity,It's My Park Day,Bats,Birds,Fungi,Kids: Ages 0-5,Kids: Ages 5-12,Library,Sensory-Friendly,Teens: Ages 12-17,Cultural,Beautification,Indoors,Adults,All Ages,En Español,Pollinators,Soil Health/Plants,Trees,Museum,STEM,Event Link,Address,City,State,Zip Code
+Blossoms & Bugs: Adelphi Acre Community Garden Festival!,10/19/2024 10:00 AM,Adelphi Acre Community Garden,"3701 Adelphi Ln, Austin, TX,78759",1,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/blossoms-bugs-adelphi-acre-community-garden-festival,3701 Adelphi Ln,Austin,TX,78759
+Beautify the Austin Nature & Science Center: a Roots & Wings Festival and It's My Park Day Crossover Event!,11/2/2024 10:00 AM,Austin Nature & Science Center,"2389 Stratford Dr, Austin, TX,78746",0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,1,1,0,0,https://rootsandwingsfest.com/schedule/buzz-flutter-and-grow-with-the-austin-nature-science-center-6t243,2389 Stratford Dr,Austin,TX,78746
+Bats, Bats, Bats!,10/26/2024 10:00 AM,South Lamar Branch Library,"3260 S Lamar Blvd, Austin, TX,78704",0,0,1,0,0,1,1,1,0,0,0,1,1,0,0,0,0,1,0,0,1,https://rootsandwingsfest.com/schedule/bats-bats-bats,3260 S Lamar Blvd,Austin,TX,78704
+Urban Forest Explorers: Nature Play at APL!,10/26/2024 10:00 AM,Rundberg Branch Library,"835 W Rundberg Ln, Austin, TX,78758",0,0,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,0,0,https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl,835 W Rundberg Ln,Austin,TX,78758
+Un-BEE-Lievable Pollinators Festival!,10/26/2024 10:00 AM,Windsor Park Branch Library,"5833 Westminster Dr, Austin, TX,78723",0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/un-bee-lievable-pollinators-festival,5833 Westminster Dr,Austin,TX,78723
+Preschool Imagination Station: Roots & Wings!,10/24/2024 10:00 AM,Hampton Branch at Oak Hill Library,"5125 Convict Hill Rd, Austin, TX,78749",0,0,1,0,1,1,0,1,0,0,0,0,1,0,0,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/preschool-imaginaton-station-roots-wings2,5125 Convict Hill Rd,Austin,TX,78749
+Roots and Wings Festival at Oak Hill Library!,10/19/2024 10:00 AM,Hampton Branch at Oak Hill Library,"5125 Convict Hill Rd, Austin, TX,78749",0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,0,1,1,0,0,0,https://rootsandwingsfest.com/schedule/roots-and-wings-festival-at-oak-hill-library,5125 Convict Hill Rd,Austin,TX,78749
+Butterfly Festival with Author Tracy Dockray!,10/24/2024 10:00 AM,Southeast Branch Library,"5803 Nuckols Crossing Rd, Austin, TX,78744",0,0,0,0,0,0,0,1,1,0,0,0,1,0,1,0,1,0,0,0,0,https://rootsandwingsfest.com/schedule/butterfly-festival-with-author-tracy-dockray3,5803 Nuckols Crossing Rd,Austin,TX,78744
+Preschool Imagination Station: Roots & Wings!,10/28/2024 10:00 AM,Yarborough Branch Library,"2200 Hancock Dr, Austin, TX,78756",0,0,1,0,1,1,0,1,1,0,0,0,1,0,0,0,1,1,1,0,0,https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings,2200 Hancock Dr,Austin,TX,78756`;
+
+        // Placeholder description text
+        const placeholderDescription = 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem.';
 
         const parseEventData = (dataString) => {
             const lines = dataString.trim().split('\n');
             if (lines.length === 0) return [];
 
             const headerLine = lines[0];
-            // Split header by comma, but intelligently handle quoted fields
             const header = headerLine.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g).map(h => h.replace(/"/g, '').trim());
             const themeStartIndex = header.indexOf("Food Equity");
 
@@ -474,7 +512,7 @@ Preschool Imagination Station: Roots & Wings!,10/28/2024,Yarborough Branch Libra
                     const key = header[j];
                     const value = values[j];
 
-                    if (j >= themeStartIndex && themeStartIndex !== -1) {
+                    if (j >= themeStartIndex && themeStartIndex !== -1 && j < header.indexOf("Event Link")) {
                         const themeCamelCase = toCamelCase(key);
                         themes[themeCamelCase] = value === '1';
                     } else {
@@ -492,8 +530,14 @@ Preschool Imagination Station: Roots & Wings!,10/28/2024,Yarborough Branch Libra
                             }
                         } else if (key === "Event Location") {
                             event.location = value;
-                        } else if (key === "Full Address") {
+                        } else if (key === "Address") {
                             event.address = value;
+                        } else if (key === "City") {
+                            event.city = value;
+                        } else if (key === "State") {
+                            event.state = value;
+                        } else if (key === "Zip Code") {
+                            event.zipCode = value;
                         } else if (key === "Event Link") {
                             event.url = value;
                         } else {
@@ -507,9 +551,8 @@ Preschool Imagination Station: Roots & Wings!,10/28/2024,Yarborough Branch Libra
             return parsedEvents;
         };
 
-
         document.addEventListener('DOMContentLoaded', () => {
-            const zipCodeInput = document.getElementById('zipCodeInput');
+            const keywordOrZipInput = document.getElementById('keywordOrZipInput');
             const eventDateInput = document.getElementById('eventDateInput');
             const themeSelect = document.getElementById('themeSelect');
             const searchButton = document.getElementById('searchButton');
@@ -517,138 +560,171 @@ Preschool Imagination Station: Roots & Wings!,10/28/2024,Yarborough Branch Libra
             const eventsDisplay = document.getElementById('eventsDisplay');
             const noResultsMessage = document.getElementById('noResultsMessage');
             const showAllEventsText = document.getElementById('showAllEventsText');
+            const backToTopLink = document.getElementById('backToTopLink');
 
-            // Define the theme names as they appear in the CSV header and for display
+            // Define the theme names in the new specific order
             const themeNames = [
-                "Food Equity", "It's My Park Day", "Bats", "Birds", "Fungi",
-                "Kids: Ages 0-5", "Kids: Ages 5-12", "Library", "Sensory-Friendly",
-                "Teens: Ages 12-17", "Cultural", "Beautification", "Indoors",
-                "Adults", "All Ages", "En Español", "Pollinators",
-                "Soil Health/Plants", "Trees", "Museum", "STEM"
+                "Trees",
+                "Adults",
+                "Age: 0-5",
+                "Age: 5-12",
+                "Age: 12-17",
+                "All Ages",
+                "Bats",
+                "Birds",
+                "Cultural",
+                "En Español",
+                "Food Equity",
+                "Fungi",
+                "Indoors",
+                "Library",
+                "Pollinators",
+                "Sensory-Friendly",
+                "Soil Health/Plants",
+                "STEM"
             ];
-
+            
             // Populate the theme dropdown
             themeNames.forEach(theme => {
                 const option = document.createElement('option');
-                option.value = toCamelCase(theme); // Use camelCase for internal value
-                option.textContent = theme;
+                option.value = toCamelCase(theme);
+                option.textContent = theme === 'Trees' ? 'Trees 🌳' : theme;
                 themeSelect.appendChild(option);
             });
 
-            const allEvents = parseEventData(rawEventData); // Pass only rawEventData
+            const allEvents = parseEventData(rawEventData);
 
-            // Function to display events (re-usable for search and show all)
+            // Function to display events
             const displayEvents = (eventsToDisplay) => {
-                eventsDisplay.innerHTML = ''; // Clear previous results
-                noResultsMessage.style.display = 'none'; // Hide no results message
+                eventsDisplay.innerHTML = '';
+                noResultsMessage.style.display = 'none';
+                backToTopLink.style.display = 'none';
 
                 if (eventsToDisplay.length > 0) {
+                    backToTopLink.style.display = 'block';
                     const eventsCountElement = document.createElement('p');
                     eventsCountElement.classList.add('events-found-count');
                     eventsCountElement.textContent = `${eventsToDisplay.length} event${eventsToDisplay.length === 1 ? '' : 's'} found:`;
                     eventsDisplay.appendChild(eventsCountElement);
-
                     eventsToDisplay.forEach(event => {
                         const eventCard = document.createElement('div');
                         eventCard.classList.add('event-card');
-
-                        const fullLocationAddress = `${event.location}, ${event.address}`;
-                        const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullLocationAddress)}`;
-
-                        const activeThemes = themeNames.filter(themeName => {
-                            const themeKey = toCamelCase(themeName);
-                            return event.themes && event.themes[themeKey] === true;
-                        });
-                        const themesListHtml = activeThemes.length > 0
-                            ? `<p class="themes-list">${activeThemes.join(', ')}</p>`
-                            : '';
+                        
+                        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${event.address}, ${event.city}, ${event.state} ${event.zipCode}`)}`;
 
                         eventCard.innerHTML = `
                             <h3><a href="${event.url}" target="_blank">${event.name}</a></h3>
                             ${event.displayDate ? `<p><strong>Date:</strong> ${event.displayDate}</p>` : ''}
-                            <p><strong>Location:</strong> <a href="${googleMapsUrl}" target="_blank">${fullLocationAddress}</a></p>
-                            ${themesListHtml}
+                            <p><strong>Location:</strong> <a href="${mapUrl}" target="_blank">${event.location}, ${event.address}, ${event.zipCode}</a></p>
+                            <p class="event-description"><strong>Description: </strong>${placeholderDescription}</p>
                         `;
                         eventsDisplay.appendChild(eventCard);
+
+                        // Add click event to expand description
+                        const descriptionElement = eventCard.querySelector('.event-description');
+                        descriptionElement.addEventListener('click', () => {
+                            descriptionElement.classList.toggle('expanded');
+                        });
                     });
                 } else {
                     noResultsMessage.style.display = 'block';
                 }
             };
-
+            
+            // Initial load: show all events
+            const sortedEvents = [...allEvents].sort((a, b) => {
+                const nameA = a.name.toUpperCase();
+                const nameB = b.name.toUpperCase();
+                if (nameA < nameB) {
+                    return -1;
+                }
+                if (nameA > nameB) {
+                    return 1;
+                }
+                return 0;
+            });
+            displayEvents(sortedEvents);
 
             searchButton.addEventListener('click', () => {
-                const inputZip = zipCodeInput.value.trim();
-                const selectedTheme = themeSelect.value;
-                const inputDate = eventDateInput.value; //YYYY-MM-DD
+                const inputQuery = keywordOrZipInput.value.trim();
+                const selectedDate = eventDateInput.value;
+                const selectedThemes = Array.from(themeSelect.options)
+                                            .filter(option => option.selected && option.value !== '')
+                                            .map(option => option.value);
 
-                // Clear previous messages before showing new ones
                 eventsDisplay.innerHTML = '';
                 noResultsMessage.style.display = 'none';
+                backToTopLink.style.display = 'none';
 
                 let filteredEvents = allEvents;
                 let hasCriteria = false;
 
-                // Apply Zip Code filter if provided
-                if (inputZip) {
-                    if (inputZip.length !== 5 || !/^\d{5}$/.test(inputZip)) {
-                        eventsDisplay.innerHTML = '<p class="no-results-message">Please enter a valid 5-digit zip code.</p>';
-                        return;
+                // Apply combined keyword or zip code filter
+                if (inputQuery) {
+                    if (/^\d{5}$/.test(inputQuery)) {
+                        // It's a zip code
+                        filteredEvents = filteredEvents.filter(event => {
+                            return event.zipCode === inputQuery;
+                        });
+                    } else {
+                        // It's a keyword
+                        const lowerCaseQuery = inputQuery.toLowerCase();
+                        filteredEvents = filteredEvents.filter(event => {
+                            return event.name.toLowerCase().includes(lowerCaseQuery) ||
+                                   event.location.toLowerCase().includes(lowerCaseQuery);
+                        });
                     }
+                    hasCriteria = true;
+                }
+                
+                // Apply Date filter
+                if (selectedDate) {
                     filteredEvents = filteredEvents.filter(event => {
-                        const zipMatch = event.address ? event.address.match(/\b(\d{5})\b/) : null;
-                        return zipMatch && zipMatch[1] === inputZip;
+                        if (!event.timestamp) {
+                            return false;
+                        }
+                        const eventDateString = event.timestamp.toISOString().slice(0, 10);
+                        return eventDateString === selectedDate;
                     });
                     hasCriteria = true;
                 }
 
-                // Apply Date filter if provided
-                let userDate = null;
-                if (inputDate) {
-                    userDate = new Date(inputDate);
-                    // Set time to midnight UTC to ensure comparison is purely date-based
-                    userDate.setUTCHours(0, 0, 0, 0); 
-                }
-
-                if (userDate && !isNaN(userDate.getTime())) {
+                // Apply Theme filter
+                if (selectedThemes.length > 0) {
                     filteredEvents = filteredEvents.filter(event => {
-                        if (!event.timestamp) return false; // Event has no valid date
-
-                        const eventDateTime = new Date(event.timestamp);
-                        // Set event time to midnight UTC for date-only comparison
-                        eventDateTime.setUTCHours(0, 0, 0, 0);
-
-                        return eventDateTime.getTime() === userDate.getTime();
+                        return selectedThemes.every(theme => event.themes[theme]);
                     });
                     hasCriteria = true;
                 }
-
-                // Apply Theme filter if provided
-                if (selectedTheme) {
-                    filteredEvents = filteredEvents.filter(event => {
-                        return event.themes && event.themes[selectedTheme] === true;
-                    });
-                    hasCriteria = true; // Set hasCriteria if a theme is selected
-                }
-
+                
                 if (!hasCriteria) {
-                    eventsDisplay.innerHTML = '<p class="initial-message">Enter a zip code, select a date or theme, then click "Search Events" to find local happenings.</p>';
+                    // If no search criteria are provided, show all events
+                    const sortedEvents = [...allEvents].sort((a, b) => {
+                        const nameA = a.name.toUpperCase();
+                        const nameB = b.name.toUpperCase();
+                        if (nameA < nameB) {
+                            return -1;
+                        }
+                        if (nameA > nameB) {
+                            return 1;
+                        }
+                        return 0;
+                    });
+                    displayEvents(sortedEvents);
                     return;
                 }
-
+                
                 displayEvents(filteredEvents);
             });
 
-            // Event listener for "Or show me all events"
             showAllEventsText.addEventListener('click', () => {
-                zipCodeInput.value = ''; // Clear zip code input
-                eventDateInput.value = ''; // Clear date input
-                themeSelect.value = ''; // Reset theme dropdown
+                keywordOrZipInput.value = '';
+                eventDateInput.value = '';
+                Array.from(themeSelect.options).forEach(option => option.selected = false);
 
-                // Sort all events alphabetically by name
                 const sortedEvents = [...allEvents].sort((a, b) => {
-                    const nameA = a.name.toUpperCase(); // Ignore case
-                    const nameB = b.name.toUpperCase(); // Ignore case
+                    const nameA = a.name.toUpperCase();
+                    const nameB = b.name.toUpperCase();
                     if (nameA < nameB) {
                         return -1;
                     }
@@ -664,13 +740,21 @@ Preschool Imagination Station: Roots & Wings!,10/28/2024,Yarborough Branch Libra
                 location.reload();
             });
 
-            zipCodeInput.addEventListener('keypress', (event) => {
+            keywordOrZipInput.addEventListener('keypress', (event) => {
                 if (event.key === 'Enter') {
                     searchButton.click();
                 }
             });
+
+            backToTopLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
         });
-        /* --- script.js content ends here --- */
+        // --- script.js content ends here ---
     </script>
 </body>
-</html>
+</html>S
