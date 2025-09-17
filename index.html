@@ -3,747 +3,778 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2024 Roots & Wings Festival</title>
+    <title>2025 Roots & Wings Festival</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- style.css content starts here --- */
         body {
             font-family: 'Roboto Slab', serif;
-            background-color: #e9ecef;
+            background-color: #33232b;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
             margin: 10px;
             box-sizing: border-box;
+            color: #ffffff;
         }
 
         .container {
-            background-color: #ffffff;
+            background-color: #33232b;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
             width: 100%;
+            max-width: 900px;
             text-align: center;
-            border: 1px solid #dee2e6;
+            border: 1px solid #33232b;
         }
 
-        .logo {
-            display: block;
-            margin: 0 auto 20px auto;
-            max-width: 250px;
-            width: 100%;
-            height: auto;
-        }
-
-        .app-title-logo-text {
+        .header-title {
             color: #ef8c2a;
-            font-size: 2em;
             font-weight: 700;
-            margin-bottom: 8px;
-            display: block;
+            margin-bottom: 5px;
+            font-size: 2rem;
+        }
+        
+        .header-subtitle {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
         }
 
-        .section-header {
-            color: #33232b;
-            font-size: 1.8em;
-            font-weight: 600;
-        }
-
-        .festival-date-text {
-            margin-top: 0;
+        .header-dates {
+            color: #ffffff;
+            font-size: 1rem;
             margin-bottom: 20px;
-            text-align: center;
-            color: #33232b;
-            font-size: 0.95em;
         }
 
-        .search-section {
-            margin-bottom: 25px;
+        .search-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 12px;
+            gap: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #33232b;
+            border: 1px solid #33232b;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            position: relative;
         }
 
-        .search-section label {
-            font-size: 1em;
-            color: #495057;
-            margin-bottom: 3px;
-            font-weight: 500;
+        .filter-title {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0;
         }
 
-        .search-section input[type="text"],
-        .search-section select,
-        .search-section input[type="date"] {
-            font-family: 'Roboto Slab', serif;
-            padding: 12px;
-            border: 1px solid #ced4da;
-            border-radius: 7px;
-            width: 95%;
-            max-width: 300px;
-            font-size: 1em;
-            box-sizing: border-box;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            height: auto;
-            min-height: 38px;
-        }
-
-        .search-section input[type="text"]:focus,
-        .search-section select:focus,
-        .search-section input[type="date"]:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-            outline: none;
-        }
-
-        .button-group {
+        .search-input-group {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            justify-content: center;
             width: 100%;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
+            margin-top: 25px;
         }
 
-        .search-section button {
-            font-family: 'Roboto Slab', serif;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 7px;
-            cursor: pointer;
-            font-size: 1.05em;
-            font-weight: 600;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+        .input-label {
+            text-align: left;
+            font-weight: bold;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        .text-input, .date-input, .select-input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ffffff;
+            transition: all 0.3s ease;
             box-sizing: border-box;
-            width: 95%;
-            max-width: 280px;
-            margin: 0 auto;
+            font-family: 'Roboto Slab', serif;
+            background-color: #33232b;
+            color: #ffffff;
+            box-shadow: 0 0 3px rgba(255, 255, 255, 0.15);
+        }
+        
+        .date-input::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+        }
+
+        .text-input::placeholder, .date-input::placeholder {
+            color: #ffffff;
+        }
+
+        .select-input option {
+            font-family: 'Roboto Slab', serif;
+        }
+
+        .text-input:focus, .date-input:focus, .select-input:focus {
+            border-color: #ef8c2a;
+            outline: none;
+            box-shadow: 0 0 5px rgba(239, 140, 42, 0.5);
+        }
+
+        .search-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .search-button, .reset-button {
+            padding: 12px 20px;
+            border-radius: 5px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Roboto Slab', serif;
         }
 
         .search-button {
             background-color: #ef8c2a;
-            color: white;
+            color: #ffffff;
         }
 
         .search-button:hover {
-            background-color: #d17a25;
-            transform: translateY(-2px);
-        }
-
-        .search-button:active {
-            background-color: #b36920;
-            transform: translateY(0);
+            background-color: #d57c24;
         }
 
         .reset-button {
-            background-color: #33232b;
-            color: white;
+            background-color: #ef8c2a;
+            color: #ffffff;
         }
-
+        
         .reset-button:hover {
-            background-color: #2b1e24;
-            transform: translateY(-2px);
+            background-color: #d57c24;
         }
 
-        .reset-button:active {
-            background-color: #24181f;
-            transform: translateY(0);
-        }
-
-        .show-all-events {
-            font-size: 1em;
+        .map-link {
+            text-align: center;
+            margin-top: 10px;
             color: #ef8c2a;
-            cursor: pointer;
             text-decoration: underline;
-            margin-top: 5px;
-            margin-bottom: 15px;
-        }
-
-        .show-all-events:hover {
-            color: #d17a25;
-        }
-
-        .events-display {
-            text-align: left;
-            border-top: 1px solid #e9ecef;
-            padding-top: 20px;
+            cursor: pointer;
+            display: block;
+            font-size: 1.2rem;
+            font-weight: normal;
             margin-top: 20px;
-            position: relative;
         }
 
-        .events-found-count {
-            font-size: 1em;
-            font-weight: bold;
-            color: #212529;
-            margin-bottom: 10px;
-        }
-
-        .event-card {
-            background-color: #f8f9fa;
-            border: 1px solid #e2e6ea;
+        .results-section {
+            padding: 20px;
+            background-color: #33232b;
             border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            border: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            text-align: left;
+        }
+        
+        .results-count {
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin: 0;
+            margin-bottom: 20px;
+        }
+
+        .event-list {
+            display: grid;
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .event-group {
+            margin-bottom: 20px;
+        }
+
+        .event-date-header {
+            color: #ffffff;
+            font-weight: normal;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .event-date-header::before {
+            content: "▼";
+            margin-right: 10px;
+            font-size: 1rem;
             transition: transform 0.2s ease;
         }
 
-        .event-card:hover {
-            transform: translateY(-3px);
+        .event-date-header.collapsed::before {
+            content: "▶";
+        }
+        
+        .event-items-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 15px;
         }
 
-        .event-card h3 {
+        .event-item {
+            background-color: #33232b;
+            color: #ffffff;
+            border: 1px solid #ffffff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+
+        .event-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-title {
             color: #ef8c2a;
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.4em;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
         }
 
-        .event-card h3 a {
-            color: #ef8c2a;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .event-card h3 a:hover {
-            color: #d17a25;
-            text-decoration: underline;
-        }
-
-        .event-card p {
-            margin: 5px 0;
-            color: #555;
+        .event-details p {
+            font-weight: bold;
+            color: #ffffff;
+            margin: 0;
             line-height: 1.5;
-            font-size: 0.95em;
         }
 
-        /* Styling for the date and location text */
-        .event-card p strong {
-            color: #33232b;
-            font-weight: 600;
+        .event-details span {
+            font-weight: normal;
+            color: #ffffff;
         }
-
-        .event-card p a {
+        
+        .location-link {
             color: #ef8c2a;
             text-decoration: none;
-            transition: color 0.3s ease;
+            font-weight: normal;
         }
-
-        .event-card p a:hover {
-            color: #d17a25;
+        
+        .location-link:hover {
             text-decoration: underline;
         }
         
-        /* Styling for the new description field */
+        .rain-date-text {
+            font-size: 0.8rem;
+        }
+        
+        .description-container {
+            position: relative;
+        }
+
         .event-description {
-            color: #BFBFBF; /* Updated to a grayer color */
-            font-style: normal; /* No longer italic */
-            line-height: 1.4;
-            margin-top: 10px;
-            /* Truncation styles */
+            color: #ffffff;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             cursor: pointer;
+            font-weight: normal;
+            line-height: 1.5;
+            position: relative;
+            padding-right: 20px;
         }
-
+        
         .event-description.expanded {
             white-space: normal;
             overflow: visible;
             text-overflow: clip;
+            padding-right: 0;
         }
 
-        .event-card .themes-list {
-            font-size: 0.85em;
-            color: #adb5bd;
-            margin-top: 8px;
-            line-height: 1.4;
-            word-wrap: break-word;
+        .event-description::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(51, 35, 43, 0) 80%, rgba(51, 35, 43, 1) 100%);
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
 
-        .no-results-message {
+        .event-description.expanded::after {
+            opacity: 0;
+        }
+        
+        .no-results {
+            text-align: center;
+            color: #ffffff;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        .back-to-top {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #ef8c2a;
+            color: #fff;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: #d57c24;
+        }
+
+        #showAllEventsText {
+            text-align: center; 
+            margin-top: 10px; 
+            cursor: pointer; 
+            color: #ef8c2a; 
+            text-decoration: underline;
+        }
+
+        .rsvp-tag {
+            position: absolute;
+            top: 10px;
+            right: 15px;
             color: #ef8c2a;
             font-weight: bold;
-            margin-top: 20px;
-            font-size: 1em;
-        }
-
-        .initial-message {
-            color: #868e96;
-            font-style: italic;
-            text-align: center;
-            font-size: 1em;
-            padding: 10px;
-            border: 1px dashed #ced4da;
+            background-color: #33232b;
+            padding: 5px 10px;
             border-radius: 5px;
-            background-color: #f2f4f6;
+            border: 1px solid #ef8c2a;
         }
-
-        .back-to-top-link {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 1em;
+        
+        .multi-day-text {
             color: #ef8c2a;
-            cursor: pointer;
-            text-decoration: underline;
-            display: none; /* Hidden by default */
         }
-
-        .back-to-top-link:hover {
-            color: #d17a25;
+        
+        .event-details strong {
+            font-weight: bold;
         }
-
-        /* Desktop and Tablet styles (min-width for progressive enhancement) */
-        @media (min-width: 480px) {
-            body {
-                margin: 20px;
-            }
-            .container {
-                padding: 30px;
-            }
-            .app-title-logo-text {
-                font-size: 2.2em;
-            }
-            .section-header {
-                font-size: 2em;
-            }
-            .festival-date-text {
-                font-size: 1em;
-            }
-            .search-section {
-                gap: 15px;
-            }
-            .search-section label {
-                font-size: 1.1em;
-            }
-            .search-section input[type="text"],
-            .search-section select,
-            .search-section input[type="date"] {
-                padding: 14px;
-                font-size: 1.05em;
-                min-height: 40px;
-            }
-            .button-group {
-                flex-direction: row;
-                gap: 15px;
-            }
-            .search-section button {
-                width: auto;
-                max-width: none;
-                padding: 14px 30px;
-                font-size: 1.1em;
-            }
-            .show-all-events {
-                font-size: 1.05em;
-                margin-top: 10px;
-                margin-bottom: 20px;
-            }
-            .events-display {
-                padding-top: 25px;
-                margin-top: 25px;
-            }
-            .events-found-count {
-                font-size: 1.05em;
-                margin-bottom: 15px;
-            }
-            .event-card {
-                padding: 20px;
-                margin-bottom: 20px;
-            }
-            .event-card h3 {
-                font-size: 1.5em;
-            }
-            .event-card p {
-                font-size: 1em;
-            }
-            .event-card .themes-list {
-                font-size: 0.9em;
-            }
-            .no-results-message {
-                margin-top: 25px;
-                font-size: 1.05em;
-            }
-            .initial-message {
-                font-size: 1.05em;
-                padding: 15px;
-            }
+        
+        .event-item-flex-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .event-item-flex-container .event-item {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
         }
 
         @media (min-width: 768px) {
             .container {
-                padding: 35px;
-                max-width: 650px;
+                max-width: 900px;
             }
-            .app-title-logo-text {
-                font-size: 2.5em;
+
+            .search-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: flex-end;
             }
-            .section-header {
-                font-size: 2.2em;
+
+            .search-input-group {
+                flex: 1;
+                min-width: 250px;
             }
-            .festival-date-text {
-                font-size: 1.1em;
-            }
-            .search-section {
-                gap: 18px;
-            }
-            .search-section input[type="text"],
-            .search-section select,
-            .search-section input[type="date"] {
-                max-width: 280px;
-                font-size: 1.1em;
-            }
-            .search-section button {
-                font-size: 1.15em;
-            }
-            .show-all-events {
-                font-size: 1.1em;
-            }
-            .events-found-count {
-                font-size: 1.1em;
-            }
-            .event-card h3 {
-                font-size: 1.6em;
-            }
-            .event-card p {
-                font-size: 1.05em;
-            }
-            .event-card .themes-list {
-                font-size: 0.95em;
-            }
-            .no-results-message {
-                font-size: 1.1em;
-            }
-            .initial-message {
-                font-size: 1.1em;
+
+            .search-buttons {
+                flex-direction: row;
+                gap: 10px;
+                width: auto;
             }
         }
-        /* --- style.css content ends here --- */
     </style>
 </head>
 <body>
     <div class="container">
-        <span class="app-title-logo-text">2025 Roots & Wings Festival</span>
-        <h1 class="section-header">Find Events</h1>
-        <p class="festival-date-text">Saturday, October 18th - Sunday, November 2, 2025</p>
+        <header>
+            <h1 class="header-title">2025 Roots & Wings Festival Event Finder</h1>
+            <p class="header-subtitle">Saturday, October 18th - Sunday, November 2, 2025</p>
+        </header>
 
-        <div class="search-section">
-            <label for="keywordOrZipInput">Search by Keyword or Zip Code:</label>
-            <input type="text" id="keywordOrZipInput" placeholder="e.g., Garden or 78701">
+        <section class="search-container">
+            <h2 class="filter-title">Filter Events:</h2>
+            <div class="search-input-group">
+                <label for="keywordOrZipInput" class="input-label">Keyword or Zip Code:</label>
+                <input type="text" id="keywordOrZipInput" class="text-input" placeholder="e.g., Trees, 78701">
+            </div>
 
-            <label for="eventDateInput">Search by Date:</label>
-            <input type="date" id="eventDateInput" min="2024-10-01" max="2024-11-30">
+            <div class="search-input-group">
+                <label for="eventDateInput" class="input-label">Date:</label>
+                <input type="date" id="eventDateInput" class="date-input" min="2025-10-18" max="2025-11-02">
+            </div>
 
-            <label for="themeSelect">Search by theme:</label>
-            <select id="themeSelect" multiple>
-                <option value="">All Themes</option>
-                <!-- Options will be populated by JavaScript -->
-            </select>
-            <div class="button-group">
-                <button id="searchButton" class="search-button">Search Events</button>
+            <div class="search-input-group">
+                <label for="filterSelect" class="input-label">Categories:</label>
+                <select id="filterSelect" class="select-input" multiple>
+                    <option value="Trees">Trees🌳</option>
+                    <option value="All Ages">All Ages</option>
+                    <option value="Ages 0-5 (kids)">Ages 0-5 (kids)</option>
+                    <option value="Ages 5-12 (kids)">Ages 5-12 (kids)</option>
+                    <option value="Ages 12 - 17 (teens)">Ages 12 - 17 (teens)</option>
+                    <option value="Adults">Adults</option>
+                    <option value="Bats">Bats</option>
+                    <option value="Beautification">Beautification</option>
+                    <option value="Bilingual">Bilingual</option>
+                    <option value="Birds">Birds</option>
+                    <option value="Butterflies">Butterflies</option>
+                    <option value="Cultural Experience">Cultural Experience</option>
+                    <option value="Family-friendly">Family-friendly</option>
+                    <option value="Food Equity">Food Equity</option>
+                    <option value="Fungi">Fungi</option>
+                    <option value="Indoor Activity">Indoor Activity</option>
+                    <option value="Pollinators">Pollinators</option>
+                    <option value="Sensory Inclusive">Sensory Inclusive</option>
+                    <option value="Soil Health">Soil Health</option>
+                    <option value="STEM">STEM</option>
+                </select>
+            </div>
+
+            <div class="search-buttons">
+                <button id="searchButton" class="search-button">Search</button>
                 <button id="resetButton" class="reset-button">Reset</button>
             </div>
-            <p id="showAllEventsText" class="show-all-events">Or show me all events</p>
-        </div>
-        
-        <div id="eventsDisplay" class="events-display">
-            <p class="initial-message">Enter a date, zip code, or keyword, or select a theme, then click "Search Events" to find local happenings.</p>
-        </div>
+            <a href="https://github.com/halterforestry/RWFinder/blob/main/Roots%20&%20Wings%20Event%20Locations%20Map%202025.jpg?raw=true" target="_blank" class="map-link">Click to view event locations map</a>
+        </section>
 
-        <div id="noResultsMessage" class="no-results-message" style="display: none;">
-            <p>No events found matching your criteria. Please try another search!</p>
-        </div>
+        <section class="results-section">
+            <h2 id="resultsCount" class="results-count"></h2>
+            <div id="eventListContainer"></div>
+            <div id="noResultsMessage" class="no-results" style="display: none;">No events found matching your criteria.</div>
+            <p id="showAllEventsText">Show All Events</p>
+        </section>
         
-        <p id="backToTopLink" class="back-to-top-link">Back to top</p>
+        <a href="#top" id="backToTopLink" class="back-to-top">▲</a>
     </div>
 
     <script>
-        // --- script.js content starts here ---
-        // Function to convert theme names to camelCase for object keys
-        const toCamelCase = (name) => {
-            return name
-                .replace(/[^a-zA-Z0-9 ]/g, '')
-                .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => {
-                    return index === 0 ? word.toLowerCase() : word.toUpperCase();
-                })
-                .replace(/\s+/g, '');
-        };
-
-        // Raw data from Roots_and_Wings_Sample_Data.csv
-        const rawEventData = `Event Title,Full DateTime,Event Location,Full Address,Food Equity,It's My Park Day,Bats,Birds,Fungi,Kids: Ages 0-5,Kids: Ages 5-12,Library,Sensory-Friendly,Teens: Ages 12-17,Cultural,Beautification,Indoors,Adults,All Ages,En Español,Pollinators,Soil Health/Plants,Trees,Museum,STEM,Event Link,Address,City,State,Zip Code
-Blossoms & Bugs: Adelphi Acre Community Garden Festival!,10/19/2024 10:00 AM,Adelphi Acre Community Garden,"3701 Adelphi Ln, Austin, TX,78759",1,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/blossoms-bugs-adelphi-acre-community-garden-festival,3701 Adelphi Ln,Austin,TX,78759
-Beautify the Austin Nature & Science Center: a Roots & Wings Festival and It's My Park Day Crossover Event!,11/2/2024 10:00 AM,Austin Nature & Science Center,"2389 Stratford Dr, Austin, TX,78746",0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,1,1,0,0,https://rootsandwingsfest.com/schedule/buzz-flutter-and-grow-with-the-austin-nature-science-center-6t243,2389 Stratford Dr,Austin,TX,78746
-Bats, Bats, Bats!,10/26/2024 10:00 AM,South Lamar Branch Library,"3260 S Lamar Blvd, Austin, TX,78704",0,0,1,0,0,1,1,1,0,0,0,1,1,0,0,0,0,1,0,0,1,https://rootsandwingsfest.com/schedule/bats-bats-bats,3260 S Lamar Blvd,Austin,TX,78704
-Urban Forest Explorers: Nature Play at APL!,10/26/2024 10:00 AM,Rundberg Branch Library,"835 W Rundberg Ln, Austin, TX,78758",0,0,1,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,0,0,https://rootsandwingsfest.com/schedule/urban-forest-explorers-nature-play-at-apl,835 W Rundberg Ln,Austin,TX,78758
-Un-BEE-Lievable Pollinators Festival!,10/26/2024 10:00 AM,Windsor Park Branch Library,"5833 Westminster Dr, Austin, TX,78723",0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/un-bee-lievable-pollinators-festival,5833 Westminster Dr,Austin,TX,78723
-Preschool Imagination Station: Roots & Wings!,10/24/2024 10:00 AM,Hampton Branch at Oak Hill Library,"5125 Convict Hill Rd, Austin, TX,78749",0,0,1,0,1,1,0,1,0,0,0,0,1,0,0,1,1,1,1,0,0,https://rootsandwingsfest.com/schedule/preschool-imaginaton-station-roots-wings2,5125 Convict Hill Rd,Austin,TX,78749
-Roots and Wings Festival at Oak Hill Library!,10/19/2024 10:00 AM,Hampton Branch at Oak Hill Library,"5125 Convict Hill Rd, Austin, TX,78749",0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,0,1,1,0,0,0,https://rootsandwingsfest.com/schedule/roots-and-wings-festival-at-oak-hill-library,5125 Convict Hill Rd,Austin,TX,78749
-Butterfly Festival with Author Tracy Dockray!,10/24/2024 10:00 AM,Southeast Branch Library,"5803 Nuckols Crossing Rd, Austin, TX,78744",0,0,0,0,0,0,0,1,1,0,0,0,1,0,1,0,1,0,0,0,0,https://rootsandwingsfest.com/schedule/butterfly-festival-with-author-tracy-dockray3,5803 Nuckols Crossing Rd,Austin,TX,78744
-Preschool Imagination Station: Roots & Wings!,10/28/2024 10:00 AM,Yarborough Branch Library,"2200 Hancock Dr, Austin, TX,78756",0,0,1,0,1,1,0,1,1,0,0,0,1,0,0,0,1,1,1,0,0,https://rootsandwingsfest.com/schedule/preschool-imagination-station-roots-wings,2200 Hancock Dr,Austin,TX,78756`;
-
-        // Placeholder description text
-        const placeholderDescription = 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem.';
-
-        const parseEventData = (dataString) => {
-            const lines = dataString.trim().split('\n');
-            if (lines.length === 0) return [];
-
-            const headerLine = lines[0];
-            const header = headerLine.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g).map(h => h.replace(/"/g, '').trim());
-            const themeStartIndex = header.indexOf("Food Equity");
-
-            const parsedEvents = [];
-
-            for (let i = 1; i < lines.length; i++) {
-                const line = lines[i];
-                const values = line.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g).map(v => v.replace(/"/g, '').trim());
-
-                if (values.length !== header.length) {
-                    console.warn(`Skipping malformed row ${i + 1}: Expected ${header.length} columns, got ${values.length}. Line: ${line}`);
-                    continue;
-                }
-
-                const event = {};
-                const themes = {};
-
-                for (let j = 0; j < header.length; j++) {
-                    const key = header[j];
-                    const value = values[j];
-
-                    if (j >= themeStartIndex && themeStartIndex !== -1 && j < header.indexOf("Event Link")) {
-                        const themeCamelCase = toCamelCase(key);
-                        themes[themeCamelCase] = value === '1';
-                    } else {
-                        if (key === "Event Title") {
-                            event.name = value;
-                        } else if (key === "Full DateTime") {
-                            const dateObj = new Date(value);
-                            if (isNaN(dateObj.getTime())) {
-                                event.displayDate = '';
-                                event.timestamp = null;
-                            } else {
-                                const options = { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
-                                event.displayDate = dateObj.toLocaleString('en-US', options);
-                                event.timestamp = dateObj;
-                            }
-                        } else if (key === "Event Location") {
-                            event.location = value;
-                        } else if (key === "Address") {
-                            event.address = value;
-                        } else if (key === "City") {
-                            event.city = value;
-                        } else if (key === "State") {
-                            event.state = value;
-                        } else if (key === "Zip Code") {
-                            event.zipCode = value;
-                        } else if (key === "Event Link") {
-                            event.url = value;
-                        } else {
-                            event[toCamelCase(key)] = value;
-                        }
-                    }
-                }
-                event.themes = themes;
-                parsedEvents.push(event);
-            }
-            return parsedEvents;
-        };
-
         document.addEventListener('DOMContentLoaded', () => {
-            const keywordOrZipInput = document.getElementById('keywordOrZipInput');
-            const eventDateInput = document.getElementById('eventDateInput');
-            const themeSelect = document.getElementById('themeSelect');
-            const searchButton = document.getElementById('searchButton');
-            const resetButton = document.getElementById('resetButton');
-            const eventsDisplay = document.getElementById('eventsDisplay');
-            const noResultsMessage = document.getElementById('noResultsMessage');
-            const showAllEventsText = document.getElementById('showAllEventsText');
-            const backToTopLink = document.getElementById('backToTopLink');
-
-            // Define the theme names in the new specific order
-            const themeNames = [
-                "Trees",
-                "Adults",
-                "Age: 0-5",
-                "Age: 5-12",
-                "Age: 12-17",
-                "All Ages",
-                "Bats",
-                "Birds",
-                "Cultural",
-                "En Español",
-                "Food Equity",
-                "Fungi",
-                "Indoors",
-                "Library",
-                "Pollinators",
-                "Sensory-Friendly",
-                "Soil Health/Plants",
-                "STEM"
+            const allEvents = [
+                {"Event_ID":1,"Host_Organization":"Birdability","Event_Title":"Birdability at Richard Moya Park: A Roots and Wings Festival Event","Event_Description":"Celebrate Roots & Wings Festival with Birdability at Richard Moya Park!\n\nJoin Virginia Rose, Founder of Birdability and proud Austin native, for an unforgettable birding adventure at one of Travis County’s oldest and most beloved parks.\n\nWhat to Expect:\nExplore wide, paved, and accessible trails winding through majestic pecan trees along Onion Creek.\nLearn how to bird by sight and sound, with tips on using binoculars and the Merlin app.\nEnjoy a guided walk with experienced Birdability guides who share the joy of birding with everyone.\nDiscover Richard Moya Park’s unique history, including its iconic bridge built from spans of Old Moore’s Crossing.\n\nWhy Come?\nA beautifully accessible park with reliable year-round birds (often 40+ species in a single outing!).\nPerfect for beginners and experienced birders alike.\nFamily-friendly, welcoming, and part of Austin’s Roots & Wings Festival.\n\nNote: Air traffic is common in this area.\n\nLearn more about Birdability: birdability.org","Start_Date_Time":"10/18/2025 8:00","End_Date_Time":"10/18/2025 12:00","Duration_Hrs":4,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Richard Moya Park","Address":"10001 Burleson Rd","Zip_Code":78719,"X":-97.66614253,"Y":30.17126173,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":1,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":2,"Host_Organization":"Travis Audubon","Event_Title":"Sapling Planting and Tree ID Walk at Blair Woods Nature Preserve","Event_Description":"Join us for a beautiful fall morning at Blair Woods, our 10-acre nature preserve in East Austin, to celebrate trees both big and small!\nEvent Highlights:\nPlant native seedlings and help grow the next generation of trees\nGuided tour of Blair Woods’ stunning variety of native trees, led by Kainoa Lee, Land Steward\n\nWhat to Wear/Bring:\nLong pants and closed-toed shoes\nRefillable water bottle\n\nPort-a-can available onsite\n\nCome connect with nature, learn about native trees, and leave with a sense of accomplishment as part of Austin’s vibrant green community!","Start_Date_Time":"10/18/2025 8:00","End_Date_Time":"10/18/2025 10:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"10/25/2025 8:00","Event_Location":"Blair Woods Nature Preserve","Address":"5401 E Martin Luther King Jr Blvd","Zip_Code":78721,"X":-97.67189385,"Y":30.2866939,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":0,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":1,"Adults":1,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":3,"Host_Organization":"Hill Country Conservancy","Event_Title":"Roots & Wings Festival Pollinator Planting on the Violet Crown Trail","Event_Description":"Join Hill Country Conservancy for a Roots & Wings Festival volunteer event to help revitalize the pollinator garden along the Violet Crown Trail (VCT)!\n\nCome get your hands dirty as we weed, maintain, and replant native pollinator-friendly species at the Gaines Creek pollinator garden on the VCT.\nThis hands-on project is open to all and is a great opportunity to give back to the trail, support local wildlife, and connect with the VCT community.\nWe'll provide gloves, tools, and guidance-- Just bring a refillable water bottle, wear clothes you don't mind getting dirty, and be ready to dig in!\nThe Violet Crown Trail is one of Austin's true outdoor treasures, and it thrives thanks to the support of volunteers like you.\nWe hope you'll join us for a fun and rewarding morning on the trail!","Start_Date_Time":"10/18/2025 9:00","End_Date_Time":"10/18/2025 11:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"10/19/2024 9:00","Event_Location":"Violet Crown Trail at Gaines Creek","Address":"4934 W US Hwy 290 Service Rd","Zip_Code":78745,"X":-97.81686904,"Y":30.2336729,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":4,"Host_Organization":"Windsor Park Branch (Austin Public Library)","Event_Title":"Roots and Wings: Ecosystem Engineers: Meet the Pollinators","Event_Description":"Join us for a fun and educational event that brings the buzz of Central Texas to life!\nWhat’s Happening:\nExplore the vital role of pollinators in our urban ecosystem\nLearn how native plants and trees support a thriving urban forest\nMeet the city departments working to protect pollinators\nDiscover the many pollinators around us—from bees and butterflies to bats and birds!\nActivities for All Ages:\nSeed & tree giveaways to support pollinator habitats\nScavenger hunts & puzzles for youth and adults\nTake-and-make kits focused on native plants and pollination\nCrosswords & seek-and-finds to test your eco-knowledge\n\nWhether you’re young or young-at-heart, there’s something for everyone.\nCome learn, explore, and grow with us—and help Central Texas bloom!","Start_Date_Time":"10/18/2025 9:00","End_Date_Time":"11/2/2025 17:00","Duration_Hrs":368,"Event_Type":"Continuous","Rain_Date_Time":"","Event_Location":"Windsor Park Branch Library","Address":"5833 Westminster Dr","Zip_Code":78723,"X":-97.69068557,"Y":30.3121959,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":1,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":0,"Fungi":1,"Indoor_Activity":0,"Pollinators":1,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":0,"RSVP":1},
+                {"Event_ID":5,"Host_Organization":"City of Austin Park Rangers","Event_Title":"Seed Ball Blast with Park Rangers","Event_Description":"Join the City of Austin Park Rangers for Seed Ball Blast - a hands-on celebration of plants, pollinators, and all things green!\nThis family-friendly event invites you to roll up your sleeves and craft your very own seed balls to take home and toss in your garden or yard.\nDiscover the vital role local pollinators play in keeping Austin blooming, and learn simple ways you can help protect their habitats.\nBe ready to get a little messy (in a fun way!) and leave inspired to make a difference.\nLet's grow something great together!","Start_Date_Time":"10/18/2025 9:00","End_Date_Time":"10/18/2025 11:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Zilker Caretaker Cottage","Address":"2105 Andrew Zilker Rd","Zip_Code":78746,"X":-97.76927826,"Y":30.26563974,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":1,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":6,"Host_Organization":"Shoal Creek Conservancy","Event_Title":"Shoal Creek Pollinator Tour","Event_Description":"Join Shoal Creek Conservancy and local beekeeper Katie Ortiz for a family-friendly free tour along Shoal Creek!\nWe'll chat about all things pollinators, Katie will share her experience as a beekeeper in the greater Austin area, and we'll create bee hotels for native solitary bees using reclaimed material harvested during our tour!\nAdditionally, we'll have giveaways that kick-start your pollinator garden along with a honey tasting from Katie's bees.\nPlease note that ASL interpreters will be provided for this tour.","Start_Date_Time":"10/18/2025 9:00","End_Date_Time":"10/18/2025 11:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Seiders Springs Park","Address":"1380 W 34th St","Zip_Code":78731,"X":-97.74856225,"Y":30.30464177,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":1,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":7,"Host_Organization":"Girlstart","Event_Title":"Girlstart STEM Extravaganza","Event_Description":"This free, family-friendly activity is a celebration of science, nature, and community for all genders and ages!\nDrop In Anytime between 9:30am and noon for interactive, nature-themed STEM activities, such as:\nA joyful celebration of STEM and the Earth\nOutdoor fun with a purpose\n\nWhether you're a curious kid, a science-loving family, or just looking for a fun and meaningful way to connect with nature - everyone is welcome to explore, create, and be inspired!","Start_Date_Time":"10/18/2025 9:30","End_Date_Time":"10/18/2025 12:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Girlstart STEM Center","Address":"1400 W Anderson Ln","Zip_Code":78757,"X":-97.72014768,"Y":30.35111473,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":1,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":1,"RSVP":0},
+                {"Event_ID":8,"Host_Organization":"Ecology Action of Texas","Event_Title":"Guerrero Park Roots and Wings","Event_Description":"Join us for a fun, hands-on event celebrating native pollinators and the plants they need to thrive!\nActivities include:\nExploring the world of local pollinators and wildlife\nMaking and taking home your own seed balls\nHelping plant pollinator-friendly plants in the park\nInteractive learning stations at the pavilion\n\nBring the whole family and enjoy a day of discovery, creativity, and community in nature!","Start_Date_Time":"10/18/2025 9:30","End_Date_Time":"10/18/2025 12:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Roy G Guerrero Colorado River Metropolitan Park","Address":"400 Grove Blvd","Zip_Code":78741,"X":-97.70098213,"Y":30.24243537,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":0,"Ages_0-5_(kids)":1,"Ages_5-12_(kids)":1,"Ages_12-17_(teens)":1,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":1,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":0,"Fungi":1,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":9,"Host_Organization":"South River City Citizens Neighborhood Association","Event_Title":"Little Stacy Neighborhood Park Roots and Wings Festival Celebration","Event_Description":"Step into a day of discovery, creativity, and community at our all-ages festival honoring nature in the heart of the city!\nWhat to Expect:\n\nGuided Nature Walks – Explore Austin’s trees and native plants with local arborists.\nSoil & Fungi Workshops – Get hands-on with microbes, mycelium, and sustainable gardening tips.\nBird Walks & Wildlife Talks – Learn from experts about pollinators, native species, and how to support them at home.\nFamily Fun – Eco-crafts, kid-friendly activities, and interactive stations for all ages.\nArt, Music & Storytelling – Experience creative performances and vibrant installations celebrating Austin’s green spaces.\nEco Vendors & Community Resources – Take home green-living tools and inspiration to continue your journey as a forest steward.\nThis isn’t just an event—it’s a festival of learning and wonder.\nConnect with nature, meet new friends, and leave inspired to protect and nurture Austin’s living world.\nWhether you’re a seasoned naturalist or simply curious, you’ll find joy, creativity, and plenty of ways to grow.","Start_Date_Time":"10/18/2025 10:00","End_Date_Time":"10/18/2025 13:00","Duration_Hrs":3,"Event_Type":"Single Event","Rain_Date_Time":"10/25/2025 10:00","Event_Location":"Little Stacy Neighborhood Park","Address":"1500 Alameda Dr","Zip_Code":78704,"X":-97.74308125,"Y":30.24669177,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":1,"Ages_5-12_(kids)":1,"Ages_12-17_(teens)":1,"Adults":1,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":1,"Butterflies":0,"Cultural_Experience":1,"Family-friendly":1,"Food_Equity":0,"Fungi":1,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":10,"Host_Organization":"Greater Austin Neighborhoods","Event_Title":"Roots & Wings Community Block Party at Villas of Cordoba","Event_Description":"Celebrate Nature, Community, and Urban Green Spaces!\nJoin us for a fun-filled morning of nature discovery, hands-on gardening, and family-friendly activities!\nExplore the trees around your home on a guided Tree Discovery Walk, learn how to care for young trees, and get tips on composting and container gardening.\nKids can enjoy bug hunts, garden bingo, and seed planting while adults connect with local nature experts!\nFood, fun, games, and free garden giveaways for all!\n\nThis free event welcomes all ages and cultures, so come grow with us!","Start_Date_Time":"10/18/2025 10:00","End_Date_Time":"10/18/2025 15:00","Duration_Hrs":5,"Event_Type":"Single Event","Rain_Date_Time":"11/1/2025 10:00","Event_Location":"Villas of Cordoba Apartments","Address":"5901 E Stassney Ln","Zip_Code":78744,"X":-97.73111995,"Y":30.19121143,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":1,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":0,"RSVP":0},
+                {"Event_ID":11,"Host_Organization":"Greater Austin YMCA/TownLake YMCA","Event_Title":"Townlake YMCA Community Garden Fall Planting","Event_Description":"The TownLake YMCA will host its Community Garden Fall Planting event!\nThis free event is open to ALL community members. YMCA Fireflies volunteer ambassadors will guide kids, families and community members through the seasonal refresh of the Y's gardening plots with fresh soil, seeds and seedlings.\nThey'll also share best practices on seasonal gardening in Central Texas along with fun, interactive nature-based arts and crafts for kids to take home.","Start_Date_Time":"10/18/2025 10:00","End_Date_Time":"10/18/2025 12:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"TownLake YMCA","Address":"1100 W Cesar Chavez","Zip_Code":78703,"X":-97.75798836,"Y":30.26777421,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":1,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":12,"Host_Organization":"Austin Creative Alliance / Bug Safari","Event_Title":"Bugs & Trees in Harmony","Event_Description":"Join us at the Rosewood Park Pavillion for Bugs and Trees in Harmony, a fun and educational celebration of arthropods and trees!\nThis free, family-friendly event invites nature lovers of all ages to explore the amazing world of insects, crustaceans, arachnids, and myriapods-- and discover their important connections to Austin's urban trees.\nGet up close with hands-on arthropod encounters, join guided nature walks, and enjoy creative art activities like drawing, painting, and storytelling inspired by our tiny neighbors.\nSort them, hold them, and take a closer look-- there's so much to learn and love about the creatures that crawl, fly, and buzz through our parks!\nCome to Rosewood Park and connect with nature, build community, and see the outdoors in a whole new way!","Start_Date_Time":"10/18/2025 11:00","End_Date_Time":"10/18/2025 13:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Rosewood Park Pavilion","Address":"2300 Rosewood Ave","Zip_Code":78702,"X":-97.71507293,"Y":30.27040097,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":13,"Host_Organization":"The Healing Project ATX","Event_Title":"The Healing Project ATX presents: Healing Roots & Wings!","Event_Description":"Join us for a free, family-friendly outdoor event full of hands-on fun and learning!\nEnjoy:\nPlanting activities for all ages\nInteractive workshops on soil, fungi, and urban gardening\nCreative photo booth fun\nRaffles & giveaways\nEducational resources to spark curiosity in everyone\n\nBring your friends and family to reconnect with the land—and each other in a joyful, welcoming space!","Start_Date_Time":"10/18/2025 11:00","End_Date_Time":"10/18/2025 16:00","Duration_Hrs":5,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Givens Park","Address":"3811 E 12th St 78721","Zip_Code":78721,"X":-97.69207814,"Y":30.27811326,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":1,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":14,"Host_Organization":"Brush Square Museums (Susanna Dickinson Museum and the O. Henry Museum)","Event_Title":"Page-turner Butterflies: Origami Butterflies from Recycled Books","Event_Description":"Join us for a whimsical, family-friendly event where imagination takes flight!\n\nCelebrate nature and the love of books by turning old books into beautiful works of art.\n\nLearn to fold stunning paper butterflies from recycled book pages and take home a unique creation.","Start_Date_Time":"10/18/2025 11:00","End_Date_Time":"10/18/2025 13:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Susanna Dickinson Museum","Address":"411 E 5th St","Zip_Code":78701,"X":-97.73600612,"Y":30.26442654,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":1,"Cultural_Experience":1,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":15,"Host_Organization":"PARD - Austin Nature & Science Center","Event_Title":"ANSC Pollinator Party","Event_Description":"Join us for a celebration of all things Pollinators!\nEnjoy a morning of fun, family-friendly activities, including:\nInteractive pollinator education stations\nNature crafts\nPollinator garden tours\nBee-themed games and snacks","Start_Date_Time":"10/18/2025 11:00","End_Date_Time":"10/18/2025 13:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Austin Nature & Science Center","Address":"2389 Stratford Dr","Zip_Code":78746,"X":-97.77098416,"Y":30.27488975,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":1,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":1,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":16,"Host_Organization":"Full Gallop Arts","Event_Title":"Monarchs of Muertos Celebration","Event_Description":"Celebrate the Monarch Migration, Día de los Muertos, and the end of the Roots & Wings Festival! \n\nWe’re back this year with a special event honoring trees, traditions, and the magical monarch migration. Together, we’ll celebrate Texas Arbor Day and the deep cultural connection between Día de los Muertos and monarch butterflies—believed to carry the souls of loved ones on their journey. \n\nJoin us for a day of community, culture, and nature as we honor this beautiful season of remembrance and renewal.\n\n*This event is presented by Full Gallop Arts and is the culmination of the Roots & Wings Festival.\n\nEvent will include: live music and art, food trucks, and kids activities.","Start_Date_Time":"11/2/2025 15:00","End_Date_Time":"11/2/2025 17:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Cosmic Saltillo","Address":"1300 E 4th St","Zip_Code":78702,"X":-97.73024784,"Y":30.26228992,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":1,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":1,"Sensory_Inclusive":1,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":17,"Host_Organization":"Friends of Onion Creek","Event_Title":"Onion Creek Wildscape: Tree ID and Cleanup","Event_Description":"Celebrate the Roots & Wings Festival and Texas Arbor Day with Friends of Onion Creek. Join us for a fun and engaging event focused on the beautiful trees of the Onion Creek Wildscape. We’ll learn how to identify different native tree species, followed by a light cleanup of the park to help keep the wildscape healthy and beautiful.\n\nWear comfortable shoes and clothes you don’t mind getting dirty. We will provide gloves and bags. This is a great opportunity to connect with nature, learn more about our local environment, and give back to the community!","Start_Date_Time":"11/1/2025 9:00","End_Date_Time":"11/1/2025 11:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"11/2/2025 9:00","Event_Location":"Onion Creek Wildscape","Address":"7006 E. William Cannon Dr.","Zip_Code":78744,"X":-97.70119106,"Y":30.17062402,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":18,"Host_Organization":"Austin Creative Alliance / Bug Safari","Event_Title":"Bugs & Trees in Harmony at Austin Tinkering School","Event_Description":"Join us at the Austin Tinkering School for Bugs and Trees in Harmony, a fun and educational celebration of arthropods and trees!\n\nThis free, family-friendly event invites nature lovers of all ages to explore the amazing world of insects, crustaceans, arachnids, and myriapods-- and discover their important connections to Austin's urban trees.\n\nGet up close with hands-on arthropod encounters, join guided nature walks, and enjoy creative art activities like drawing, painting, and storytelling inspired by our tiny neighbors.\n\nSort them, hold them, and take a closer look-- there's so much to learn and love about the creatures that crawl, fly, and buzz through our parks!\n\nCome to Austin Tinkering School and connect with nature, build community, and see the outdoors in a whole new way!","Start_Date_Time":"11/1/2025 10:00","End_Date_Time":"11/1/2025 12:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Austin Tinkering School","Address":"11129 Circle Dr Suite 101","Zip_Code":78736,"X":-97.90225679,"Y":30.27838634,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":19,"Host_Organization":"Friends of the Austin Public Library","Event_Title":"Art Exhibit: The Light that Grows Here by Robin Kang","Event_Description":"The Light That Grows Here exhibit features new textile works honoring the healing spirit of native Texas plants by multidisciplinary artist and weaver Robin Kang.\n\n*Art on walls only","Start_Date_Time":"10/19/2025 9:00","End_Date_Time":"11/2/2025 17:00","Duration_Hrs":368,"Event_Type":"Multi-day Event","Rain_Date_Time":"","Event_Location":"Central Library, 2nd Floor Gallery - Austin Public Library","Address":"710 W Cesar Chavez St","Zip_Code":78701,"X":-97.75219687,"Y":30.26564963,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":1,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":1,"Soil_Health":1,"STEM":0,"RSVP":0},
+                {"Event_ID":20,"Host_Organization":"Travis Audubon","Event_Title":"Birding at Commons Ford Ranch Metropolitan Park","Event_Description":"Join the Travis Audubon team for a birding expedition at Commons Ford Ranch Metropolitan Park.\n\nEvent Highlights:\n- Learn to identify local and migratory bird species by sight and sound\n- Explore a diverse habitat, including riparian woodlands, grasslands, and a shoreline on Lake Austin\n- Gain valuable tips on using binoculars and field guides\n\nWhat to Wear/Bring:\n- Long pants and closed-toed shoes\n- Refillable water bottle\n- Binoculars and a field guide (we’ll have a few extra on hand)\n\nWe look forward to seeing you there!","Start_Date_Time":"10/19/2025 8:00","End_Date_Time":"10/19/2025 10:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"10/26/2025 8:00","Event_Location":"Commons Ford Ranch Metropolitan Park","Address":"614 N Commons Ford Rd","Zip_Code":78733,"X":-97.90483861,"Y":30.34751433,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":1,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":21,"Host_Organization":"Shoal Creek Conservancy","Event_Title":"Shoal Creek Cleanup: Roots and Wings Festival Edition","Event_Description":"Join Shoal Creek Conservancy and community partners for a cleanup along the Shoal Creek Greenbelt!\n\nThis family-friendly event invites volunteers of all ages to help remove trash and restore the natural beauty of the creek.\n\nWe'll provide the tools and gloves—just bring a refillable water bottle and a can-do spirit!\n\nThis is a great opportunity to get outside, make a tangible difference in your community, and meet fellow nature lovers.","Start_Date_Time":"10/19/2025 9:00","End_Date_Time":"10/19/2025 11:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"10/26/2025 9:00","Event_Location":"Duncan Park","Address":"900 W 9th St","Zip_Code":78703,"X":-97.74718306,"Y":30.27499648,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":22,"Host_Organization":"Austin Parks and Recreation","Event_Title":"Nature Scavenger Hunt","Event_Description":"Discover the hidden wonders of Austin's parks with a family-friendly scavenger hunt!\n\nPick up your scavenger hunt sheet at the park entrance and follow the clues to find different trees, plants, and animals. It's a fun and interactive way to explore nature and learn about our local ecosystem.","Start_Date_Time":"10/19/2025 9:00","End_Date_Time":"11/2/2025 17:00","Duration_Hrs":368,"Event_Type":"Continuous","Rain_Date_Time":"","Event_Location":"Zilker Park","Address":"2100 Barton Springs Rd","Zip_Code":78704,"X":-97.765432,"Y":30.26789,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":1,"Beautification":1,"Bilingual":0,"Birds":1,"Butterflies":1,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":1,"Indoor_Activity":0,"Pollinators":1,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":1,"RSVP":0},
+                {"Event_ID":23,"Host_Organization":"Austin Public Library","Event_Title":"Nature Journaling and Drawing","Event_Description":"Join us for a relaxing and creative workshop on nature journaling!\n\nLearn how to observe and document the world around you through drawing, writing, and sketching. We'll provide the supplies—just bring your curiosity!\n\nThis event is perfect for all ages and skill levels.","Start_Date_Time":"10/19/2025 10:00","End_Date_Time":"10/19/2025 12:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Central Library, 2nd Floor Gallery - Austin Public Library","Address":"710 W Cesar Chavez St","Zip_Code":78701,"X":-97.75219687,"Y":30.26564963,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":1,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":24,"Host_Organization":"Austin Parks and Recreation","Event_Title":"The Great Pumpkin Pollinator Patch","Event_Description":"Celebrate the season and pollinators with The Great Pumpkin Pollinator Patch!\n\nThis free, family-friendly event is full of festive fun and hands-on learning, including:\n\nCreate your own mini pollinator garden to take home\nPollinator costume parade\nInteractive stations to learn about bats, birds, and other native pollinators\nPumpkin painting and decorating\n\nDress up as your favorite pollinator and join the parade!","Start_Date_Time":"10/19/2025 10:00","End_Date_Time":"10/19/2025 13:00","Duration_Hrs":3,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Zilker Park","Address":"2100 Barton Springs Rd","Zip_Code":78704,"X":-97.765432,"Y":30.26789,"Tags_Combined":"","Categories_Combined":"","Notes":"Costumes are encouraged!","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":1,"Ages_5-12_(kids)":1,"Ages_12-17_(teens)":0,"Adults":0,"Bats":1,"Beautification":0,"Bilingual":0,"Birds":1,"Butterflies":1,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":1,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":25,"Host_Organization":"Austin Public Library","Event_Title":"Seed Swap & Planting Workshop","Event_Description":"Join the Austin Public Library for a community seed swap and planting workshop!\n\nBring your favorite seeds to swap with fellow gardeners and learn how to grow native plants and trees from seed.\n\nThis is a great opportunity to connect with local growers and get a jump start on your garden!","Start_Date_Time":"10/19/2025 11:00","End_Date_Time":"10/19/2025 13:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Central Library, 3rd Floor - Austin Public Library","Address":"710 W Cesar Chavez St","Zip_Code":78701,"X":-97.75219687,"Y":30.26564963,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":0,"RSVP":0},
+                {"Event_ID":26,"Host_Organization":"Austin Public Library","Event_Title":"Storytime in the Garden at Yarborough Branch","Event_Description":"Join us for a special outdoor storytime featuring books about nature, animals, and the world around us. Perfect for young children and their families.","Start_Date_Time":"10/21/2025 10:30","End_Date_Time":"10/21/2025 11:30","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Yarborough Branch","Address":"2200 Hancock Dr","Zip_Code":78756,"X":-97.74789,"Y":30.321234,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":0,"Ages_0-5_(kids)":1,"Ages_5-12_(kids)":1,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":27,"Host_Organization":"Austin Public Library","Event_Title":"Urban Farming with Farm to Table","Event_Description":"Join local urban farming experts from Farm to Table to learn how to start your own small-scale food garden, no matter the size of your space.\nWe will cover soil preparation, plant selection, and pest control using organic methods.","Start_Date_Time":"10/26/2025 13:00","End_Date_Time":"10/26/2025 15:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"East Austin Branch Library","Address":"3621 Webberville Rd","Zip_Code":78702,"X":-97.701234,"Y":30.26789,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":1,"RSVP":0},
+                {"Event_ID":28,"Host_Organization":"Austin Public Library","Event_Title":"Storytime with Mr. Gabriel at the Community Garden Harvest Festival","Event_Description":"Join Austin Public Library and Mr. Gabriel for a special outdoor storytime at the 8th Annual Roots & Wings Festival Community Garden Harvest Festival! Enjoy stories about nature, animals, and the world around us. Perfect for young children and their families.","Start_Date_Time":"11/2/2025 14:00","End_Date_Time":"11/2/2025 15:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Dottie Jordan Park","Address":"2803 Loyola Ln","Zip_Code":78723,"X":-97.6739403,"Y":30.31480026,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":0,"Ages_0-5_(kids)":1,"Ages_5-12_(kids)":1,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":1,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":29,"Host_Organization":"Austin Public Library","Event_Title":"Reading is for the Birds!","Event_Description":"Join us for a celebration of birds! We will be reading books about birds and doing a craft to make a bird feeder.","Start_Date_Time":"10/25/2025 11:00","End_Date_Time":"10/25/2025 12:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Twin Oaks Branch","Address":"1800 S 5th St","Zip_Code":78704,"X":-97.75549887,"Y":30.24522435,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":1,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":30,"Host_Organization":"Austin Public Library","Event_Title":"Seed Library Talk","Event_Description":"Are you ready to grow your own food but don't know where to start? Join us for an informational talk about the Austin Public Library Seed Library! Learn about what a seed library is, how it works, and how to borrow seeds to get started on your own garden.","Start_Date_Time":"10/26/2025 15:00","End_Date_Time":"10/26/2025 16:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"East Austin Branch Library","Address":"3621 Webberville Rd","Zip_Code":78702,"X":-97.701234,"Y":30.26789,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":1,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":0,"RSVP":0},
+                {"Event_ID":31,"Host_Organization":"Austin Public Library","Event_Title":"Butterfly Craft","Event_Description":"Join us for a fun craft! We will be making beautiful butterflies out of recycled materials.","Start_Date_Time":"10/29/2025 15:00","End_Date_Time":"10/29/2025 16:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Carver Branch","Address":"1161 Angelina St","Zip_Code":78702,"X":-97.72146957,"Y":30.2741919,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":1,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":32,"Host_Organization":"Austin Public Library","Event_Title":"Pollinator Craft","Event_Description":"Join us for a fun craft! We will be making beautiful bees and other pollinating insects out of recycled materials.","Start_Date_Time":"10/30/2025 15:00","End_Date_Time":"10/30/2025 16:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Carver Branch","Address":"1161 Angelina St","Zip_Code":78702,"X":-97.72146957,"Y":30.2741919,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":1,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":33,"Host_Organization":"Austin Public Library","Event_Title":"Trees Are Terrific Storytime","Event_Description":"Join us for a special storytime celebrating trees! We will be reading books about trees and doing a fun craft.","Start_Date_Time":"10/31/2025 11:00","End_Date_Time":"10/31/2025 12:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Twin Oaks Branch","Address":"1800 S 5th St","Zip_Code":78704,"X":-97.75549887,"Y":30.24522435,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":34,"Host_Organization":"Austin Public Library","Event_Title":"Bilingual Storytime: El Árbol Generoso","Event_Description":"Join us for a bilingual storytime (English/Spanish)! We will be reading the classic book The Giving Tree by Shel Silverstein, doing a fun craft, and talking about how trees give back to us!","Start_Date_Time":"11/1/2025 10:30","End_Date_Time":"11/1/2025 11:30","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Spicewood Springs Branch","Address":"8637 Spicewood Springs Rd","Zip_Code":78759,"X":-97.7699329,"Y":30.4079147,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":1,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":35,"Host_Organization":"Austin Public Library","Event_Title":"Storytime in the Garden at Central Library","Event_Description":"Join us for a special outdoor storytime on the rooftop garden at Central Library. We will be reading books about nature and doing a fun craft. Perfect for young children and their families.","Start_Date_Time":"11/2/2025 10:30","End_Date_Time":"11/2/2025 11:30","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Central Library Rooftop Garden - Austin Public Library","Address":"710 W Cesar Chavez St","Zip_Code":78701,"X":-97.75219687,"Y":30.26564963,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":0,"Ages_0-5_(kids)":1,"Ages_5-12_(kids)":1,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":36,"Host_Organization":"Austin Public Library","Event_Title":"Storytime with Ms. Aubrey at the Community Garden Harvest Festival","Event_Description":"Join Austin Public Library and Ms. Aubrey for a special outdoor storytime at the 8th Annual Roots & Wings Festival Community Garden Harvest Festival! Enjoy stories about nature, animals, and the world around us. Perfect for young children and their families.","Start_Date_Time":"11/2/2025 15:00","End_Date_Time":"11/2/2025 16:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Dottie Jordan Park","Address":"2803 Loyola Ln","Zip_Code":78723,"X":-97.6739403,"Y":30.31480026,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":0,"Ages_0-5_(kids)":1,"Ages_5-12_(kids)":1,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":37,"Host_Organization":"Austin Public Library","Event_Title":"Seed Swap & Planting Workshop","Event_Description":"Join the Austin Public Library for a community seed swap and planting workshop! Bring your favorite seeds to swap with fellow gardeners and learn how to grow native plants and trees from seed. This is a great opportunity to connect with local growers and get a jump start on your garden!","Start_Date_Time":"11/2/2025 15:00","End_Date_Time":"11/2/2025 16:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Twin Oaks Branch","Address":"1800 S 5th St","Zip_Code":78704,"X":-97.75549887,"Y":30.24522435,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":0,"RSVP":0},
+                {"Event_ID":38,"Host_Organization":"Austin Public Library","Event_Title":"Seed Library Talk","Event_Description":"Are you ready to grow your own food but don't know where to start? Join us for an informational talk about the Austin Public Library Seed Library! Learn about what a seed library is, how it works, and how to borrow seeds to get started on your own garden.","Start_Date_Time":"10/22/2025 14:00","End_Date_Time":"10/22/2025 15:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Hampton Branch","Address":"5125 Convict Hill Rd","Zip_Code":78749,"X":-97.86475631,"Y":30.22851088,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":1,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":0,"RSVP":0},
+                {"Event_ID":39,"Host_Organization":"Austin Public Library","Event_Title":"Seed Library Talk","Event_Description":"Are you ready to grow your own food but don't know where to start? Join us for an informational talk about the Austin Public Library Seed Library! Learn about what a seed library is, how it works, and how to borrow seeds to get started on your own garden.","Start_Date_Time":"10/25/2025 14:00","End_Date_Time":"10/25/2025 15:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"University Hills Branch","Address":"4726 Loyola Ln","Zip_Code":78723,"X":-97.68412808,"Y":30.30601614,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":1,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":0,"RSVP":0},
+                {"Event_ID":40,"Host_Organization":"Austin Public Library","Event_Title":"Seed Library Talk","Event_Description":"Are you ready to grow your own food but don't know where to start? Join us for an informational talk about the Austin Public Library Seed Library! Learn about what a seed library is, how it works, and how to borrow seeds to get started on your own garden.","Start_Date_Time":"10/27/2025 16:00","End_Date_Time":"10/27/2025 17:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Northwest Hills Branch","Address":"7050 Village Center Dr","Zip_Code":78731,"X":-97.77180479,"Y":30.35515321,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":1,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":0,"RSVP":0},
+                {"Event_ID":41,"Host_Organization":"Austin Public Library","Event_Title":"Seed Library Talk","Event_Description":"Are you ready to grow your own food but don't know where to start? Join us for an informational talk about the Austin Public Library Seed Library! Learn about what a seed library is, how it works, and how to borrow seeds to get started on your own garden.","Start_Date_Time":"10/28/2025 15:00","End_Date_Time":"10/28/2025 16:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Manchaca Road Branch","Address":"5500 Manchaca Rd","Zip_Code":78745,"X":-97.79468087,"Y":30.2223841,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":1,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":0,"RSVP":0},
+                {"Event_ID":42,"Host_Organization":"Austin Public Library","Event_Title":"Seed Library Talk","Event_Description":"Are you ready to grow your own food but don't know where to start? Join us for an informational talk about the Austin Public Library Seed Library! Learn about what a seed library is, how it works, and how to borrow seeds to get started on your own garden.","Start_Date_Time":"10/29/2025 15:00","End_Date_Time":"10/29/2025 16:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Ruiz Branch","Address":"1600 Grove Blvd","Zip_Code":78741,"X":-97.72806353,"Y":30.23963483,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":1,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":0,"RSVP":0},
+                {"Event_ID":43,"Host_Organization":"Austin Public Library","Event_Title":"Seed Library Talk","Event_Description":"Are you ready to grow your own food but don't know where to start? Join us for an informational talk about the Austin Public Library Seed Library! Learn about what a seed library is, how it works, and how to borrow seeds to get started on your own garden.","Start_Date_Time":"10/30/2025 15:00","End_Date_Time":"10/30/2025 16:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Pleasant Hill Branch","Address":"211 E William Cannon Dr","Zip_Code":78745,"X":-97.76813354,"Y":30.2079075,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":1,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":0,"RSVP":0},
+                {"Event_ID":44,"Host_Organization":"Austin Public Library","Event_Title":"Urban Farming with Farm to Table","Event_Description":"Join local urban farming experts from Farm to Table to learn how to start your own small-scale food garden, no matter the size of your space.\nWe will cover soil preparation, plant selection, and pest control using organic methods.","Start_Date_Time":"10/23/2025 15:00","End_Date_Time":"10/23/2025 17:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Windsor Park Branch Library","Address":"5833 Westminster Dr","Zip_Code":78723,"X":-97.69068557,"Y":30.3121959,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":1,"RSVP":0},
+                {"Event_ID":45,"Host_Organization":"Austin Public Library","Event_Title":"Monarchs, Milkweeds and Migration Storytime","Event_Description":"Join us for a special storytime celebrating the amazing monarch butterfly migration! We will be reading books about butterflies and planting milkweed to support our local pollinators.","Start_Date_Time":"10/22/2025 10:30","End_Date_Time":"10/22/2025 11:30","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Twin Oaks Branch","Address":"1800 S 5th St","Zip_Code":78704,"X":-97.75549887,"Y":30.24522435,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":1,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":1,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":46,"Host_Organization":"Austin Public Library","Event_Title":"Bilingual Storytime: El Árbol Generoso","Event_Description":"Join us for a bilingual storytime (English/Spanish)! We will be reading the classic book The Giving Tree by Shel Silverstein, doing a fun craft, and talking about how trees give back to us!","Start_Date_Time":"10/25/2025 10:30","End_Date_Time":"10/25/2025 11:30","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Faulk Central Library","Address":"800 Guadalupe St","Zip_Code":78701,"X":-97.747974,"Y":30.272183,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":1,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":47,"Host_Organization":"Austin Public Library","Event_Title":"Bilingual Storytime: El Árbol Generoso","Event_Description":"Join us for a bilingual storytime (English/Spanish)! We will be reading the classic book The Giving Tree by Shel Silverstein, doing a fun craft, and talking about how trees give back to us!","Start_Date_Time":"10/26/2025 14:00","End_Date_Time":"10/26/2025 15:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Yarborough Branch","Address":"2200 Hancock Dr","Zip_Code":78756,"X":-97.74789,"Y":30.321234,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":1,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":48,"Host_Organization":"Austin Public Library","Event_Title":"Bilingual Storytime: El Árbol Generoso","Event_Description":"Join us for a bilingual storytime (English/Spanish)! We will be reading the classic book The Giving Tree by Shel Silverstein, doing a fun craft, and talking about how trees give back to us!","Start_Date_Time":"10/27/2025 16:30","End_Date_Time":"10/27/2025 17:30","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Hampton Branch","Address":"5125 Convict Hill Rd","Zip_Code":78749,"X":-97.86475631,"Y":30.22851088,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":1,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":49,"Host_Organization":"Austin Public Library","Event_Title":"Urban Farming with Farm to Table","Event_Description":"Join local urban farming experts from Farm to Table to learn how to start your own small-scale food garden, no matter the size of your space. We will cover soil preparation, plant selection, and pest control using organic methods.","Start_Date_Time":"10/28/2025 15:00","End_Date_Time":"10/28/2025 17:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Manchaca Road Branch","Address":"5500 Manchaca Rd","Zip_Code":78745,"X":-97.79468087,"Y":30.2223841,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":1,"RSVP":0},
+                {"Event_ID":50,"Host_Organization":"Austin Public Library","Event_Title":"Urban Farming with Farm to Table","Event_Description":"Join local urban farming experts from Farm to Table to learn how to start your own small-scale food garden, no matter the size of your space. We will cover soil preparation, plant selection, and pest control using organic methods.","Start_Date_Time":"10/29/2025 15:00","End_Date_Time":"10/29/2025 17:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Ruiz Branch","Address":"1600 Grove Blvd","Zip_Code":78741,"X":-97.72806353,"Y":30.23963483,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":1,"STEM":1,"RSVP":0},
+                {"Event_ID":51,"Host_Organization":"Austin Public Library","Event_Title":"Pollinator Craft","Event_Description":"Join us for a fun craft! We will be making beautiful bees and other pollinating insects out of recycled materials.","Start_Date_Time":"10/25/2025 11:00","End_Date_Time":"10/25/2025 12:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"University Hills Branch","Address":"4726 Loyola Ln","Zip_Code":78723,"X":-97.68412808,"Y":30.30601614,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":1,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":52,"Host_Organization":"Austin Public Library","Event_Title":"Butterfly Craft","Event_Description":"Join us for a fun craft! We will be making beautiful butterflies out of recycled materials.","Start_Date_Time":"10/26/2025 14:00","End_Date_Time":"10/26/2025 15:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Hampton Branch","Address":"5125 Convict Hill Rd","Zip_Code":78749,"X":-97.86475631,"Y":30.22851088,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":0,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":1,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":53,"Host_Organization":"Austin Public Library","Event_Title":"Trees Are Terrific Storytime","Event_Description":"Join us for a special storytime celebrating trees! We will be reading books about trees and doing a fun craft.","Start_Date_Time":"10/27/2025 14:00","End_Date_Time":"10/27/2025 15:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Northwest Hills Branch","Address":"7050 Village Center Dr","Zip_Code":78731,"X":-97.77180479,"Y":30.35515321,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":54,"Host_Organization":"Austin Public Library","Event_Title":"Trees Are Terrific Storytime","Event_Description":"Join us for a special storytime celebrating trees! We will be reading books about trees and doing a fun craft.","Start_Date_Time":"10/28/2025 11:00","End_Date_Time":"10/28/2025 12:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Manchaca Road Branch","Address":"5500 Manchaca Rd","Zip_Code":78745,"X":-97.79468087,"Y":30.2223841,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":55,"Host_Organization":"Austin Public Library","Event_Title":"Trees Are Terrific Storytime","Event_Description":"Join us for a special storytime celebrating trees! We will be reading books about trees and doing a fun craft.","Start_Date_Time":"10/29/2025 11:00","End_Date_Time":"10/29/2025 12:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Ruiz Branch","Address":"1600 Grove Blvd","Zip_Code":78741,"X":-97.72806353,"Y":30.23963483,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":56,"Host_Organization":"Austin Public Library","Event_Title":"Trees Are Terrific Storytime","Event_Description":"Join us for a special storytime celebrating trees! We will be reading books about trees and doing a fun craft.","Start_Date_Time":"10/30/2025 11:00","End_Date_Time":"10/30/2025 12:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Pleasant Hill Branch","Address":"211 E William Cannon Dr","Zip_Code":78745,"X":-97.76813354,"Y":30.2079075,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":57,"Host_Organization":"TreeFolks","Event_Title":"TreeFolks NeighborWoods Tree Adoption","Event_Description":"Reduce energy use, offset carbon, cool down the city, support pollinators, and beautify your neighborhood!\n\nThe TreeFolks NeighborWoods program, in partnership with the City of Austin and Austin Energy, will be giving away 500 free five gallon trees at EcoFest!\n\nTree adopters must commit to nurturing their tree, especially with regular watering for at least the first two years of establishment.\n\nOur adoption events are open to the public and no registration is needed.\nLimit of two trees per household.","Start_Date_Time":"11/1/2025 11:00","End_Date_Time":"11/1/2025 13:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Bartholomew Park near the Splash Pad","Address":"5200 Berkman Dr","Zip_Code":78723,"X":-97.69781696,"Y":30.30567654,"Tags_Combined":"","Categories_Combined":"","Notes":"This is a sub-event of Austin EcoFest, with a limited number of trees available.","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":58,"Host_Organization":"Austin EcoFest","Event_Title":"Austin EcoFest - a Roots & Wings Festival Event","Event_Description":"Celebrate Nature & Community!\nJoin us for a free, family-friendly festival bringing neighbors together to explore and enjoy the wonders of Austin’s urban ecosystem.\n\nFestival Highlights:\nFree Tree Giveaways from TreeFolks\nTree Care Demos & free workshops from local experts\nPlant & seed swaps\nKid-friendly activities\nLocal vendors & food trucks\nElectric vehicle showcase\nFree compost from Austin Resource Recovery","Start_Date_Time":"11/1/2025 11:00","End_Date_Time":"11/1/2025 15:00","Duration_Hrs":4,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Bartholomew Park near the Splash Pad","Address":"5200 Berkman Dr","Zip_Code":78723,"X":-97.69781696,"Y":30.30567654,"Tags_Combined":"","Categories_Combined":"","Notes":"This event is not held at a City of Austin Facility. It is located in a City of Austin Park. Free trees from TreeFolks are limited, with two trees per household. Tree adopters must commit to nurturing their tree with regular watering for at least two years.","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":1,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":59,"Host_Organization":"Full Gallop Arts","Event_Title":"Mariposas y Muertos: A Roots & Wings Festival Event","Event_Description":"Celebrate Texas Arbor Day, Monarch Migration & Día de los Muertos with Full Gallop Arts!\n\nWe’re back this year with a special event honoring trees, traditions, and the magical monarch migration. Together, we’ll celebrate Texas Arbor Day and the deep cultural connection between Día de los Muertos and monarch butterflies—believed to carry the souls of loved ones on their journey.\n\nJoin us for a day of community, culture, and nature as we honor this beautiful season of remembrance and renewal.","Start_Date_Time":"11/2/2025 15:00","End_Date_Time":"11/2/2025 17:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Cosmic Saltillo","Address":"1300 E 4th St","Zip_Code":78702,"X":-97.73024784,"Y":30.26228992,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":1,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":1,"Sensory_Inclusive":1,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":60,"Host_Organization":"Austin Parks Foundation","Event_Title":"Park Maintenance Workshop","Event_Description":"Learn the basics of park maintenance, from weeding to trail repair. This hands-on workshop is a great way to give back to the community and learn practical skills.","Start_Date_Time":"10/28/2025 9:00","End_Date_Time":"10/28/2025 12:00","Duration_Hrs":3,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Zilker Park","Address":"2100 Barton Springs Rd","Zip_Code":78704,"X":-97.765432,"Y":30.26789,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":0,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":1,"Adults":1,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":0,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":61,"Host_Organization":"Austin Public Library","Event_Title":"Bilingual Storytime: El Árbol Generoso","Event_Description":"Join us for a bilingual storytime (English/Spanish)! We will be reading the classic book The Giving Tree by Shel Silverstein, doing a fun craft, and talking about how trees give back to us!","Start_Date_Time":"11/2/2025 11:00","End_Date_Time":"11/2/2025 12:00","Duration_Hrs":1,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Central Library, 2nd Floor - Austin Public Library","Address":"710 W Cesar Chavez St","Zip_Code":78701,"X":-97.75219687,"Y":30.26564963,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":1,"Birds":0,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":1,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":62,"Host_Organization":"Neighbors of Dottie Jordan Park & Garden","Event_Title":"Roots & Wings Festival at Dottie Jordan Park","Event_Description":"Join the Neighbors of Dottie for the 8th Annual Roots & Wings Festival celebrating pollinators and trees! Tour the community garden, find out where the birds live, and so much more! \n\nTree Giveaway\nAustin Public Library Storytime w/ Mr. Gabriel & Ms. Aubrey\nAustin Public Library Bookmobile - Sign up for a library card and check out books!\nLive music\nTour the community garden\nTalk to local birders & find out what birds live in the park","Start_Date_Time":"11/2/2025 14:00","End_Date_Time":"11/2/2025 17:00","Duration_Hrs":3,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Dottie Jordan Park","Address":"2803 Loyola Ln","Zip_Code":78723,"X":-97.6739403,"Y":30.31480026,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":0,"Ages_0-5_(kids)":1,"Ages_5-12_(kids)":1,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":0,"Bilingual":1,"Birds":1,"Butterflies":0,"Cultural_Experience":0,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":0,"Sensory_Inclusive":0,"Soil_Health":0,"STEM":0,"RSVP":0},
+                {"Event_ID":63,"Host_Organization":"Full Gallop Arts","Event_Title":"Mariposas y Muertos: A Roots & Wings Festival Event","Event_Description":"Celebrate Texas Arbor Day, Monarch Migration & Día de los Muertos with Full Gallop Arts!\n\nWe’re back this year with a special event honoring trees, traditions, and the magical monarch migration. Together, we’ll celebrate Texas Arbor Day and the deep cultural connection between Día de los Muertos and monarch butterflies—believed to carry the souls of loved ones on their journey.\n\nJoin us for a day of community, culture, and nature as we honor this beautiful season of remembrance and renewal.","Start_Date_Time":"11/2/2025 15:00","End_Date_Time":"11/2/2025 17:00","Duration_Hrs":2,"Event_Type":"Single Event","Rain_Date_Time":"","Event_Location":"Cosmic Saltillo","Address":"1300 E 4th St","Zip_Code":78702,"X":-97.73024784,"Y":30.26228992,"Tags_Combined":"","Categories_Combined":"","Notes":"","Trees":1,"All_Ages":1,"Ages_0-5_(kids)":0,"Ages_5-12_(kids)":0,"Ages_12-17_(teens)":0,"Adults":0,"Bats":0,"Beautification":1,"Bilingual":0,"Birds":0,"Butterflies":0,"Cultural_Experience":1,"Family-friendly":1,"Food_Equity":0,"Fungi":0,"Indoor_Activity":0,"Pollinators":1,"Sensory_Inclusive":1,"Soil_Health":0,"STEM":0,"RSVP":0}
             ];
             
-            // Populate the theme dropdown
-            themeNames.forEach(theme => {
-                const option = document.createElement('option');
-                option.value = toCamelCase(theme);
-                option.textContent = theme === 'Trees' ? 'Trees 🌳' : theme;
-                themeSelect.appendChild(option);
-            });
+            const eventListContainer = document.getElementById('eventListContainer');
+            const noResultsMessage = document.getElementById('noResultsMessage');
+            const searchButton = document.getElementById('searchButton');
+            const keywordOrZipInput = document.getElementById('keywordOrZipInput');
+            const filterSelect = document.getElementById('filterSelect');
+            const eventDateInput = document.getElementById('eventDateInput');
+            const showAllEventsText = document.getElementById('showAllEventsText');
+            const resultsCount = document.getElementById('resultsCount');
+            const backToTopLink = document.getElementById('backToTopLink');
+            const resetButton = document.getElementById('resetButton');
 
-            const allEvents = parseEventData(rawEventData);
+            const categoryMap = {
+                'Trees': 'Trees',
+                'All Ages': 'All_Ages',
+                'Ages 0-5 (kids)': 'Ages_0-5_(kids)',
+                'Ages 5-12 (kids)': 'Ages_5-12_(kids)',
+                'Ages 12 - 17 (teens)': 'Ages_12-17_(teens)',
+                'Adults': 'Adults',
+                'Bats': 'Bats',
+                'Beautification': 'Beautification',
+                'Bilingual': 'Bilingual',
+                'Birds': 'Birds',
+                'Butterflies': 'Butterflies',
+                'Cultural Experience': 'Cultural_Experience',
+                'Family-friendly': 'Family-friendly',
+                'Food Equity': 'Food_Equity',
+                'Fungi': 'Fungi',
+                'Indoor Activity': 'Indoor_Activity',
+                'Pollinators': 'Pollinators',
+                'Sensory Inclusive': 'Sensory_Inclusive',
+                'Soil Health': 'Soil_Health',
+                'STEM': 'STEM'
+            };
 
-            // Function to display events
-            const displayEvents = (eventsToDisplay) => {
-                eventsDisplay.innerHTML = '';
-                noResultsMessage.style.display = 'none';
-                backToTopLink.style.display = 'none';
+            const sortEvents = (events) => {
+                return events.sort((a, b) => {
+                    const dateA = new Date(a.Start_Date_Time);
+                    const dateB = new Date(b.Start_Date_Time);
 
-                if (eventsToDisplay.length > 0) {
-                    backToTopLink.style.display = 'block';
-                    const eventsCountElement = document.createElement('p');
-                    eventsCountElement.classList.add('events-found-count');
-                    eventsCountElement.textContent = `${eventsToDisplay.length} event${eventsToDisplay.length === 1 ? '' : 's'} found:`;
-                    eventsDisplay.appendChild(eventsCountElement);
-                    eventsToDisplay.forEach(event => {
-                        const eventCard = document.createElement('div');
-                        eventCard.classList.add('event-card');
+                    if (dateA.toDateString() !== dateB.toDateString()) {
+                        return dateA - dateB;
+                    }
+
+                    const titleA = a.Event_Title.toLowerCase();
+                    const titleB = b.Event_Title.toLowerCase();
+                    return titleA.localeCompare(titleB);
+                });
+            };
+
+            const formatTime = (time) => {
+                const [h, m] = time.split(':').map(Number);
+                const ampm = h >= 12 ? 'PM' : 'AM';
+                const hour = h % 12 || 12;
+                return `${hour}:${String(m).padStart(2, '0')} ${ampm}`;
+            };
+
+            const formatDateTime = (startDateTime, endDateTime, rainDateTime) => {
+                const startDate = new Date(startDateTime);
+                const endDate = new Date(endDateTime);
+
+                const formatDate = (date) => {
+                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                    const day = String(date.getDate()).padStart(2, '0');
+                    const year = date.getFullYear();
+                    return `${month}/${day}/${year}`;
+                };
+                
+                if (new Date(endDateTime).toDateString() !== startDate.toDateString()) {
+                    return `Multi-day Event: ${new Date(startDateTime).toLocaleDateString()} - ${new Date(endDateTime).toLocaleDateString()}`;
+                }
+
+                const startTime = formatTime(startDateTime.split(' ')[1]);
+                const endTime = formatTime(endDateTime.split(' ')[1]);
+
+                let result = `<p><strong>Date & Time:</strong> <span>${new Date(startDate).toLocaleDateString('en-US', {weekday: 'long', month: 'long', day: 'numeric'})} ${startTime} - ${endTime}</span></p>`;
+
+                if (rainDateTime && rainDateTime.trim() !== '') {
+                    const rainDate = new Date(rainDateTime);
+                    const formattedRainDate = formatDate(rainDate);
+                    const rainTime = formatTime(rainDateTime.split(' ')[1]);
+                    result += `<p class="rain-date-text"><strong>Rain Date:</strong> <span>${formattedRainDate} ${rainTime}</span></p>`;
+                }
+                
+                return result;
+            };
+
+            const displayEvents = (events) => {
+                eventListContainer.innerHTML = '';
+                if (events.length === 0) {
+                    noResultsMessage.style.display = 'block';
+                    resultsCount.textContent = '';
+                } else {
+                    noResultsMessage.style.display = 'none';
+                    if (events.length === allEvents.length) {
+                         resultsCount.textContent = 'Displaying all events';
+                    } else {
+                        resultsCount.textContent = `Found ${events.length} events`;
+                    }
+                    
+                    const groupedEvents = events.reduce((acc, event) => {
+                        const date = new Date(event.Start_Date_Time).toDateString();
+                        if (!acc[date]) {
+                            acc[date] = [];
+                        }
+                        acc[date].push(event);
+                        return acc;
+                    }, {});
+
+                    const sortedDates = Object.keys(groupedEvents).sort((a, b) => new Date(a) - new Date(b));
+
+                    sortedDates.forEach(date => {
+                        const eventGroup = document.createElement('div');
+                        eventGroup.className = 'event-group';
                         
-                        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${event.address}, ${event.city}, ${event.state} ${event.zipCode}`)}`;
+                        const dateHeader = document.createElement('h3');
+                        dateHeader.className = 'event-date-header';
+                        dateHeader.textContent = new Date(date).toLocaleDateString('en-US', {
+                            weekday: 'long',
+                            month: 'long',
+                            day: 'numeric'
+                        });
+                        dateHeader.dataset.date = date;
+                        eventGroup.appendChild(dateHeader);
+                        
+                        const eventItemsList = document.createElement('ul');
+                        eventItemsList.className = 'event-items-list';
+                        eventGroup.appendChild(eventItemsList);
+                        
+                        groupedEvents[date].sort((a, b) => new Date(a.Start_Date_Time) - new Date(b.Start_Date_Time));
 
-                        eventCard.innerHTML = `
-                            <h3><a href="${event.url}" target="_blank">${event.name}</a></h3>
-                            ${event.displayDate ? `<p><strong>Date:</strong> ${event.displayDate}</p>` : ''}
-                            <p><strong>Location:</strong> <a href="${mapUrl}" target="_blank">${event.location}, ${event.address}, ${event.zipCode}</a></p>
-                            <p class="event-description"><strong>Description: </strong>${placeholderDescription}</p>
-                        `;
-                        eventsDisplay.appendChild(eventCard);
+                        groupedEvents[date].forEach(event => {
+                            const eventItem = document.createElement('li');
+                            eventItem.className = 'event-item';
 
-                        // Add click event to expand description
-                        const descriptionElement = eventCard.querySelector('.event-description');
-                        descriptionElement.addEventListener('click', () => {
-                            descriptionElement.classList.toggle('expanded');
+                            if (event.RSVP === 1) {
+                                const rsvpTag = document.createElement('span');
+                                rsvpTag.className = 'rsvp-tag';
+                                rsvpTag.textContent = 'RSVP';
+                                eventItem.appendChild(rsvpTag);
+                            }
+
+                            const eventTitle = document.createElement('h4');
+                            eventTitle.className = 'event-title';
+                            eventTitle.textContent = event.Event_Title;
+                            eventItem.appendChild(eventTitle);
+                            
+                            const details = document.createElement('div');
+                            details.className = 'event-details';
+                            
+                            details.innerHTML += formatDateTime(event.Start_Date_Time, event.End_Date_Time, event.Rain_Date_Time);
+
+                            const locationLink = document.createElement('a');
+                            const googleMapsLink = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.Address)}`;
+                            locationLink.href = googleMapsLink;
+                            locationLink.target = '_blank';
+                            locationLink.className = 'location-link';
+                            locationLink.textContent = `${event.Event_Location}, ${event.Address}, ${event.Zip_Code}`;
+
+                            const location = document.createElement('p');
+                            location.innerHTML = `<strong>Location:</strong> `;
+                            location.appendChild(locationLink);
+                            details.appendChild(location);
+
+                            eventItem.appendChild(details);
+
+                            const descriptionContainer = document.createElement('div');
+                            descriptionContainer.className = 'description-container';
+                            
+                            const description = document.createElement('p');
+                            description.className = 'event-description';
+                            description.innerHTML = `<strong>Description:</strong> ${event.Event_Description.replace(/\\n/g, '<br>')}`;
+                            
+                            descriptionContainer.appendChild(description);
+                            eventItem.appendChild(descriptionContainer);
+
+                            description.addEventListener('click', () => {
+                                description.classList.toggle('expanded');
+                            });
+
+                            eventItemsList.appendChild(eventItem);
+                        });
+                        eventListContainer.appendChild(eventGroup);
+                    });
+                    
+                    document.querySelectorAll('.event-date-header').forEach(header => {
+                        header.addEventListener('click', () => {
+                            header.classList.toggle('collapsed');
+                            header.nextElementSibling.style.display = header.nextElementSibling.style.display === 'none' ? 'grid' : 'none';
                         });
                     });
-                } else {
-                    noResultsMessage.style.display = 'block';
                 }
             };
             
-            // Initial load: show all events
-            const sortedEvents = [...allEvents].sort((a, b) => {
-                const nameA = a.name.toUpperCase();
-                const nameB = b.name.toUpperCase();
-                if (nameA < nameB) {
-                    return -1;
-                }
-                if (nameA > nameB) {
-                    return 1;
-                }
-                return 0;
-            });
+            const sortedEvents = sortEvents([...allEvents]);
             displayEvents(sortedEvents);
 
             searchButton.addEventListener('click', () => {
-                const inputQuery = keywordOrZipInput.value.trim();
+                const keyword = keywordOrZipInput.value.toLowerCase().trim();
                 const selectedDate = eventDateInput.value;
-                const selectedThemes = Array.from(themeSelect.options)
-                                            .filter(option => option.selected && option.value !== '')
-                                            .map(option => option.value);
+                const selectedFilters = Array.from(filterSelect.options)
+                                                .filter(option => option.selected)
+                                                .map(option => categoryMap[option.value]);
 
-                eventsDisplay.innerHTML = '';
-                noResultsMessage.style.display = 'none';
-                backToTopLink.style.display = 'none';
+                const filteredEvents = allEvents.filter(event => {
+                    const keywordFields = [
+                        event.Host_Organization,
+                        event.Event_Title,
+                        event.Event_Description,
+                        String(event.Zip_Code),
+                        event.Event_Location,
+                        event.Tags_Combined,
+                        event.Categories_Combined
+                    ].join(' ').toLowerCase();
 
-                let filteredEvents = allEvents;
-                let hasCriteria = false;
+                    const matchesKeyword = !keyword || keywordFields.includes(keyword);
 
-                // Apply combined keyword or zip code filter
-                if (inputQuery) {
-                    if (/^\d{5}$/.test(inputQuery)) {
-                        // It's a zip code
-                        filteredEvents = filteredEvents.filter(event => {
-                            return event.zipCode === inputQuery;
-                        });
-                    } else {
-                        // It's a keyword
-                        const lowerCaseQuery = inputQuery.toLowerCase();
-                        filteredEvents = filteredEvents.filter(event => {
-                            return event.name.toLowerCase().includes(lowerCaseQuery) ||
-                                   event.location.toLowerCase().includes(lowerCaseQuery);
-                        });
-                    }
-                    hasCriteria = true;
-                }
+                    const eventDate = new Date(event.Start_Date_Time);
+                    const matchesDate = !selectedDate || eventDate.toISOString().split('T')[0] === selectedDate;
+                    
+                    const matchesFilters = selectedFilters.length === 0 || 
+                                           selectedFilters.every(filter => event[filter] === 1);
+
+                    return matchesKeyword && matchesDate && matchesFilters;
+                });
                 
-                // Apply Date filter
-                if (selectedDate) {
-                    filteredEvents = filteredEvents.filter(event => {
-                        if (!event.timestamp) {
-                            return false;
-                        }
-                        const eventDateString = event.timestamp.toISOString().slice(0, 10);
-                        return eventDateString === selectedDate;
-                    });
-                    hasCriteria = true;
-                }
-
-                // Apply Theme filter
-                if (selectedThemes.length > 0) {
-                    filteredEvents = filteredEvents.filter(event => {
-                        return selectedThemes.every(theme => event.themes[theme]);
-                    });
-                    hasCriteria = true;
-                }
-                
-                if (!hasCriteria) {
-                    // If no search criteria are provided, show all events
-                    const sortedEvents = [...allEvents].sort((a, b) => {
-                        const nameA = a.name.toUpperCase();
-                        const nameB = b.name.toUpperCase();
-                        if (nameA < nameB) {
-                            return -1;
-                        }
-                        if (nameA > nameB) {
-                            return 1;
-                        }
-                        return 0;
-                    });
-                    displayEvents(sortedEvents);
-                    return;
-                }
-                
-                displayEvents(filteredEvents);
+                const sortedFilteredEvents = sortEvents(filteredEvents);
+                displayEvents(sortedFilteredEvents);
             });
 
             showAllEventsText.addEventListener('click', () => {
                 keywordOrZipInput.value = '';
                 eventDateInput.value = '';
-                Array.from(themeSelect.options).forEach(option => option.selected = false);
-
-                const sortedEvents = [...allEvents].sort((a, b) => {
-                    const nameA = a.name.toUpperCase();
-                    const nameB = b.name.toUpperCase();
-                    if (nameA < nameB) {
-                        return -1;
-                    }
-                    if (nameA > nameB) {
-                        return 1;
-                    }
-                    return 0;
-                });
+                Array.from(filterSelect.options).forEach(option => option.selected = false);
+                const sortedEvents = sortEvents([...allEvents]);
                 displayEvents(sortedEvents);
             });
 
             resetButton.addEventListener('click', () => {
-                location.reload();
-            });
-
-            keywordOrZipInput.addEventListener('keypress', (event) => {
-                if (event.key === 'Enter') {
-                    searchButton.click();
-                }
+                keywordOrZipInput.value = '';
+                eventDateInput.value = '';
+                Array.from(filterSelect.options).forEach(option => option.selected = false);
+                const sortedEvents = sortEvents([...allEvents]);
+                displayEvents(sortedEvents);
             });
 
             backToTopLink.addEventListener('click', (event) => {
@@ -753,8 +784,15 @@ Preschool Imagination Station: Roots & Wings!,10/28/2024 10:00 AM,Yarborough Bra
                     behavior: 'smooth'
                 });
             });
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopLink.style.display = 'block';
+                } else {
+                    backToTopLink.style.display = 'none';
+                }
+            });
         });
-        // --- script.js content ends here ---
     </script>
 </body>
-</html>S
+</html>
