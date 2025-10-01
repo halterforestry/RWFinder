@@ -493,7 +493,7 @@
             
             <!-- NEW WARNING MESSAGE -->
             <div class="search-warning">
-                <p>⚠️ <strong>Note:</strong> Click the 'Search' button to apply filters and view results. Hitting Enter won't work. 'Reset' clears all filters.</p>
+                <p>⚠️ <strong>Note:</strong> Click the 'Search' button to apply filters and view results. Hitting Enter on the keyboard won't work. 'Reset' clears all filters.</p>
             </div>
 
             <div class="search-buttons">
@@ -514,6 +514,43 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const allEvents = [
+{
+  "Event_ID": 1,
+  "Host_Organization": "Birdability",
+  "Event_Title": "Birdability at Lake Creek Trail: A Roots and Wings Festival Event!",
+  "Event_Description": "Celebrate Roots & Wings Festival with Birdability at Lake Creek Trail!\n \nJoin Virginia Rose, Founder of Birdability and proud Austin native, for this unforgettable birding adventure! Three awesome Birdability Captains will be with us to help ensure that everyone hears or sees the birds! We will be available to all!\n \nWhat to Expect:\n• Explore wide, paved, and accessible trails winding through majestic pecan trees along Onion Creek.\n• Learn how to bird by sight and sound, with tips on using binoculars and the Merlin app.\n• Enjoy a guided walk with experienced Birdability guides who share the joy of birding with everyone.\n• Discover Richard Moya Park’s unique history, including its iconic bridge built from spans of Old Moore’s Crossing.\n \nWhy Come?\n• A beautifully accessible park with reliable year-round birds (often 40+ species in a single outing!).\n• Perfect for beginners and experienced birders alike.\n• Family-friendly, welcoming, and part of Austin’s Roots & Wings Festival.\n \n Note: Air traffic is common in this area.\n \nFor more information about the Event, please contact Virginia directly at Vrose6784@gmail.com and thank you!\n \nLearn more about Birdability here: birdability.org",
+  "Start_Date_Time": "10/18/2025 08:00",
+  "End_Date_Time": "10/18/2025 12:00",
+  "Duration_Hours": 4,
+  "Event_Type": "Single Event",
+  "Rain_Date_Time": null,
+  "Event_Location": "Lake Creek Park, West Trailhead",
+  "Address": "9504 Braes Valley St",
+  "Zip_Code": 78729,
+  "X": -97.77704679319368,
+  "Y": 30.46747008189281,
+  "Trees": 0,
+  "All_Ages": 1,
+  "Ages_0-5_(kids)": 0,
+  "Ages_5-12_(kids)": 0,
+  "Ages_12-17_(teens)": 0,
+  "Adults": 0,
+  "Bats": 0,
+  "Beautification": 0,
+  "Bilingual": 0,
+  "Birds": 1,
+  "Butterflies": 0,
+  "Cultural_Experience": 0,
+  "Family-friendly": 1,
+  "Food_Equity": 0,
+  "Fungi": 0,
+  "Indoor_Activity": 0,
+  "Pollinators": 0,
+  "Sensory_Inclusive": 0,
+  "Soil_Health": 0,
+  "STEM": 0,
+  "RSVP": "https://travis.app.neoncrm.com/np/clients/travis/event.jsp?event=13507&"
+},
 {
  "Event_ID": 2,"Host_Organization":  "Travis Audubon","Event_Title":  "Sapling Planting and Tree ID Walk at Blair Woods Nature Preserve!",
 "Event_Description": "Join us for a beautiful fall morning at Blair Woods, our 10-acre nature preserve in East Austin, to celebrate trees both big and small!\n \nEvent Highlights:\n• Plant native seedlings and help grow the next generation of trees\n• Guided tour of Blair Woods’ stunning variety of native trees, led by Kainoa Lee, Land Steward\n• What to Wear/Bring:\n• Long pants and closed-toed shoes\n• Refillable water bottle \n• Port-a-can available onsite\n• Come connect with nature, learn about native trees, and leave with a sense of accomplishment as part of Austin’s vibrant green community!",
@@ -546,7 +583,7 @@
 "Sensory_Inclusive": 0,
 "Soil_Health": 0,
 "STEM": 0,
-"RSVP": "https://travis.app.neoncrm.com/event.jsp?event=16841"
+"RSVP": "https://travis.app.neoncrm.com/event.jsp?event=16841",
 },
 {
   "Event_ID": 3,
@@ -3069,7 +3106,7 @@
             });
             
             // Initial load of all events
-            populateHostOrganizations(allEvents);
+            populateHostOrganizations(allEvents); 
             displayEvents(sortEvents(allEvents));
         });
     </script>
