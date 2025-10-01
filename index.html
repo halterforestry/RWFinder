@@ -8,7 +8,7 @@
     <style>
         body {
             /* GLOBAL FONT SETTING: This ensures all elements inherit Roboto Slab */
-            font-family: 'Roboto Slab', sans serif;
+            font-family: 'Roboto Slab', serif;
             background-color: #33232b;
             display: flex;
             justify-content: center;
@@ -95,7 +95,6 @@
             border: 1px solid #ffffff;
             transition: all 0.3s ease;
             box-sizing: border-box;
-            font-family: 'Roboto Slab', serif;
             background-color: #33232b;
             color: #ffffff;
             box-shadow: 0 0 3px rgba(255, 255, 255, 0.15);
@@ -109,15 +108,13 @@
             color: #ffffff;
         }
 
-        .select-input option {
-            /* font-family: 'Roboto Slab', sans serif; <-- REMOVED: Inherits from body */
-        }
-
         .text-input:focus, .date-input:focus, .select-input:focus {
             border-color: #ef8c2a;
             outline: none;
             box-shadow: 0 0 5px rgba(239, 140, 42, 0.5);
         }
+        
+        /* NEW: Style for the warning message */
         .search-warning {
             flex: 1 1 100%; /* Take full width on any screen */
             text-align: center;
@@ -134,6 +131,8 @@
             margin: 0;
             font-weight: normal;
         }
+        /* END NEW CSS */
+
         .search-buttons {
             display: flex;
             flex-direction: column;
@@ -148,7 +147,6 @@
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            font-family: 'Roboto Slab', serif;
         }
 
         .search-button {
@@ -413,7 +411,10 @@
                 flex: 1 1 45%; /* Allows two columns on wider screens */
                 min-width: 200px; 
             }
-            /* Make the buttons and map link take up the last row */
+            /* Make the warning, buttons and map link take up the last rows */
+            .search-warning {
+                flex: 1 1 100%;
+            }
             .search-buttons {
                 flex-direction: row;
                 gap: 10px;
@@ -439,7 +440,7 @@
 
         <section class="search-container">
             <h2 class="filter-title">Filter Events:</h2>
-          
+            
             <!-- NEW KEYWORD SEARCH FILTER -->
             <div class="search-input-group">
                 <label for="keywordInput" class="input-label">Keyword Search:</label>
@@ -464,7 +465,7 @@
                     <option value="Beautification">Beautification</option>
                     <option value="Bilingual">Bilingual</option>
                     <option value="Birds">Birds</option>
-                    <option value="Butterflies_Only">Butterflies only</option>
+                    <option value="Butterflies_only">Butterflies only</option>
                     <option value="Cultural_Experience">Cultural Experience</option>
                     <option value="Family-friendly">Family-friendly</option>
                     <option value="Food_Sustainability">Food Sustainability</option>
@@ -489,17 +490,17 @@
                     <option value="">(Select Host Organizations)</option>
                 </select>
             </div>
+            
+            <!-- NEW WARNING MESSAGE -->
+            <div class="search-warning">
+                <p>⚠️ <strong>Note:</strong> After entering filters, you must <strong>click the "Search" button</strong> to view results (hitting Enter may not work).</p>
+            </div>
 
             <div class="search-buttons">
                 <button id="searchButton" class="search-button">Search</button>
                 <button type="button" id="resetButton" class="reset-button">Reset</button>
             </div>
             <a href="https://github.com/halterforestry/RWFinder/blob/main/Roots%20&%20Wings%20Event%20Locations%20Map%202025.jpg?raw=true" target="_blank" class="map-link">Click to view event locations map</a>
-            
-            <!-- NEW WARNING MESSAGE -->
-            <div class="search-warning">
-                <p>⚠️ <strong>Note:</strong> After selecting a filter, you must click the orange "Search" button (pressing enter on a keyboard may not work). "Reset" clears all filters.</p>
-            </div>
         </section>
 
         <section class="results-section">
@@ -686,7 +687,7 @@
   "Butterflies_Only": 0,
   "Cultural_Experience": 0,
   "Family-friendly": 1,
-  "Food_Sustainability": 0,
+  "Food_Sustainability": 1,
   "Fungi": 0,
   "Indoor_Activity": 0,
   "Pollinators": 1,
@@ -834,7 +835,7 @@
   "Butterflies_Only": 0,
   "Cultural_Experience": 0,
   "Family-friendly": 1,
-  "Food_Sustainability": 0,
+  "Food_Sustainability": 1,
   "Fungi": 0,
   "Indoor_Activity": 1,
   "Pollinators": 1,
@@ -1035,12 +1036,41 @@
 "End_Date_Time": "10/18/2025 16:00","Duration_Hours": 3,"Event_Type": "Single Event","Rain_Date_Time": null,"Event_Location": "North Austin Community Garden","Address": "1000 W Rundberg Ln","Zip_Code": 78757,"X": -97.69985071,"Y": 30.36456199,"Trees": 1,"All_Ages": 1,"Ages_0-5_(kids)": 0,"Ages_5-12_(kids)": 0,"Ages_12-17_(teens)": 0,"Adults": 0,"Bats": 0,"Beautification": 0,"Bilingual": 1,"Birds": 0,"Butterflies_Only": 0,"Cultural_Experience": 1,"Family-friendly": 1,"Food_Sustainability": 0,"Fungi": 0,"Indoor_Activity": 0,"Pollinators": 1,"Sensory_Inclusive": 0,"Soil_Health": 1,"STEM": 0,"RSVP": null
 },
 {
-"Event_ID": 17,
-"Host_Organization":  "Austin Public Library, Windsor Park Branch",
-"Event_Title":  "Roots and Wings: Sweet Flight: A Honey Pairing Party!",
-"Event_Description": "Buzz on Over to Austin Public Library!\n \nJoin us for a sweet and enlightening evening celebrating the fascinating world of bees and the flavors they create.\n• What’s in Store:\n• An engaging presentation on bees & pollination with Two Hives Honey\n• Guided honey tasting featuring local and global varieties\n• Delicious pairings with breads, cheeses, and fruits\n• A unique experience for foodies, nature lovers, and curious minds alike!\n• Discover the magic of bees—their vital role as pollinators, their remarkable teamwork, and the sweet rewards they bring to our tables. Don’t miss this one-of-a-kind event!",
-"Start_Date_Time": "10/18/2025 13:00",
-"End_Date_Time": "10/18/2025 15:00","Duration_Hours": 2,"Event_Type": "Single Event","Rain_Date_Time": null,"Event_Location": "Windsor Park Branch Library","Address": "5833 Westminster Dr","Zip_Code": 78723,"X": -97.69068557,"Y": 30.3121959,"Trees": 0,"All_Ages": 0,"Ages_0-5_(kids)": 0,"Ages_5-12_(kids)": 0,"Ages_12-17_(teens)": 1,"Adults": 1,"Bats": 0,"Beautification": 0,"Bilingual": 1,"Birds": 0,"Butterflies_Only": 0,"Cultural_Experience": 1,"Family-friendly": 0,"Food_Sustainability": 0,"Fungi": 0,"Indoor_Activity": 1,"Pollinators": 0,"Sensory_Inclusive": 1,"Soil_Health": 0,"STEM": 0,"RSVP": null
+  "Event_ID": 17,
+  "Host_Organization": "Austin Public Library, Windsor Park Branch",
+  "Event_Title": "Roots and Wings: Sweet Flight: A Honey Pairing Party!",
+  "Event_Description": "Buzz on Over to Austin Public Library!\n \nJoin us for a sweet and enlightening evening celebrating the fascinating world of bees and the flavors they create.\n• What’s in Store:\n• An engaging presentation on bees & pollination with Two Hives Honey\n• Guided honey tasting featuring local and global varieties\n• Delicious pairings with breads, cheeses, and fruits\n• A unique experience for foodies, nature lovers, and curious minds alike!\n• Discover the magic of bees—their vital role as pollinators, their remarkable teamwork, and the sweet rewards they bring to our tables. Don’t miss this one-of-a-kind event!",
+  "Start_Date_Time": "10/18/2025 13:00",
+  "End_Date_Time": "10/18/2025 15:00",
+  "Duration_Hours": 2,
+  "Event_Type": "Single Event",
+  "Rain_Date_Time": null,
+  "Event_Location": "Windsor Park Branch Library",
+  "Address": "5833 Westminster Dr",
+  "Zip_Code": 78723,
+  "X": -97.69068557,
+  "Y": 30.3121959,
+  "Trees": 0,
+  "All_Ages": 0,
+  "Ages_0-5_(kids)": 0,
+  "Ages_5-12_(kids)": 0,
+  "Ages_12-17_(teens)": 1,
+  "Adults": 1,
+  "Bats": 0,
+  "Beautification": 0,
+  "Bilingual": 1,
+  "Birds": 0,
+  "Butterflies_Only": 0,
+  "Cultural_Experience": 1,
+  "Family-friendly": 0,
+  "Food_Sustainability": 1,
+  "Fungi": 0,
+  "Indoor_Activity": 1,
+  "Pollinators": 0,
+  "Sensory_Inclusive": 1,
+  "Soil_Health": 0,
+  "STEM": 0,
+  "RSVP": null
 },
 {
   "Event_ID": 18,
@@ -1144,7 +1174,7 @@
   "Butterflies_Only": 0,
   "Cultural_Experience": 1,
   "Family-friendly": 1,
-  "Food_Sustainability": 0,
+  "Food_Sustainability": 1,
   "Fungi": 1,
   "Indoor_Activity": 0,
   "Pollinators": 0,
@@ -1255,7 +1285,7 @@
   "Butterflies_Only": 0,
   "Cultural_Experience": 0,
   "Family-friendly": 0,
-  "Food_Sustainability": 0,
+  "Food_Sustainability": 1,
   "Fungi": 0,
   "Indoor_Activity": 1,
   "Pollinators": 0,
@@ -1292,7 +1322,7 @@
   "Butterflies_Only": 0,
   "Cultural_Experience": 1,
   "Family-friendly": 0,
-  "Food_Sustainability": 0,
+  "Food_Sustainability": 1,
   "Fungi": 0,
   "Indoor_Activity": 0,
   "Pollinators": 1,
@@ -1588,7 +1618,7 @@
   "Butterflies_Only": 0,
   "Cultural_Experience": 1,
   "Family-friendly": 1,
-  "Food_Sustainability": 0,
+  "Food_Sustainability": 1,
   "Fungi": 0,
   "Indoor_Activity": 0,
   "Pollinators": 1,
@@ -1699,7 +1729,7 @@
   "Butterflies_Only": 0,
   "Cultural_Experience": 1,
   "Family-friendly": 1,
-  "Food_Sustainability": 0,
+  "Food_Sustainability": 1,
   "Fungi": 0,
   "Indoor_Activity": 1,
   "Pollinators": 1,
@@ -1847,7 +1877,7 @@
   "Butterflies_Only": 0,
   "Cultural_Experience": 0,
   "Family-friendly": 1,
-  "Food_Sustainability": 0,
+  "Food_Sustainability": 1,
   "Fungi": 0,
   "Indoor_Activity": 0,
   "Pollinators": 1,
@@ -2406,7 +2436,7 @@
   "Butterflies_Only": 0,
   "Cultural_Experience": 0,
   "Family-friendly": 0,
-  "Food_Sustainability": 0,
+  "Food_Sustainability": 1,
   "Fungi": 0,
   "Indoor_Activity": 0,
   "Pollinators": 1,
@@ -2480,7 +2510,7 @@
   "Butterflies_Only": 0,
   "Cultural_Experience": 0,
   "Family-friendly": 1,
-  "Food_Sustainability": 0,
+  "Food_Sustainability": 1,
   "Fungi": 0,
   "Indoor_Activity": 0,
   "Pollinators": 1,
@@ -2591,7 +2621,7 @@
   "Butterflies_Only": 0,
   "Cultural_Experience": 1,
   "Family-friendly": 1,
-  "Food_Sustainability": 0,
+  "Food_Sustainability": 1,
   "Fungi": 0,
   "Indoor_Activity": 0,
   "Pollinators": 1,
@@ -2807,7 +2837,6 @@
                     if (keyword) {
                         const searchPool = [
                             event.Event_Title,
-                            event.Host_Organization,
                             event.Event_Description,
                             event.Event_Location,
                             String(event.Address)
@@ -3040,7 +3069,7 @@
             });
             
             // Initial load of all events
-            populateHostOrganizations(allEvents); 
+            populateHostOrganizations(allEvents);
             displayEvents(sortEvents(allEvents));
         });
     </script>
