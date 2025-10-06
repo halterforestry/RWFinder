@@ -382,6 +382,28 @@
             font-weight: bold;
         }
         
+/* NEW CATEGORY TAG STYLES */
+        .category-tags-container {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding-top: 5px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .category-tag {
+            background-color: #4a363d;
+            color: #ffffff;
+            font-size: 0.75rem;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: normal;
+            border: 1px solid #ef8c2a;
+            white-space: nowrap;
+        }
+/* END NEW CATEGORY TAG STYLES */
+        
         .event-item-flex-container {
             display: flex;
             flex-direction: column;
@@ -441,7 +463,6 @@
         <section class="search-container">
             <h2 class="filter-title">Filter Events:</h2>
             
-            <!-- NEW KEYWORD SEARCH FILTER -->
             <div class="search-input-group">
                 <label for="keywordInput" class="input-label">Keyword Search:</label>
                 <input type="text" id="keywordInput" class="text-input" placeholder="e.g., Trees, Central Library, Zilker">
@@ -465,7 +486,7 @@
                     <option value="Beautification">Beautification</option>
                     <option value="Bilingual">Bilingual</option>
                     <option value="Birds">Birds</option>
-                    <option value="Butterflies_only">Butterflies only</option>
+                    <option value="Butterflies_Only">Butterflies only</option>
                     <option value="Cultural_Experience">Cultural Experience</option>
                     <option value="Family-friendly">Family-friendly</option>
                     <option value="Food_Sustainability">Food Sustainability</option>
@@ -480,18 +501,16 @@
 
             <div class="search-input-group">
                 <label for="zipCodeInput" class="input-label">Zip Code:</label>
-                <input type="text" id="zipCodeInput" class="text-input" placeholder="e.g., 78704">
+                <input type="text" id="zipCodeInput" class="text-input" placeholder="e.g., 78741">
             </div>
 
             <div class="search-input-group">
                 <label for="hostOrganizationSelect" class="input-label">Host Organization:</label>
                 <select id="hostOrganizationSelect" class="select-input" multiple>
-                    <!-- Options will be populated by JavaScript -->
                     <option value="">(Select Host Organizations)</option>
                 </select>
             </div>
             
-            <!-- NEW WARNING MESSAGE -->
             <div class="search-warning">
                 <p>⚠️ <strong>Note:</strong> Click the 'Search' button to apply filters and view results. Hitting Enter on the keyboard won't work. 'Reset' clears all filters. Scroll down to view results.</p>
             
@@ -520,7 +539,7 @@
   "Host_Organization": "Birdability",
   "Event_Title": "Birdability at Lake Creek Trail: A Roots and Wings Festival Event!",
   "Event_URL": "https://www.birdability.org/",
-  "Event_Description": "Join Virginia Rose and Eric Clow for a welcoming morning of birding at Lake Creek Trail! This fully paved neighborhood trail winds three miles through diverse habitats—woods, thickets, fields, bridges, and low-water crossings—making it a great spot to observe flycatchers, migrating warblers, woodpeckers, the occasional raptor, and more.\n \nWhat to Expect:\n• A relaxed, accessible birding experience for all abilities and skill levels\n• Options to join the Big Sit (stationary birding) or explore along the trail\n• Come-and-go format: stay for the whole morning or just drop in\n \n📍 All are welcome! Registration is encouraged but not required.",
+  "Event_Description": "Join Virginia Rose and Eric Clow for a welcoming morning of birding at Lake Creek Trail! This fully paved neighborhood trail winds three miles through diverse habitats—woods, thickets, fields, bridges, and low-water crossings—making it a great spot to observe flycatchers, migrating warblers, woodpeckers, the occasional raptor, and more.\n \nWhat to Expect:\n• A relaxed, accessible birding experience for all abilities and skill levels\n• Options to join the Big Sit (stationary birding) or explore along the trail\n• Come-and-go format: stay for the whole morning or just drop in\n \n📍 All are welcome! Registration is encouraged but not required.\n \n",
   "Start_Date_Time": "10/18/2025 08:00",
   "End_Date_Time": "10/18/2025 12:00",
   "Duration_Hours": 4,
@@ -706,7 +725,7 @@
   "Host_Organization": "Shoal Creek Conservancy",
   "Event_Title": "Shoal Creek Pollinator Tour!",
   "Event_URL": "https://shoalcreekconservancy.org/event/pollinator-tour-along-shoal-creek-a-roots-wings-festival-event/",
-  "Event_Description": "Join Shoal Creek Conservancy and local beekeeper Katie Ortiz for a family-friendly free tour along Shoal Creek!\n \n\n• We'll chat about all things pollinators, Katie will share her experience as a beekeeper in the greater Austin area, and we'll create bee hotels for native solitary bees using reclaimed material harvested during our tour! We'll also have giveaways that kick-start your pollinator garden along with a honey tasting from Katie's bees!\n \nAll ages are welcome, with supervision, and ASL interpreters will be provided for this tour!\n \nPlease be sure to bring water, and snacks if needed, wear shoes you feel comfortable walking in, and dress for the weather.\n \nRegistration required. Please click the link below or the RSVP button to register.",
+  "Event_Description": "Join Shoal Creek Conservancy and local beekeeper Katie Ortiz for a family-friendly free tour along Shoal Creek!\n \nWe'll chat about all things pollinators, Katie will share her experience as a beekeeper in the greater Austin area, and we'll create bee hotels for native solitary bees using reclaimed material harvested during our tour! We'll also have giveaways that kick-start your pollinator garden along with a honey tasting from Katie's bees!\n \nAll ages are welcome, with supervision, and ASL interpreters will be provided for this tour!\n \nPlease be sure to bring water, and snacks if needed, wear shoes you feel comfortable walking in, and dress for the weather.\n \nRegistration required. Please click the link below or the RSVP button to register.\n \n",
   "Start_Date_Time": "10/18/2025 09:00",
   "End_Date_Time": "10/18/2025 11:00",
   "Duration_Hours": 2,
@@ -3051,6 +3070,31 @@
 
 
             function displayEvents(events) {
+                // --- START NEW LOGIC: Category Map ---
+                const categoriesMap = {
+                    "Trees": "Trees🌳",
+                    "All_Ages": "All Ages",
+                    "Ages_0-5_(kids)": "Ages 0-5 (kids)",
+                    "Ages_5-12_(kids)": "Ages 5-12 (kids)",
+                    "Ages_12-17_(teens)": "Ages 12 - 17 (teens)",
+                    "Adults": "Adults",
+                    "Bats": "Bats",
+                    "Beautification": "Beautification",
+                    "Bilingual": "Bilingual",
+                    "Birds": "Birds",
+                    "Butterflies_Only": "Butterflies only",
+                    "Cultural_Experience": "Cultural Experience",
+                    "Family-friendly": "Family-friendly",
+                    "Food_Sustainability": "Food Sustainability",
+                    "Fungi": "Fungi",
+                    "Indoor_Activity": "Indoor Activity",
+                    "Pollinators": "Pollinators",
+                    "Sensory_Inclusive": "Sensory Inclusive",
+                    "Soil_Health": "Soil Health",
+                    "STEM": "STEM"
+                };
+                // --- END NEW LOGIC: Category Map ---
+                
                 eventListContainer.innerHTML = '';
                 const count = events.length;
                 resultsCountHeader.textContent = `${count} Result${count === 1 ? '' : 's'}`;
@@ -3175,7 +3219,6 @@
                         descriptionContainer.innerHTML = `<p class="event-description"><strong style="color: #ef8c2a !important;">Event Details:</strong> ${event.Event_Description.replace(/\n/g, '<br>')}</p>`;
                         eventDetails.appendChild(descriptionContainer);
 
-                        eventItem.appendChild(eventDetails);
 
                         // --- THIS PART CHECKS IF AN EVENT URL EXISTS AND ADDS IT TO THE DESCRIPTION ---
 
@@ -3202,6 +3245,30 @@
                             // Add the new link element to the bottom of the event details
                             eventDetails.appendChild(urlContainer);
                         }
+
+                        // --- START NEW LOGIC: Category Tags ---
+                        const tagsContainer = document.createElement('div');
+                        tagsContainer.classList.add('category-tags-container');
+                        
+                        Object.keys(categoriesMap).forEach(key => {
+                            // Check if the event property exists and is truthy (1)
+                            if (event.hasOwnProperty(key) && event[key] === 1) {
+                                const tag = document.createElement('span');
+                                tag.classList.add('category-tag');
+                                // Use the display name from the map, falling back to the key
+                                tag.textContent = categoriesMap[key] || key; 
+                                tagsContainer.appendChild(tag);
+                            }
+                        });
+
+                        // Only append the container if at least one tag was added
+                        if (tagsContainer.children.length > 0) {
+                            eventDetails.appendChild(tagsContainer);
+                        }
+                        // --- END NEW LOGIC: Category Tags ---
+
+
+                        eventItem.appendChild(eventDetails);
 
                         // RSVP Tag
                         if (event.RSVP) {
