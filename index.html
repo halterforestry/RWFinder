@@ -261,6 +261,15 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        
+        /* Ensures full content display when the card is expanded */
+        .event-item.expanded .event-description {
+            display: block; /* Override -webkit-box/flex behavior */
+            -webkit-line-clamp: unset; /* Disable line clamping */
+            -webkit-box-orient: unset;
+            overflow: visible; /* Prevent text from being hidden */
+            text-overflow: unset; /* Ensure no ellipsis */
+        }
 
         .event-item-header {
             display: flex;
@@ -484,6 +493,7 @@
                     <option value="Adults">Adults</option>
                     <option value="Bats">Bats</option>
                     <option value="Beautification">Beautification</option>
+                    <option value="Bees">Bees</option>
                     <option value="Bilingual">Bilingual</option>
                     <option value="Birds">Birds</option>
                     <option value="Butterflies_Only">Butterflies only</option>
@@ -613,7 +623,8 @@
   "Event_ID": 3,
   "Host_Organization": "Hill Country Conservancy",
   "Event_Title": "Roots & Wings Festival Pollinator Planting on the Violet Crown Trail!",
-  "Event_Description": "Join Hill Country Conservancy for a Roots & Wings Festival volunteer event to help revitalize the pollinator garden along the Violet Crown Trail (VCT)!\n \nCome get your hands dirty as we weed, maintain, and replant native pollinator-friendly species at the Gaines Creek pollinator garden on the VCT. This hands-on project is open to all and is a great opportunity to give back to the trail, support local wildlife, and connect with the VCT community.\n \nWe'll provide gloves, tools, and guidance-- Just bring a refillable water bottle, wear clothes you don't mind getting dirty, and be ready to dig in!\n \nThe Violet Crown Trail is one of Austin's true outdoor treasures, and it thrives thanks to the support of volunteers like you. We hope you'll join us for a fun and rewarding morning on the trail!",
+  "Event_URL": "https://www.givepulse.com/event/647332-Violet-Crown-Trail-Pollinator-Garden-Planting-Roots-and-Wings-Festival-Event",
+  "Event_Description": "Join Hill Country Conservancy for a Roots & Wings Festival volunteer event to help revitalize the pollinator garden along the Violet Crown Trail (VCT)!\n \nCome get your hands dirty as we weed, maintain, and replant native pollinator-friendly species at the Gaines Creek pollinator garden on the VCT. This hands-on project is open to all and is a great opportunity to give back to the trail, support local wildlife, and connect with the VCT community.\n \nWe'll provide gloves, tools, and guidance— Just bring a refillable water bottle, wear clothes you don't mind getting dirty, and be ready to dig in!\n \nThe Violet Crown Trail is one of Austin's true outdoor treasures, and it thrives thanks to the support of volunteers like you. We hope you'll join us for a fun and rewarding morning on the trail! (See the link below for parking details.)",
   "Start_Date_Time": "10/18/2025 09:00",
   "End_Date_Time": "10/18/2025 11:00",
   "Duration_Hours": 2,
@@ -650,7 +661,7 @@
   "Event_ID": 4,
   "Host_Organization": "Austin Public Library, Windsor Park Branch",
   "Event_Title": "Roots and Wings: Ecosystem Engineers: Meet the Pollinators!",
-  "Event_Description": "Join us for a fun and educational event that brings the buzz of Central Texas to life!\n \n• What’s Happening:\n• Explore the vital role of pollinators in our urban ecosystem\n• Learn how native plants and trees support a thriving urban forest\n• Meet the city departments working to protect pollinators\n• Discover the many pollinators around us—from bees and butterflies to bats and birds!\n• Activities for All Ages:\n• Seed & tree giveaways to support pollinator habitats\n• Scavenger hunts & puzzles for youth and adults\n• Take-and-make kits focused on native plants and pollination\n• Crosswords & seek-and-finds to test your eco-knowledge\n• Whether you’re young or young-at-heart, there’s something for everyone. Come learn, explore, and grow with us—and help Central Texas bloom!",
+  "Event_Description": "Join us for a fun and educational event that brings the buzz of Central Texas to life!\n \nWhat’s Happening:\n• Explore the vital role of pollinators in our urban ecosystem\n• Learn how native plants and trees support a thriving urban forest\n• Meet the city departments working to protect pollinators\n• Discover the many pollinators around us—from bees and butterflies to bats and birds!\n \nActivities for All Ages:\n• Seed & tree giveaways to support pollinator habitats\n• Scavenger hunts & puzzles for youth and adults\n• Take-and-make kits focused on native plants and pollination\n• Crosswords & seek-and-finds to test your eco-knowledge\n \nWhether you’re young or young-at-heart, there’s something for everyone. Come learn, explore, and grow with us—and help Central Texas bloom!",
   "Start_Date_Time": "10/18/2025 09:00",
   "End_Date_Time": "11/02/2025 17:00",
   "Duration_Hours": 368,
@@ -687,7 +698,7 @@
   "Event_ID": 5,
   "Host_Organization": "City of Austin Park Rangers",
   "Event_Title": "Seed Ball Blast with Park Rangers!",
-  "Event_Description": "Join the City of Austin Park Rangers for Seed Ball Blast - a hands-on celebration of plants, pollinators, and all things green!\n \n\n• This family-friendly event invites you to roll up your sleeves and craft your very own seed balls to take home and toss in your garden or yard. Discover the vital role local pollinators play in keeping Austin blooming, and learn simple ways you can help protect their habitats. Be ready to get a little messy (in a fun way!) and leave inspired to make a difference.\n• Let's grow something great together!",
+  "Event_Description": "Join the City of Austin Park Rangers for Seed Ball Blast—a hands-on celebration of plants, pollinators, and all things green!\n \n\This family-friendly event invites you to roll up your sleeves and craft your very own seed balls to take home and toss in your garden or yard. Discover the vital role local pollinators play in keeping Austin blooming, and learn simple ways you can help protect their habitats. Be ready to get a little messy (in a fun way!) and leave inspired to make a difference.\n \nLet's grow something great together!",
   "Start_Date_Time": "10/18/2025 09:00",
   "End_Date_Time": "10/18/2025 11:00",
   "Duration_Hours": 2,
@@ -744,6 +755,7 @@
   "Adults": 0,
   "Bats": 0,
   "Beautification": 0,
+  "Bees": 1,
   "Bilingual": 1,
   "Birds": 0,
   "Butterflies_Only": 0,
@@ -836,7 +848,7 @@
   "Event_ID": 10,
   "Host_Organization": "Greater Austin Neighborhoods",
   "Event_Title": "Roots & Wings Community Block Party at Villas of Cordoba!",
-  "Event_Description": "Celebrate Nature, Community, and Urban Green Spaces!\n• Bring the whole family for a day of discovery and fun in the outdoors!\n \nEvent Highlights:\n• Guided Tree Discovery Walk – explore the trees near your home\n• Learn how to care for young trees, compost, and container garden\n• Kid-friendly activities like bug hunts, garden bingo, and seed planting\n• Food, games, and free garden giveaways for everyone\n \nThis free, family-friendly event is open to all ages and cultures—come connect with neighbors, learn from local nature experts, and grow with us!",
+  "Event_Description": "Celebrate Nature, Community, and Urban Green Spaces!\n \nBring the whole family for a day of discovery and fun in the outdoors!\n \n <b>Event Highlights:</b> \n• Guided Tree Discovery Walk – explore the trees near your home\n• Learn how to care for young trees, compost, and container garden\n• Kid-friendly activities like bug hunts, garden bingo, and seed planting\n• Food, games, and free garden giveaways for everyone\n \nThis free, family-friendly event is open to all ages and cultures—come connect with neighbors, learn from local nature experts, and grow with us!",
   "Start_Date_Time": "10/18/2025 10:00",
   "End_Date_Time": "10/18/2025 15:00",
   "Duration_Hours": 5,
@@ -911,17 +923,17 @@
   "Host_Organization": "The Bug Safari Lady",
   "Event_Title": "Bugs & Trees in Harmony!",
   "Event_URL": "https://thebugsafarilady.com/events",
-  "Event_Description": "Join us for Bugs and Trees in Harmony: A Roots & Wings Festival hosted by Bug Safari at the Rosewood Neighborhood Park Pavillion. A fun and educational celebration of arthropods and trees!\n \nThis free, family-friendly event invites nature lovers of all ages to explore the amazing world of insects, crustaceans, arachnids, and myriapods-- and discover their important connections to Austin's urban trees.\n \nGet up close with hands-on arthropod encounters, join guided nature walks, and enjoy creative art activities like drawing, painting, and storytelling inspired by our tiny neighbors. Sort them, hold them, and take a closer look-- there's so much to learn and love about the creatures that crawl, fly, and buzz through our parks!\n \nCome to Rosewood Park and connect with nature, build community, and see the outdoors in a whole new way!",
+  "Event_Description": "Join us for Bugs and Trees in Harmony: A Roots & Wings Festival hosted by Bug Safari at the Rosewood Neighborhood Park Pavillion. A fun and educational celebration of arthropods and trees!\n \nThis free, family-friendly event invites nature lovers of all ages to explore the amazing world of insects, crustaceans, arachnids, and myriapods— and discover their important connections to Austin's urban trees.\n \nGet up close with hands-on arthropod encounters, join guided nature walks, and enjoy creative art activities like drawing, painting, and storytelling inspired by our tiny neighbors. Sort them, hold them, and take a closer look— there's so much to learn and love about the creatures that crawl, fly, and buzz through our parks!\n \nCome to Rosewood Park and connect with nature, build community, and see the outdoors in a whole new way!",
   "Start_Date_Time": "10/18/2025 11:00",
   "End_Date_Time": "10/18/2025 13:00",
   "Duration_Hours": 2,
   "Event_Type": "Single Event",
   "Rain_Date_Time": null,
-  "Event_Location": "Rosewood Park Lampkin Pavilion",
+  "Event_Location": "Lamkin Pavilion at Rosewood Park",
   "Address": "1182 N Pleasant Valley Rd",
   "Zip_Code": 78702,
-  "X": -97.71464301673548,
-  "Y": 30.27084901889121,
+  "X": -97.71454112377603,
+  "Y": 30.272946678390312,
   "Trees": 1,
   "All_Ages": 1,
   "Ages_0-5_(kids)": 0,
@@ -1097,7 +1109,7 @@
   "Event_ID": 17,
   "Host_Organization": "Austin Public Library, Windsor Park Branch",
   "Event_Title": "Roots and Wings: Sweet Flight: A Honey Pairing Party!",
-  "Event_Description": "Buzz on Over to Austin Public Library!\n \nJoin us for a sweet and enlightening evening celebrating the fascinating world of bees and the flavors they create! <strong>Recommended for Teens & Adults.</strong>\n \nWhat’s in Store:\n• An engaging presentation on bees & pollination with Two Hives Honey\n• Guided honey tasting featuring local and global varieties\n• Delicious pairings with breads, cheeses, and fruits\n• A unique experience for foodies, nature lovers, and curious minds alike!\n \nDiscover the magic of bees—their vital role as pollinators, their remarkable teamwork, and the sweet rewards they bring to our tables. Don’t miss this one-of-a-kind event!",
+  "Event_Description": "Buzz on Over to Austin Public Library!\n \nJoin us for a sweet and enlightening evening celebrating the fascinating world of bees and the flavors they create! <strong>Recommended for Teens & Adults.</strong>\n \n<b>What’s in Store:</b> \n• An engaging presentation on bees & pollination with Two Hives Honey\n• Guided honey tasting featuring local and global varieties\n• Delicious pairings with breads, cheeses, and fruits\n• A unique experience for foodies, nature lovers, and curious minds alike!\n \nDiscover the magic of bees—their vital role as pollinators, their remarkable teamwork, and the sweet rewards they bring to our tables. Don’t miss this one-of-a-kind event!",
   "Start_Date_Time": "10/18/2025 13:00",
   "End_Date_Time": "10/18/2025 15:00",
   "Duration_Hours": 2,
@@ -1116,6 +1128,7 @@
   "Adults": 1,
   "Bats": 0,
   "Beautification": 0,
+  "Bees": 1,
   "Bilingual": 1,
   "Birds": 0,
   "Butterflies_Only": 0,
@@ -1326,7 +1339,7 @@
   "Duration_Hours": 2,
   "Event_Type": "Single Event",
   "Rain_Date_Time": null,
-  "Event_Location": "Howson Branch of The Austin Public Library",
+  "Event_Location": "Howson Branch",
   "Address": "2500 Exposition Blvd",
   "Zip_Code": 78703,
   "X": -97.7674868,
@@ -1357,7 +1370,7 @@
   "Event_ID": 24,
   "Host_Organization": "Austin Public Library, Carver Branch",
   "Event_Title": "Veggie Tales for Adults!",
-  "Event_Description": "Discover the Healing Power of Fruits & Vegetables!\n \nJoin us for a nourishing experience where you’ll learn about the natural healing properties of everyday produce.\n \nWhat to Expect:\n• Inspiring insights from a guest nutritionist on the power of fruits and vegetables\n• Information on how certain foods can support health and well-being\n• A chance to take home a selection of fresh fruits and vegetables (while supplies last)\n \nCome ready to learn, taste, and take steps toward a healthier you!",
+  "Event_Description": "Discover the Healing Power of Fruits & Vegetables!\n \nJoin us for a nourishing experience where you’ll learn about the natural healing properties of everyday produce.\n \n <b>What to Expect:</b> \n• Inspiring insights from a guest nutritionist on the power of fruits and vegetables\n• Information on how certain foods can support health and well-being\n• A chance to take home a selection of fresh fruits and vegetables (while supplies last)\n \nCome ready to learn, taste, and take steps toward a healthier you!",
   "Start_Date_Time": "10/23/2025 16:00",
   "End_Date_Time": "10/23/2025 18:00",
   "Duration_Hours": 2,
@@ -1393,7 +1406,7 @@
 {
   "Event_ID": 25,
   "Host_Organization": "Austin Public Library, Windsor Park Branch",
-  "Event_Title": "Roots & Wings Playdough Playgroup!",
+  "Event_Title": "Roots & Wings Playdough Playgroup! (ages 3-7)",
   "Event_Description": "Explore Central Texas ecology through playdough!\n \nCreate a super-host oak tree, build an ecosystem, practice early reading and writing skills, and make seed balls to bring important caterpillar host species home!\n \n <strong><span style=\"color: #ef8c2a; font-weight: bold;\">Recommended for children ages 3-7.</span></strong>",
   "Start_Date_Time": "10/24/2025 10:00",
   "End_Date_Time": "10/24/2025 11:00",
@@ -1431,7 +1444,7 @@
   "Event_ID": 26,
   "Host_Organization": "Austin Public Library, Twin Oaks Branch",
   "Event_Title": "Roots & Wings: A Day with Tracy Dockray and \"Butterfly Island and the Invincible Crew\"!",
-  "Event_Description": "Join author-illustrator Tracy Dockray for a magical reading of her picture book \"Butterfly Island and the Invincible Crew\"!\n \nDive into the extraordinary journey of monarch butterflies—tiny travelers with epic migrations—and discover how it all begins with one humble seed: milkweed. Tracy will share the monarch life cycle, lead kids in a bilingual sing-along, and draw live characters from the book! She'll also talk with children about how nature bounces back after big storms- just like the characters do.\n \nAttendees will be inspired by the true story of Ellen who boldly leads a mission to protect the declining monarch butterfly population. When Ellen and her friends sow a simple milkweed seed, it sets off a remarkable series of events until nature delivers a might blow. Can Ellen, through the power of friendship begin anew, and replace despair with hope in action?\nThere will be singing and butterfly craft kits! This'll be an impactful event for young eco-heroes and their families!\n \nTracy Dockray is also known for being the illustrator for the current HarperCollins editions of Beverly Cleary's children's novels and the author-illustrator of \"Bright Dreams: The Brilliant Ideas of Nikola Tesla\"!",
+  "Event_Description": "Join author-illustrator Tracy Dockray for a magical reading of her picture book \"Butterfly Island and the Invincible Crew\"!\n \nDive into the extraordinary journey of monarch butterflies—tiny travelers with epic migrations—and discover how it all begins with one humble seed: milkweed. Tracy will share the monarch life cycle, lead kids in a bilingual sing-along, and draw live characters from the book! She'll also talk with children about how nature bounces back after big storms- just like the characters do.\n \nAttendees will be inspired by the true story of Ellen who boldly leads a mission to protect the declining monarch butterfly population. When Ellen and her friends sow a simple milkweed seed, it sets off a remarkable series of events until nature delivers a might blow. Can Ellen, through the power of friendship begin anew, and replace despair with hope in action?\n \nThere will be singing and butterfly craft kits! This'll be an impactful event for young eco-heroes and their families!\n \nTracy Dockray is also known for being the illustrator for the current HarperCollins editions of Beverly Cleary's children's novels and the author-illustrator of \"Bright Dreams: The Brilliant Ideas of Nikola Tesla\"!",
   "Start_Date_Time": "10/24/2025 10:30",
   "End_Date_Time": "10/24/2025 12:00",
   "Duration_Hours": 2,
@@ -1468,7 +1481,7 @@
   "Event_ID": 27,
   "Host_Organization": "Austin Public Library, Howson Branch",
   "Event_Title": "Roots & Wings: A Day with Tracy Dockray and \"Butterfly Island and the Invincible Crew\"!",
-  "Event_Description": "Join author-illustrator Tracy Dockray for a magical reading of her picture book \"Butterfly Island and the Invincible Crew\"!\n \n Dive into the extraordinary journey of monarch butterflies—tiny travelers with epic migrations—and discover how it all begins with one humble seed: milkweed. Tracy will share the monarch life cycle, lead kids in a bilingual sing-along, and draw live characters from the book! She'll also talk with children about how nature bounces back after big storms- just like the characters do.\n Attendees will be inspired by the true story of Ellen who boldly leads a mission to protect the declining monarch butterfly population. When Ellen and her friends sow a simple milkweed seed, it sets off a remarkable series of events until nature delivers a might blow. Can Ellen, through the power of friendship begin anew, and replace despair with hope in action?\n There will be singing and butterfly craft kits! This'll be an impactful event for young eco-heroes and their families!\n \nTracy Dockray is also known for being the illustrator for the current HarperCollins editions of Beverly Cleary's children's novels and the author-illustrator of \"Bright Dreams: The Brilliant Ideas of Nikola Tesla\"!",
+  "Event_Description": "Join author-illustrator Tracy Dockray for a magical reading of her picture book \"Butterfly Island and the Invincible Crew\"!\n \n Dive into the extraordinary journey of monarch butterflies—tiny travelers with epic migrations—and discover how it all begins with one humble seed: milkweed. Tracy will share the monarch life cycle, lead kids in a bilingual sing-along, and draw live characters from the book! She'll also talk with children about how nature bounces back after big storms- just like the characters do.\n \nAttendees will be inspired by the true story of Ellen who boldly leads a mission to protect the declining monarch butterfly population. When Ellen and her friends sow a simple milkweed seed, it sets off a remarkable series of events until nature delivers a might blow. Can Ellen, through the power of friendship begin anew, and replace despair with hope in action?\n \nThere will be singing and butterfly craft kits! This'll be an impactful event for young eco-heroes and their families!\n \nTracy Dockray is also known for being the illustrator for the current HarperCollins editions of Beverly Cleary's children's novels and the author-illustrator of \"Bright Dreams: The Brilliant Ideas of Nikola Tesla\"!",
   "Start_Date_Time": "10/24/2025 14:00",
   "End_Date_Time": "10/24/2025 15:30",
   "Duration_Hours": 2,
@@ -1512,8 +1525,8 @@
   "Duration_Hours": 2,
   "Event_Type": "Single Event",
   "Rain_Date_Time": null,
-  "Event_Location": "Medway Tract, Travis County Balcones Canyonlands Preserve",
-  "Address": "FM620 and Murfin Rd",
+  "Event_Location": "Medway Tract, Travis County Balcones Canyonlands Preserve (FM620 & Murfin Rd)",
+  "Address": "925R+3X9 Lakeway, Texas",
   "Zip_Code": 78734,
   "X": -97.95751222,
   "Y": 30.35765742,
@@ -1543,7 +1556,7 @@
   "Event_ID": 29,
   "Host_Organization": "The Zilker Botanical Garden Conservancy",
   "Event_Title": "Roots & Wings at The Zilker Botanical Garden!",
-  "Event_Description": "Celebrate pollinators, plants, and the magic of nature with a day full of hands-on fun and learning!\n \nFestival Highlights:\n• Create your own Seed Balls to take home\n• Experience a breathtaking Butterfly Release\n• Learn from pollinator experts in engaging discussions\n• Explore local ecology club booths and resources\n• Take guided tours of our pollinator garden\n• Enjoy nature-based crafts for all ages\n \nBring the whole family to connect with nature and celebrate Austin’s pollinators in a vibrant garden setting!\n \nThis festival event is included with General Admission. Free for Conservancy members & those participating in Museums for All, which invites all families with an EBT card, WIC, STAR/CHIP, SNAP, Medicaid, or MAP identification card to gain free access to Zilker Botanical Garden!",
+  "Event_Description": "Celebrate pollinators, plants, and the magic of nature with a day full of hands-on fun and learning!\n \n <b>Festival Highlights:</b> \n• Create your own Seed Balls to take home\n• Experience a breathtaking Butterfly Release\n• Learn from pollinator experts in engaging discussions\n• Explore local ecology club booths and resources\n• Take guided tours of our pollinator garden\n• Enjoy nature-based crafts for all ages\n \nBring the whole family to connect with nature and celebrate Austin’s pollinators in a vibrant garden setting!\n \nThis festival event is included with General Admission. Free for Conservancy members & those participating in Museums for All, which invites all families with an EBT card, WIC, STAR/CHIP, SNAP, Medicaid, or MAP identification card to gain free access to Zilker Botanical Garden!",
   "Start_Date_Time": "10/25/2025 09:00",
   "End_Date_Time": "10/25/2025 14:00",
   "Duration_Hours": 5,
@@ -1580,7 +1593,7 @@
   "Event_ID": 30,
   "Host_Organization": "City of Austin Park Rangers",
   "Event_Title": "Seed Ball Blast with Park Rangers!",
-  "Event_Description": "Join the City of Austin Park Rangers for Seed Ball Blast - a hands-on celebration of plants, pollinators, and all things green! \n• This family-friendly event invites you to roll up your sleeves and craft your very own seed balls to take home and toss in your garden or yard. Discover the vital role local pollinators play in keeping Austin blooming, and learn simple ways you can help protect their habitats. Be ready to get a little messy (in a fun way!) and leave inspired to make a difference.\n• Let's grow something great together!",
+  "Event_Description": "Join the City of Austin Park Rangers for Seed Ball Blast - a hands-on celebration of plants, pollinators, and all things green! \n \nThis family-friendly event invites you to roll up your sleeves and craft your very own seed balls to take home and toss in your garden or yard. Discover the vital role local pollinators play in keeping Austin blooming, and learn simple ways you can help protect their habitats. Be ready to get a little messy (in a fun way!) and leave inspired to make a difference.\n \nLet's grow something great together!",
   "Start_Date_Time": "10/25/2025 09:00",
   "End_Date_Time": "10/25/2025 11:00",
   "Duration_Hours": 2,
@@ -1617,7 +1630,7 @@
   "Event_ID": 31,
   "Host_Organization": "Violet Crown Garden Club",
   "Event_Title": "Birds, Bees, Butterflies, and Moths too!",
-  "Event_Description": "Join Violet Crown Garden Club at Zilker Botanical Garden for the Roots & Wings Festival!\n \n• Discover pollinator-friendly tips and pick up free seeds or plants for your garden—whether it’s big or small (while supplies last!).\n• Kids can get creative by making their own pollinator-themed bookmark to take home!\n \nLearn how to expand your pollinator garden and enjoy a variety of family-friendly activities celebrating pollinators, trees, and the beauty of nature throughout the gardens!\n \nThis festival event is included with General Admission. Free for Conservancy members & those participating in Museums for All, which invites all families with an EBT card, WIC, STAR/CHIP, SNAP, Medicaid, or MAP identification card to gain free access to Zilker Botanical Garden!",
+  "Event_Description": "Join Violet Crown Garden Club at Zilker Botanical Garden for the Roots & Wings Festival!\n \nDiscover pollinator-friendly tips and pick up free seeds or plants for your garden—whether it’s big or small (while supplies last!).\n \nKids can get creative by making their own pollinator-themed bookmark to take home!\n \nLearn how to expand your pollinator garden and enjoy a variety of family-friendly activities celebrating pollinators, trees, and the beauty of nature throughout the gardens!\n \nThis festival event is included with General Admission. Free for Conservancy members & those participating in Museums for All, which invites all families with an EBT card, WIC, STAR/CHIP, SNAP, Medicaid, or MAP identification card to gain free access to Zilker Botanical Garden!",
   "Start_Date_Time": "10/25/2025 09:30",
   "End_Date_Time": "10/25/2025 14:00",
   "Duration_Hours": 5,
@@ -1654,7 +1667,7 @@
   "Event_ID": 32,
   "Host_Organization": "St. Edward's University",
   "Event_Title": "Bat Signal Sent: Global Crops Assemble!",
-  "Event_Description": "Spend the day discovering the local ecosystem and the global connections that shape it at St. Edward’s University’s two-year-old Food Forest!\n \nEvent Highlights:\n• Hands-on eco-art activities exploring biophilic expression\n• Engaging discussions on how plants support us—edible, medicinal, and pollination science, plus cultural traditions from around the world\n• Planting native shrubs and pollinator-friendly plants to support biodiversity\n• Kid-friendly fun: seed balls, painting, and more\n• Refreshments inspired by global cultures\nBring your family and friends to connect with nature, community, and creativity—a celebration of learning, growth, and global stewardship!",
+  "Event_Description": "Spend the day discovering the local ecosystem and the global connections that shape it at St. Edward’s University’s two-year-old Food Forest!\n \n <b>Event Highlights:</b> \n• Hands-on eco-art activities exploring biophilic expression\n• Engaging discussions on how plants support us—edible, medicinal, and pollination science, plus cultural traditions from around the world\n• Planting native shrubs and pollinator-friendly plants to support biodiversity\n• Kid-friendly fun: seed balls, painting, and more\n• Refreshments inspired by global cultures\n \nBring your family and friends to connect with nature, community, and creativity—a celebration of learning, growth, and global stewardship!",
   "Start_Date_Time": "10/25/2025 10:00",
   "End_Date_Time": "10/25/2025 12:30",
   "Duration_Hours": 3,
@@ -1729,7 +1742,7 @@
   "Event_ID": 34,
   "Host_Organization": "Austin Nature and Science Center",
   "Event_Title": "Roots & Wings: \"Bee\" a Friend to Pollinators!",
-  "Event_Description": "Join us for a day of celebrating local trees and pollinators with family friendly crafts and activities!\n \nEvent Highlights:\n• Pollinator themed Story Time with Beevo Beekeeping Society\n• Live insect presentation from \"The Bug Safari Lady\"\n• Seed balls with Zilker Botanical Garden Conservancy\n• Guided nature preserve hikes with ANSC staff\n• and more!",
+  "Event_Description": "Join us for a day of celebrating local trees and pollinators with family friendly crafts and activities!\n \n <b>Event Highlights:</b>\n• Pollinator themed Story Time with Beevo Beekeeping Society\n• Live insect presentation from \"The Bug Safari Lady\"\n• Seed balls with Zilker Botanical Garden Conservancy\n• Guided nature preserve hikes with ANSC staff\n• and more!",
   "Start_Date_Time": "11/01/2025 10:00",
   "End_Date_Time": "11/01/2025 14:00",
   "Duration_Hours": 4,
@@ -1748,6 +1761,7 @@
   "Adults": 0,
   "Bats": 0,
   "Beautification": 0,
+  "Bees": 1,
   "Bilingual": 0,
   "Birds": 0,
   "Butterflies_Only": 0,
@@ -1804,7 +1818,7 @@
   "Host_Organization": "South Austin Creek Alliance",
   "Event_Title": "Creek Fest with South Austin Creek Alliance: A Roots & Wings Festival",
   "Event_URL": "https://www.southaustincreekalliance.org/events",
-  "Event_Description": "Join the South Austin Creek Alliance at Mary Moore Searight Park for a hands-on celebration of our urban creeks and wild spaces. This year’s event will feature over a dozen interactive workshop zones designed to engage visitors of all ages.\n \nEvent Highlights:\n• Interactive Creek Walks – Meet the \"main stream characters\" of our riparian habitats: insects, animals, and plants that thrive by the water.\n• Nature Skills with Natureversity – Learn about making tools and baskets from local rocks and plants.\n• Invasive Plant Zone – Discover how to identify and manage harmful species through girdling, and take home a native plant for restoration.\n• Karst Cave Model – Explore how groundwater flows through our landscape with geologists and cave conservationists.\n• Science & Research – Chat with conservation biologists and students about local ecology projects.\n• Bat Ecology - learn about bats in Austin from Austin Bat Refuge.\n• Talk to a scientist (conservation biologist) - learn about current studies about our environment and ask questions.\n \nFamily Fun:\n• Life cycle displays & local fossils\n• Plant & animal exhibits\n• Trash grabber games\n• Eco-art stations (non-consumable crafts)\n \nThere’s something for everyone as we celebrate and protect our local ecosystems together. Come connect, learn, and get inspired to care for Austin’s creeks and wild places!",
+  "Event_Description": "Join the South Austin Creek Alliance at Mary Moore Searight Park for a hands-on celebration of our urban creeks and wild spaces. This year’s event will feature over a dozen interactive workshop zones designed to engage visitors of all ages.\n \n <b>Event Highlights:</b> \n• Interactive Creek Walks – Meet the \"main stream characters\" of our riparian habitats: insects, animals, and plants that thrive by the water.\n• Nature Skills with Natureversity – Learn about making tools and baskets from local rocks and plants.\n• Invasive Plant Zone – Discover how to identify and manage harmful species through girdling, and take home a native plant for restoration.\n• Karst Cave Model – Explore how groundwater flows through our landscape with geologists and cave conservationists.\n• Science & Research – Chat with conservation biologists and students about local ecology projects.\n• Bat Ecology - learn about bats in Austin from Austin Bat Refuge.\n• Talk to a scientist (conservation biologist) - learn about current studies about our environment and ask questions.\n \n <b>Family Fun:</b> \n• Life cycle displays & local fossils\n• Plant & animal exhibits\n• Trash grabber games\n• Eco-art stations (non-consumable crafts)\n \nThere’s something for everyone as we celebrate and protect our local ecosystems together. Come connect, learn, and get inspired to care for Austin’s creeks and wild places!",
   "Start_Date_Time": "10/25/2025 11:00",
   "End_Date_Time": "10/25/2025 14:00",
   "Duration_Hours": 3,
@@ -1817,10 +1831,10 @@
   "Y": 30.163195508385623,
   "Trees": 1,
   "All_Ages": 1,
-  "Ages_0-5_(kids)": 1,
-  "Ages_5-12_(kids)": 1,
-  "Ages_12-17_(teens)": 1,
-  "Adults": 1,
+  "Ages_0-5_(kids)": 0,
+  "Ages_5-12_(kids)": 0,
+  "Ages_12-17_(teens)": 0,
+  "Adults": 0,
   "Bats": 0,
   "Beautification": 0,
   "Bilingual": 0,
@@ -1847,7 +1861,7 @@
   "Duration_Hours": 6,
   "Event_Type": "Single Event",
   "Rain_Date_Time": null,
-  "Event_Location": "Rosewood Park Lampkin Pavilion",
+  "Event_Location": "Lamkin Pavilion at Rosewood Park",
   "Address": "1182 N Pleasant Valley Rd",
   "Zip_Code": 78702,
   "X": -97.71464301673548,
@@ -1924,8 +1938,8 @@
   "Event_Location": "Festival Beach Food Forest",
   "Address": "25 1/2 Waller St",
   "Zip_Code": 78702,
-  "X": -97.73561236,
-  "Y": 30.25318363,
+  "X": -97.73544101798689,
+  "Y": 30.253587083363477,
   "Trees": 1,
   "All_Ages": 1,
   "Ages_0-5_(kids)": 0,
@@ -1989,7 +2003,7 @@
   "Event_ID": 42,
   "Host_Organization": "Monarch Sanctuary Project",
   "Event_Title": "Saving the Monarchs: We Can Do It!",
-  "Event_Description": "Join Monarch Sanctuary Project for a fun, hands-on, and relaxing event celebrating pollinators and native plants!\n \n What’s Happening:\n• Learn how to germinate native milkweed, the only food for monarch caterpillars\n• Build your own container garden to support monarchs and other pollinators\n• Visit our native seed bar and participate in a metamorphic meditation session\n• Connect with experts and fellow nature enthusiasts while making a real impact on local ecosystems\n \n Whether you’re a seasoned gardener or just curious, this event has something for everyone—learn, create, and help monarchs thrive!",
+  "Event_Description": "Join Monarch Sanctuary Project for a fun, hands-on, and relaxing event celebrating pollinators and native plants!\n \n <b>What’s Happening:</b> \n• Learn how to germinate native milkweed, the only food for monarch caterpillars\n• Build your own container garden to support monarchs and other pollinators\n• Visit our native seed bar and participate in a metamorphic meditation session\n• Connect with experts and fellow nature enthusiasts while making a real impact on local ecosystems\n \n Whether you’re a seasoned gardener or just curious, this event has something for everyone—learn, create, and help monarchs thrive!",
   "Start_Date_Time": "10/25/2025 17:00",
   "End_Date_Time": "10/25/2025 20:00",
   "Duration_Hours": 3,
@@ -2026,7 +2040,7 @@
   "Event_ID": 43,
   "Host_Organization": "Friends of Copperfield Nature Trails",
   "Event_Title": "Roots and Wings at Copperfield Park and Nature Trail!",
-  "Event_Description": "Celebrate nature and community with a day of family-friendly outdoor fun! Limited parking, walk from neighborhood parking at Blakeney pond trail entrance, public transportation or carpool encouraged. No bathrooms on-site, so plan accordingly. Tree and pollinator theme costumes encouraged\n \nActivities include:\n• Creative nature crafts for all ages\n• Fun and engaging outdoor games\n• A guided nature walk to explore local trails\n• Native plant & seed exchange + giveaway so you can grow a piece of nature at home!\n \nBring your loved ones, enjoy the fresh air, and be part of this joyful celebration of the natural world!",
+  "Event_Description": "Celebrate nature and community with a day of family-friendly outdoor fun! Limited parking, walk from neighborhood parking at Blakeney pond trail entrance, public transportation or carpool encouraged. No bathrooms on-site, so plan accordingly. Tree and pollinator theme costumes encouraged\n \n <b>Activities include:</b> \n• Creative nature crafts for all ages\n• Fun and engaging outdoor games\n• A guided nature walk to explore local trails\n• Native plant & seed exchange + giveaway so you can grow a piece of nature at home!\n \nBring your loved ones, enjoy the fresh air, and be part of this joyful celebration of the natural world!",
   "Start_Date_Time": "10/26/2025 09:00",
   "End_Date_Time": "10/26/2025 11:00",
   "Duration_Hours": 2,
@@ -2063,7 +2077,7 @@
   "Event_ID": 44,
   "Host_Organization": "Austin Public Library, Windsor Park Branch",
   "Event_Title": "Roots and Wings Presents: Bats- Guardians of the Night Garden!",
-  "Event_Description": "Join us for a fun and educational event celebrating these fascinating nocturnal pollinators!\n \n What to Expect:\n• Taste-test treats inspired by a bat’s diet—fruity, buggy, and fun!\n• Meet ACC’s mascot, the ACC River Bat\n• Presentation by a bat scientist from Bat Conservation International\n• Bat-themed crafts to make and take home\n• Echolocation activity to discover how bats “see” with sound\n \n Whether you’re a dedicated bat enthusiast or just bat-curious, this event is wing-flappingly fun for all ages!",
+  "Event_Description": "Join us for a fun and educational event celebrating these fascinating nocturnal pollinators!\n \n <b>What to Expect:</b> \n• Taste-test treats inspired by a bat’s diet—fruity, buggy, and fun!\n• Meet ACC’s mascot, the ACC River Bat\n• Presentation by a bat scientist from Bat Conservation International\n• Bat-themed crafts to make and take home\n• Echolocation activity to discover how bats “see” with sound\n \n Whether you’re a dedicated bat enthusiast or just bat-curious, this event is wing-flappingly fun for all ages!",
   "Start_Date_Time": "10/27/2025 16:00",
   "End_Date_Time": "10/27/2025 18:30",
   "Duration_Hours": 3,
@@ -2099,7 +2113,7 @@
 {
   "Event_ID": 45,
   "Host_Organization": "Austin Public Library, Ruiz Branch",
-  "Event_Title": "Roots & Wings Playdough Playgroup!",
+  "Event_Title": "Roots & Wings Playdough Playgroup! (ages 3-7)",
   "Event_Description": "Explore Central Texas ecology through playdough! \n \n Create a super-host oak tree, build an ecosystem, practice early reading and writing skills, and make seed balls to bring important caterpillar host species home!\n \n <strong><span style=\"color: #ef8c2a; font-weight: bold;\">Recommended for children ages 3-7.</span></strong>",
   "Start_Date_Time": "10/28/2025 15:30",
   "End_Date_Time": "10/28/2025 16:30",
@@ -2136,7 +2150,7 @@
 {
   "Event_ID": 46,
   "Host_Organization": "Austin Public Library, Yarborough Branch",
-  "Event_Title": "Roots & Wings Playdough Playgroup!",
+  "Event_Title": "Roots & Wings Playdough Playgroup! (ages 3-7)",
   "Event_Description": "Explore Central Texas ecology through playdough! \n \n Create a super-host oak tree, build an ecosystem, practice early reading and writing skills, and make seed balls to bring important caterpillar host species home!\n \n <strong><span style=\"color: #ef8c2a; font-weight: bold;\">Recommended for children ages 3-7.</span></strong>",
   "Start_Date_Time": "10/29/2025 15:30",
   "End_Date_Time": "10/29/2025 16:30",
@@ -2174,7 +2188,7 @@
   "Event_ID": 47,
   "Host_Organization": "Austin Public Library, Terrazas Branch",
   "Event_Title": "Terrariums at Terrazas!",
-  "Event_Description": "Come to the Terrazas Branch and make your very own ecosystem in a jar!\n \n Learn about plant and environmental stewardship by making a beginner terrarium. You'll get to make your own terrarium to take home with provided supplies and plants.\n \n 18+ only event, limited to the first 15 participants who arrive the day of the event. ",
+  "Event_Description": "Come to the Terrazas Branch and make your very own ecosystem in a jar!\n \n Learn about plant and environmental stewardship by making a beginner terrarium. You'll get to make your own terrarium to take home with provided supplies and plants.\n \n <strong><span style=\"color: #ef8c2a; font-weight: bold;\">18+ only event, limited to the first 15 participants who arrive the day of the event.</span></strong>",
   "Start_Date_Time": "10/30/2025 18:30",
   "End_Date_Time": "10/30/2025 19:30",
   "Duration_Hours": 1,
@@ -2212,7 +2226,7 @@
   "Host_Organization": "Pease Park Conservancy and Travis Audubon",
   "Event_Title": "Family Birding at Pease Park!",
   "Event_URL": "https://peasepark.org/parking",
-  "Event_Description": "Travis Audubon and the Pease Park Conservancy are collaborating to offer a guided family-friendly walk designed with birding adults in mind—parents, grandparents, or caregivers—who want to enjoy birding without needing to leave the kids at home. While most bird walks require a quieter setting, this outing makes space for families to participate together. Following the walk, we’ll create our own birds using crafting materials at the Tudor Cottage!\n \n <b>WHAT TO EXPECT:</b> Texas is home to over 600 bird species, making it one of the most bird-diverse states in the United States! Discover the wonder of birding and appreciate these powerful pollinators with Travis Audubon.\n \nWe'll keep the pace relaxed and the tone welcoming, while still focusing on bird identification, behavior, and habitat—perfect for adults who want to sharpen their birding skills and share the experience with their kids. Children must be accompanied by an adult and be able to follow along with the group.\n \nFollowing the walk, Pease Park Conservancy will lead folks in a “Build-a-Bird” activity at the Tudor Cottage. While all birds have feathers, beaks, wings, and feet, they vary enormously in overall shape, size, and color. Participants will create birds using a variety of materials. The goal is for participants to take what they saw on their bird walk and put it into action by creating their own birds.  As part of the activity, participants will talk about their creation and how their features help them get food.\n \nWe will have ASL interpreters assisting with the walk and crafting components, and Pease Park Conservancy staff will offer bilingual instruction in Spanish if needed. \n \n<b>WHAT TO BRING/WEAR:</b>  Please bring water and wear comfortable shoes! Loaner binos available upon request.\n \n<b>PARKING AND TRANSPORTATION:</b> For parking and transportation information, please click the link below or visit https://peasepark.org/parking.\n \n<b>WHERE TO MEET:</b> Once you're at Pease Park (1100 Kingsbury Street), please gather by the large concrete picnic tables located by the Mariachi's Tacos food truck in Kingsbury Commons. Look for Pease Park Conservancy and Travis Audubon team members when you arrive.\n \n<b>WEATHER NOTE:</b> In case of inclement weather, we’ll notify registrants by email if we need to cancel.\n \n<b>A NOTE ABOUT OUR EVENTS:</b>  If you sign up, please make every effort to show up. Our events are free, so all of our community members can attend. But we plan our events to be meaningful for the number of people who register to be there, so please make every effort to attend if you have registered. We understand things come up from time to time, but if you have registered, we look forward to having you there! Thank you!",
+  "Event_Description": "Travis Audubon and the Pease Park Conservancy are collaborating to offer a guided family-friendly walk designed with birding adults in mind—parents, grandparents, or caregivers—who want to enjoy birding without needing to leave the kids at home. While most bird walks require a quieter setting, this outing makes space for families to participate together. Following the walk, we’ll create our own birds using crafting materials at the Tudor Cottage!\n \n <b>WHAT TO EXPECT:</b> Texas is home to over 600 bird species, making it one of the most bird-diverse states in the United States! Discover the wonder of birding and appreciate these powerful pollinators with Travis Audubon.\n \nWe'll keep the pace relaxed and the tone welcoming, while still focusing on bird identification, behavior, and habitat—perfect for adults who want to sharpen their birding skills and share the experience with their kids. Children must be accompanied by an adult and be able to follow along with the group.\n \nFollowing the walk, Pease Park Conservancy will lead folks in a \"Build-a-Bird\" activity at the Tudor Cottage. While all birds have feathers, beaks, wings, and feet, they vary enormously in overall shape, size, and color. Participants will create birds using a variety of materials. The goal is for participants to take what they saw on their bird walk and put it into action by creating their own birds.  As part of the activity, participants will talk about their creation and how their features help them get food.\n \nWe will have ASL interpreters assisting with the walk and crafting components, and Pease Park Conservancy staff will offer bilingual instruction in Spanish if needed. \n \n<b>WHAT TO BRING/WEAR:</b>  Please bring water and wear comfortable shoes! Loaner binos available upon request.\n \n<b>PARKING AND TRANSPORTATION:</b> For parking and transportation information, please click the link below.\n \n<b>WHERE TO MEET:</b> Once you're at Pease Park (1100 Kingsbury St), please gather by the large concrete picnic tables located by the Mariachi's Tacos food truck in Kingsbury Commons. Look for Pease Park Conservancy and Travis Audubon team members when you arrive.\n \n<b>WEATHER NOTE:</b> In case of inclement weather, we’ll notify registrants by email if we need to cancel.\n \n<b>A NOTE ABOUT OUR EVENTS:</b>  If you sign up, please make every effort to show up. Our events are free, so all of our community members can attend. But we plan our events to be meaningful for the number of people who register to be there, so please make every effort to attend if you have registered. We understand things come up from time to time, but if you have registered, we look forward to having you there! Thank you!",
   "Start_Date_Time": "11/01/2025 08:00",
   "End_Date_Time": "11/01/2025 10:00",
   "Duration_Hours": 2,
@@ -2249,7 +2263,7 @@
   "Event_ID": 49,
   "Host_Organization": "Concordia University Texas",
   "Event_Title": "Roots and Wings at Concordia University Texas!",
-  "Event_Description": "Concordia University's Office of Environmental Stewardship and Service Learning Program invite you to help us promote pollinators and native plant communities during a tree planting event on campus!\n \n We will have tasks for people of all ages and abilities and will provide all necessary tools, water, and breakfast tacos - you should bring sturdy shoes, work clothes, and a poncho in case of light rain.\n \nPark in Lot C. We will gather at 9 a.m. at the Backyard, next to Bldg F.",
+  "Event_Description": "Concordia University's Office of Environmental Stewardship and Service Learning Program invite you to help us promote pollinators and native plant communities during a tree planting event on campus!\n \n We will have tasks for people of all ages and abilities and will provide all necessary tools, water, and breakfast tacos - you should bring sturdy shoes, work clothes, and a poncho in case of light rain.\n \n <strong><span style=\"color: #ef8c2a; font-weight: bold;\">Park in Lot C. We will gather at 9 a.m. at the Backyard, next to Bldg F.</span></strong>",
   "Start_Date_Time": "11/01/2025 09:00",
   "End_Date_Time": "11/01/2025 12:00",
   "Duration_Hours": 3,
@@ -2323,12 +2337,12 @@
   "Event_ID": 51,
   "Host_Organization": "Windsor Park Neighborhood Association",
   "Event_Title": "Austin EcoFest: A Roots & Wings Festival Event!",
-  "Event_Description": "Celebrate Nature & Community! Join us for a free, family-friendly festival bringing neighbors together to explore and enjoy the wonders of Austin’s urban ecosystem.\n \n Festival Highlights:\n• Free Tree Giveaways from TreeFolks\n• Tree Care Demos & free mulch\n• Kids’ nature crafting fun\n• Live Music & inspiring environmental speakers\n• Composting & Zero-Waste Education for all ages\n \n This year, neighborhood associations from across northeast and central Austin are joining forces to celebrate, connect, and grow together!\n \n Whether you want to learn new skills, take climate action, or simply enjoy a day outdoors with your community, Austin EcoFest has something for everyone!",
+  "Event_Description": "Celebrate Nature & Community! Join us for a free, family-friendly festival bringing neighbors together to explore and enjoy the wonders of Austin’s urban ecosystem.\n \n <b>Festival Highlights:</b> \n• Free Tree Giveaways from TreeFolks\n• Tree Care Demos & free mulch\n• Kids’ nature crafting fun\n• Live Music & inspiring environmental speakers\n• Composting & Zero-Waste Education for all ages\n \n This year, neighborhood associations from across northeast and central Austin are joining forces to celebrate, connect, and grow together!\n \n Whether you want to learn new skills, take climate action, or simply enjoy a day outdoors with your community, Austin EcoFest has something for everyone!",
   "Start_Date_Time": "11/01/2025 10:00",
   "End_Date_Time": "11/01/2025 14:00",
   "Duration_Hours": 4,
   "Event_Type": "Single Event",
-  "Rain_Date_Time": "11/02/2025 00:00",
+  "Rain_Date_Time": "11/02/2025",
   "Event_Location": "Bartholomew Park",
   "Address": "5100 Berkman Dr",
   "Zip_Code": 78723,
@@ -2360,8 +2374,7 @@
   "Event_ID": 52,
   "Host_Organization": "The Trail Conservancy",
   "Event_Title": "Native Seeding and Planting with The Trail Conservancy!",
-  "Event_URL": "https://trailconservancy.givepulse.com/event/678871-Shoreline-Stewardship-Native-Seeding-and-Planting",
-  "Event_Description": "Join The Trail Conservancy in continuing to plant a diverse palette of sedges, grasses, and forbs and spreading native seed mixes on managed habitats along the Butler Trail!\n \nThese managed habitats are areas that were previously lawns but have now turned into native grassland or wildflower meadows on the Butler Trail. Enhancing plant diversity and the seed bank will improve ecological resiliency on the Butler Trail overall.\n \nAll ages and levels of experience are welcome! It is a rain-or-shine event.\n \nRegistration required. Please click the link below or the RSVP button to register for this great stewardship opportunity!",
+  "Event_Description": "Join The Trail Conservancy in continuing to plant a diverse palette of sedges, grasses, and forbs and spreading native seed mixes on managed habitats along the Butler Trail!\n \nThese managed habitats are areas that were previously lawns but have now turned into native grassland or wildflower meadows on the Butler Trail. Enhancing plant diversity and the seed bank will improve ecological resiliency on the Butler Trail overall.\n \nAll ages and levels of experience are welcome! It is a rain-or-shine event.\n \n <strong><span style=\"color: #ef8c2a; font-weight: bold;\">Registration required. Please click the RSVP/Register button to register for this great stewardship opportunity!</span></strong>",
   "Start_Date_Time": "11/01/2025 10:00",
   "End_Date_Time": "11/01/2025 13:00",
   "Duration_Hours": 3,
@@ -2398,7 +2411,7 @@
   "Event_ID": 53,
   "Host_Organization": "Patterson Park Community Garden",
   "Event_Title": "Roots & Wings at Patterson Park Community Garden!",
-  "Event_Description": "Celebrate community, nature, and pollinators at our annual Roots & Wings Festival!\n \nThis family-friendly event brings together gardening, ecology, and culture for a day of fun and learning!\n \n What’s Happening\n• Explore booths and activities led by local experts on trees, native plants, mycology, and more\n• Kids crafts, a Monarch butterfly puppet show, and live music for all ages\n• Visit our Día de los Muertos ofrenda honoring tradition and community\n• Connect with neighbors and discover ways to support a healthy, thriving environment",
+  "Event_Description": "Celebrate community, nature, and pollinators at our annual Roots & Wings Festival!\n \nThis family-friendly event brings together gardening, ecology, and culture for a day of fun and learning!\n \n <b>What’s Happening</b> \n• Explore booths and activities led by local experts on trees, native plants, mycology, and more\n• Kids crafts, a Monarch butterfly puppet show, and live music for all ages\n• Visit our Día de los Muertos ofrenda honoring tradition and community\n• Connect with neighbors and discover ways to support a healthy, thriving environment",
   "Start_Date_Time": "11/01/2025 10:00",
   "End_Date_Time": "11/01/2025 12:00",
   "Duration_Hours": 2,
@@ -2510,7 +2523,7 @@
 {
   "Event_ID": 56,
   "Host_Organization": "Austin Public Library, Windsor Park Branch",
-  "Event_Title": "Roots and Wings: Grow Together: Pollinator Gardens & Plant Swap at Windsor Park!",
+  "Event_Title": "Roots and Wings: Grow Together: Pollinator Gardens & Plant Swap at Windsor Park! (adults)",
   "Event_Description": "Dig into the magic of pollinator-friendly gardening with the Austin Public Library! Whether you're a seasoned plant parent or a budding green thumb, this event is full of hands-on activities and leafy discoveries, <strong><span style=\"color: #ef8c2a; font-weight: bold;\">recommended for adults.</span></strong>\n \nJoin Austin Davenport for an informative discussion on native pollinator gardens. This program aims to address common areas of confusion and provide guidance for your gardening success. You will learn how to embrace your native soil, choose the right plants for shaded and sunny areas, and understand the importance of nighttime pollinators. Additionally, we will have saplings, transplants, and native seeds to share with participants.\n \nLet's cultivate community while nurturing nature—one plant at a time!\n \n¡Sumérgete en la magia de la jardinería respetuosa con los polinizadores con la Biblioteca Pública de Austin! Tanto si eres un experto en jardinería como si tienes una mano verde en ciernes, este evento está lleno de actividades prácticas y descubrimientos frondosos:\n \nÚnete a Austin Davenport para una discusión informativa sobre jardines de polinizadores nativos. Este programa tiene como objetivo abordar áreas comunes de confusión y brindar orientación para el éxito de tu jardinería. Aprenderás a abrazar tu suelo nativo, elegir las plantas adecuadas para áreas sombreadas y soleadas, y comprender la importancia de los polinizadores nocturnos. Además, tendremos plántulas, trasplantes y semillas nativas para compartir con los participantes.\n \n¡Cultivemos la comunidad mientras cuidamos la naturaleza, una planta a la vez!\n \nEl programa será principalmente en inglés.",
   "Start_Date_Time": "11/01/2025 13:00",
   "End_Date_Time": "11/01/2025 15:00",
@@ -2585,7 +2598,7 @@
   "Event_ID": 58,
   "Host_Organization": "Festival Beach Food Forest",
   "Event_Title": "Roots & Wings: Ten Years of Growing Together at Festival Beach Food Forest!",
-  "Event_Description": "Festival Beach Food Forest Turns 10!\n \n This fall, we’re celebrating a decade since planting our very first trees—plus the launch of our exciting Phase 2 expansion, adding over two more acres of public parkland! Join us for two joyful, hands-on community events as we dig in, learn, and grow together.\n \n What’s Happening:\n• Tree & Native Plantings – Roll up your sleeves and help shape the next chapter of our forest.\n• Guided Learning – Gain insights from experienced land stewards about forest succession, climate resilience, and the role of public food forests in thriving cities.\n• Family-Friendly Fun – Activities for all ages to explore and enjoy.\n• Food & Community – Free food and drinks provided to keep the celebration energized and connected.\n \n Whether you’re a longtime neighbor or a first-time visitor, these events are a chance to celebrate 10 years of growth, connect with community, and help create a resilient future—rooted in the heart of Austin.",
+  "Event_Description": "Festival Beach Food Forest Turns 10!\n \n This fall, we’re celebrating a decade since planting our very first trees—plus the launch of our exciting Phase 2 expansion, adding over two more acres of public parkland! Join us for two joyful, hands-on community events as we dig in, learn, and grow together.\n \n <b>What’s Happening:</b> \n• Tree & Native Plantings – Roll up your sleeves and help shape the next chapter of our forest.\n• Guided Learning – Gain insights from experienced land stewards about forest succession, climate resilience, and the role of public food forests in thriving cities.\n• Family-Friendly Fun – Activities for all ages to explore and enjoy.\n• Food & Community – Free food and drinks provided to keep the celebration energized and connected.\n \n Whether you’re a longtime neighbor or a first-time visitor, these events are a chance to celebrate 10 years of growth, connect with community, and help create a resilient future—rooted in the heart of Austin.",
   "Start_Date_Time": "11/01/2025 14:00",
   "End_Date_Time": "11/01/2025 18:00",
   "Duration_Hours": 4,
@@ -2659,7 +2672,7 @@
   "Event_ID": 60,
   "Host_Organization": "Heartwood Community Garden",
   "Event_Title": "Roots & Wings Festival at Heartwood Community Garden!",
-  "Event_Description": "Bring the whole family to Heartwood Community Garden for a day full of nature-inspired adventures. Make your own Monarch Way Station to support Monarch migrations!\n \n Activities include:\n• Making seed bombs with native wildflowers\n• Make a Monarch Way Station Starter kit\n• Kid friendly arts and crafts\n• Planting new fruit trees to grow our community orchard\n• Even more ways to explore, learn, and connect with nature\n \nA perfect day outdoors for curious kids and nature-loving families alike!",
+  "Event_Description": "Bring the whole family to Heartwood Community Garden for a day full of nature-inspired adventures. Make your own Monarch Way Station to support Monarch migrations!\n \n <b>Activities include:</b> \n• Making seed bombs with native wildflowers\n• Make a Monarch Way Station Starter kit\n• Kid friendly arts and crafts\n• Planting new fruit trees to grow our community orchard\n• Even more ways to explore, learn, and connect with nature\n \nA perfect day outdoors for curious kids and nature-loving families alike!",
   "Start_Date_Time": "11/02/2025 09:00",
   "End_Date_Time": "11/02/2025 11:00",
   "Duration_Hours": 2,
@@ -2733,7 +2746,7 @@
   "Event_ID": 62,
   "Host_Organization": "Neighbors of Dottie Jordan Park & Garden",
   "Event_Title": "Roots & Wings Festival at Dottie Jordan Park!",
-  "Event_Description": "Celebrate pollinators, trees, and community with a fun-filled day for all ages!\n \nEvent Highlights:\n• Tree Giveaway – take home a native tree to plant\n• Storytime with Mr. Gabriel & Ms. Aubrey from Austin Public Library\n• Austin Public Library Bookmobile – sign up for a library card and check out books!\n• Live Music to enjoy throughout the day\n• Community Garden Tours – see what’s growing in your neighborhood\n• Talk to Local Birders – discover the birds that call the park home\n \nCome connect with nature, learn, and have fun with neighbors young and old!",
+  "Event_Description": "Celebrate pollinators, trees, and community with a fun-filled day for all ages!\n \n <b>Event Highlights:</b> \n• Tree Giveaway – take home a native tree to plant\n• Storytime with Mr. Gabriel & Ms. Aubrey from Austin Public Library\n• Austin Public Library Bookmobile – sign up for a library card and check out books!\n• Live Music to enjoy throughout the day\n• Community Garden Tours – see what’s growing in your neighborhood\n• Talk to Local Birders – discover the birds that call the park home\n \nCome connect with nature, learn, and have fun with neighbors young and old!",
   "Start_Date_Time": "11/02/2025 14:00",
   "End_Date_Time": "11/02/2025 17:00",
   "Duration_Hours": 3,
@@ -2806,7 +2819,7 @@
 {
   "Event_ID": 64,
   "Host_Organization": "Austin Public Library, Carver Branch",
-  "Event_Title": "Roots & Wings Playdough Playgroup!",
+  "Event_Title": "Roots & Wings Playdough Playgroup! (ages 3-7)",
   "Event_URL": null,
   "Event_Description": "Explore Central Texas ecology through playdough!\n \nCreate a super-host oak tree, build an ecosystem, practice early reading and writing skills, and make seed balls to bring important caterpillar host species home!\n \n <strong><span style=\"color: #ef8c2a; font-weight: bold;\">Recommended for children ages 3-7.</span></strong>",
   "Start_Date_Time": "10/22/2025 10:15",
@@ -2843,7 +2856,7 @@
 },
 {
   "Event_ID": 65,
-  "Host_Organization": "Austin Public Library, Menchaca Road Branch",
+  "Host_Organization": "Austin Public Library, Menchaca Road Branch (ages 3-7)",
   "Event_Title": "Roots & Wings Playdough Playgroup!",
   "Event_URL": null,
   "Event_Description": "Explore Central Texas ecology through playdough!\n \nCreate a super-host oak tree, build an ecosystem, practice early reading and writing skills, and make seed balls to bring important caterpillar host species home!\n \n <strong><span style=\"color: #ef8c2a; font-weight: bold;\">Recommended for children ages 3-7.</span></strong>",
@@ -3040,6 +3053,7 @@
                     "Adults": "Adults",
                     "Bats": "Bats",
                     "Beautification": "Beautification",
+                    "Bees": "Bees",
                     "Bilingual": "Bilingual",
                     "Birds": "Birds",
                     "Butterflies_Only": "Butterflies only",
@@ -3139,26 +3153,28 @@
                             day: 'numeric' 
                         });
 
-                        // Original: `<p class="multi-day-text">...</p>`
-                        // Corrected: `<h4 class="multi-day-text">...</h4>`
-
+                        // ADDED INLINE STYLE margin-bottom: 5px to create spacing
                         const timeText = event.Event_Type === 'Continuous Event' ?
-                        `<h4 class="multi-day-text"><strong>Multi-Day Event:</strong> ${event.Start_Date_Time.split(' ')[0]} - ${event.End_Date_Time.split(' ')[0]}</h4>` : 
-                        `<p><strong>Date/Time:</strong> ${formattedStartDate}, ${formatTime(startRawTime)} - ${formatTime(endRawTime)}</p>`;
+                        `<h4 class="multi-day-text" style="margin-bottom: 5px;"><strong>Multi-Day Event:</strong> ${event.Start_Date_Time.split(' ')[0]} - ${event.End_Date_Time.split(' ')[0]}</h4>` : 
+                        `<p style="margin-bottom: 5px;"><strong>Date/Time:</strong> ${formattedStartDate}, ${formatTime(startRawTime)} - ${formatTime(endRawTime)}</p>`;
 
                         eventDetails.innerHTML += timeText;
 
                         // Location (UPDATED: entire location text is now hyperlinked)
                         const locationParagraph = document.createElement('p');
+                        locationParagraph.style.marginBottom = '5px'; // ADDED INLINE STYLE
                         const fullAddressWithLocation = `${event.Event_Location}, ${event.Address}, ${event.Zip_Code}`;
+                        
+                        // FIX: Changed to the standard, absolute Google Maps search URL structure
                         const directionsLinkUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.Address + ' ' + event.Zip_Code)}`;
-
+                        
                         // Display full address wrapped in a single anchor tag
                         locationParagraph.innerHTML = `<strong>Location:</strong> <a href="${directionsLinkUrl}" target="_blank" class="location-link">${fullAddressWithLocation} (directions)</a>`;
                         eventDetails.appendChild(locationParagraph);
                         
                         // Host Organization
-                        eventDetails.innerHTML += `<p><strong>Host:</strong> <span>${event.Host_Organization}</span></p>`;
+                        // ADDED INLINE STYLE margin-bottom: 5px to create spacing
+                        eventDetails.innerHTML += `<p style="margin-bottom: 5px;"><strong>Host:</strong> <span>${event.Host_Organization}</span></p>`;
 
                         // Rain Date (UPDATED to show time in AM/PM)
                         if (event.Rain_Date_Time) {
@@ -3170,7 +3186,8 @@
                             });
                             const rainTime = event.Rain_Date_Time.split(' ')[1];
                             const formattedRainTime = formatTime(rainTime);
-                            eventDetails.innerHTML += `<p><strong>Rain Date:</strong> <span class="rain-date-text">${rainDateFormatted} @ ${formattedRainTime}</span></p>`;
+                            // ADDED INLINE STYLE margin-bottom: 5px to create spacing
+                            eventDetails.innerHTML += `<p style="margin-bottom: 5px;"><strong>Rain Date:</strong> <span class="rain-date-text">${rainDateFormatted} @ ${formattedRainTime}</span></p>`;
                         }
 
                         // Description
@@ -3191,6 +3208,7 @@
                             urlContainer.style.textAlign = 'left'; // Left justify
                             urlContainer.style.fontStyle = 'italic'; // Italicize the text
                             urlContainer.style.fontSize = '1.0em'; // Set font size here
+                            urlContainer.style.wordWrap = 'break-word'; // ADDED: Breaks long, unbreakable words/URLs to prevent overflow
     
                             // Construct the text: "**Learn more about this event here: [Event URL]"
                             const linkText = event.Event_URL;
@@ -3236,7 +3254,7 @@
                              rsvpTag.classList.add('rsvp-tag');
                              rsvpTag.href = event.RSVP;
                              rsvpTag.target = '_blank';
-                             rsvpTag.textContent = 'RSVP'; // Text changed from 'RSVP/Learn More'
+                             rsvpTag.textContent = 'RSVP/Register';
                              eventItem.appendChild(rsvpTag);
                         }
 
