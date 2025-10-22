@@ -481,7 +481,7 @@
             
             <div class="search-input-group">
                 <label for="eventDateInput" class="input-label">Date:</label>
-                <input type="date" id="eventDateInput" class="date-input" min="2025-10-18" max="2025-11-02">
+                <input type="date" id="eventDateInput" class="date-input" max="2025-11-02">
             </div>
 
             <div class="search-input-group">
@@ -2801,6 +2801,17 @@
             let currentEvents = [...allEvents];
             let isShowingAll = true;
             
+            // NEW LOGIC: Set the minimum date to today's date
+            function setMinDate() {
+                const today = new Date();
+                const year = today.getFullYear();
+                const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+                const day = String(today.getDate()).padStart(2, '0');
+                const todayString = `${year}-${month}-${day}`;
+                eventDateInput.setAttribute('min', todayString);
+            }
+            // END NEW LOGIC
+
             // Helper function to convert "HH:mm" to "h:mm AM/PM"
             function formatTime(timeStr) {
                 if (!timeStr) return '';
@@ -3231,6 +3242,7 @@
             });
             
             // Initial load of all events
+            setMinDate(); // NEW: Set the minimum date
             populateHostOrganizations(allEvents); 
             displayEvents(sortEvents(allEvents));
         });
